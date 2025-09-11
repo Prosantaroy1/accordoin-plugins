@@ -1,0 +1,210 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.wp-block-b-blocks-pratics-purpuse {
+  box-sizing: border-box;
+}
+.wp-block-b-blocks-pratics-purpuse * {
+  box-sizing: border-box;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne {
+  max-width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  /* Decorative top line */
+  /* Question with square style */
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fdfdfd;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_item.open {
+  background: #f0f6ff;
+  border-color: #2563eb;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_item:hover {
+  background: #f9fbff;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_deco {
+  height: 5px;
+  width: 60px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_question .faq_square {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #2563eb;
+  /* square color */
+  margin-right: 15px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_question .faq_text {
+  flex: 1;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_question .icon {
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_question.active {
+  color: #2563eb;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_answer_wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeOne .faq_answer {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+  border-top: 1px dashed #ccc;
+  padding-top: 10px;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .faq_item {
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .faq_question {
+  cursor: pointer;
+  position: relative;
+  padding: 2px 20px;
+  display: flex;
+  align-items: center;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .faq_question_bg {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .faq_half {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .left_half {
+  left: -21px;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .faq_text {
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .icon {
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #fedc00;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  align-items: center;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .faq_answer_wrapper {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 20px;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeTwo .faq_answer {
+  padding: 10px 0 15px;
+  font-size: 16px;
+  color: #333;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree {
+  max-width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  /* Question with square style */
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fdfdfd;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_item.open {
+  background: #f0f6ff;
+  border-color: #2563eb;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_item:hover {
+  background: #f9fbff;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_question .faq_text {
+  flex: 1;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_question .icon {
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_question.active {
+  color: #2563eb;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_answer_wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.wp-block-b-blocks-pratics-purpuse .faq_question_main_wp_div .themeThree .faq_answer {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+  border-top: 1px dashed #ccc;
+  padding-top: 10px;
+}
+
+/*# sourceMappingURL=view.css.map*/

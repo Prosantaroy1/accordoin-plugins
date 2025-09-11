@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "b-blocks/pratics-purpuse",
+  "version": "1.0.0",
+  "title": "parties purpose",
+  "category": "widgets",
+  "description": "Short description of the Pratics Purpuse",
+  "keywords": [
+    "Pratics Purpuse"
+  ],
+  "textdomain": "pratics-purpuse",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "purposeType": {
+      "type": "string",
+      "default": "default"
+    },
+    "theme": {
+      "type": "string",
+      "default": "themeThree"
+    },
+    "dataFaq": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "question": "what is your name ?",
+          "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+        },
+        {
+          "id": 2,
+          "question": "Why do we use it?",
+          "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+        },
+        {
+          "id": 3,
+          "question": "Where can I get some?",
+          "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+        },
+        {
+          "id": 4,
+          "question": "Where does it come from?",
+          "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+        }
+      ]
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./view.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
