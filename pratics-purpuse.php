@@ -33,8 +33,12 @@ if (!class_exists('PPTPlugin')) {
 			add_action('admin_head-edit-tags.php', [$this, 'et_edit_taxonomy']);
 			add_action('Setting_pre_add_form', [$this, 'et_edit_flied']);
 
-			// ✅ Add this line
+			// ✅ Add this line ajax
 			add_action('admin_menu', [$this, 'add_admin_menu']);
+			add_action('admin_enqueue_scripts', [$this, 'ppt_admin_enqueue_script']);
+			add_action('wp_ajax_ppt_save_data', [$this, 'ppt_save_data']); // logged in users
+			add_action('wp_ajax_nopriv_ppt_save_data', [$this, 'ppt_save_data']);
+
 
 		}
 
@@ -258,7 +262,7 @@ if (!class_exists('PPTPlugin')) {
 				'manage_options',  //access admin
 				'mypage',   //slug url
 				[$this, 'my_admin_page'],    //callback
-				'dashicons-businessman',  //url
+				'dashicons-businessman',  //icon
 				6 //position
 			);
 			add_submenu_page(
@@ -278,81 +282,141 @@ if (!class_exists('PPTPlugin')) {
 			echo '<p>এখান থেকে আপনার plugin এর overview দেখতে পারবেন।</p>';
 			echo '</div>';
 		}
+
+		// 	function admin_settings()
+		// 	{
+		// 		echo '<div class="wrap">';
+
+		// 		// Title & Subtitle
+		// 		echo '<h1 style="color:#2271b1; margin-bottom:10px;">Plugin Settings</h1>';
+		// 		echo '<p style="font-size:16px; color:#555;">এখান থেকে আপনার plugin settings configure করতে পারবেন।</p>';
+
+		// 		// Card Container
+		// 		echo '<div class="custom-cards-container" style="
+		//     display: grid;
+		//     grid-template-columns: repeat(4, 1fr);
+		//     gap: 20px;
+		//     margin-top: 20px;
+		// ">';
+
+		// 		// Card 1
+		// 		echo '<div class="card" style="
+		//     background:#f9f9f9; 
+		//     padding:20px; 
+		//     border-radius:10px; 
+		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+		//     text-align:center;
+		// ">
+		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+		//     <h2 style="color:#2271b1;">Card 1</h2>
+		//     <p>এখানে Card 1 এর Description থাকবে।</p>
+		// </div>';
+
+		// 		// Card 2
+		// 		echo '<div class="card" style="
+		//     background:#f9f9f9; 
+		//     padding:20px; 
+		//     border-radius:10px; 
+		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+		//     text-align:center;
+		// ">
+		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+		//     <h2 style="color:#2271b1;">Card 2</h2>
+		//     <p>এখানে Card 2 এর Description থাকবে।</p>
+		// </div>';
+
+		// 		// Card 3
+		// 		echo '<div class="card" style="
+		//     background:#f9f9f9; 
+		//     padding:20px; 
+		//     border-radius:10px; 
+		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+		//     text-align:center;
+		// ">
+		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+		//     <h2 style="color:#2271b1;">Card 3</h2>
+		//     <p>এখানে Card 3 এর Description থাকবে।</p>
+		// </div>';
+
+		// 		// Card 4
+		// 		echo '<div class="card" style="
+		//     background:#f9f9f9; 
+		//     padding:20px; 
+		//     border-radius:10px; 
+		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+		//     text-align:center;
+		// ">
+		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+		//     <h2 style="color:#2271b1;">Card 4</h2>
+		//     <p>এখানে Card 4 এর Description থাকবে।</p>
+		// </div>';
+
+		// 		// Close card container
+		// 		echo '</div>';
+
+		// 		echo '</div>'; // wrap close
+		// 	}
+
+		//form admin-setting
 		function admin_settings()
 		{
-			echo '<div class="wrap">';
+			?>
+			<div class="wrap">
+				<h1 style="color:#2271b1;">Form </h1>
+				<p style="font-size:16px; color:#555;">এখান থেকে আপনার plugin settings configure করতে পারবেন।</p>
 
-			// Title & Subtitle
-			echo '<h1 style="color:#2271b1; margin-bottom:10px;">Plugin Settings</h1>';
-			echo '<p style="font-size:16px; color:#555;">এখান থেকে আপনার plugin settings configure করতে পারবেন।</p>';
+				<form id="ppt-form">
+					Name: <input type="text" id="ppt_name" required>
+					Email: <input type="email" id="ppt_email" required>
+					<button type="submit">Save</button>
+				</form>
 
-			// Card Container
-			echo '<div class="custom-cards-container" style="
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        margin-top: 20px;
-    ">';
+				<div id="ppt-result"></div>
 
-			// Card 1
-			echo '<div class="card" style="
-        background:#f9f9f9; 
-        padding:20px; 
-        border-radius:10px; 
-        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-        text-align:center;
-    ">
-        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-        <h2 style="color:#2271b1;">Card 1</h2>
-        <p>এখানে Card 1 এর Description থাকবে।</p>
-    </div>';
+				<div id="ppt-result" style="margin-top:20px;"></div>
+			</div>
+			<?php
+		}
 
-			// Card 2
-			echo '<div class="card" style="
-        background:#f9f9f9; 
-        padding:20px; 
-        border-radius:10px; 
-        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-        text-align:center;
-    ">
-        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-        <h2 style="color:#2271b1;">Card 2</h2>
-        <p>এখানে Card 2 এর Description থাকবে।</p>
-    </div>';
+		function ppt_save_data()
+		{
+			// security check
+			check_ajax_referer('ppt_nonce', 'nonce');
 
-			// Card 3
-			echo '<div class="card" style="
-        background:#f9f9f9; 
-        padding:20px; 
-        border-radius:10px; 
-        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-        text-align:center;
-    ">
-        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-        <h2 style="color:#2271b1;">Card 3</h2>
-        <p>এখানে Card 3 এর Description থাকবে।</p>
-    </div>';
+			$name = sanitize_text_field($_POST['name']);
+			$email = sanitize_email($_POST['email']);
 
-			// Card 4
-			echo '<div class="card" style="
-        background:#f9f9f9; 
-        padding:20px; 
-        border-radius:10px; 
-        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-        text-align:center;
-    ">
-        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-        <h2 style="color:#2271b1;">Card 4</h2>
-        <p>এখানে Card 4 এর Description থাকবে।</p>
-    </div>';
+			if (empty($name) || empty($email)) {
+				wp_send_json_error('Name or Email is empty!');
+			}
 
-			// Close card container
-			echo '</div>';
+			// Save data in options (as example)
+			$saved_data = get_option('ppt_form_data', []);
+			$saved_data[] = ['name' => $name, 'email' => $email, 'time' => current_time('mysql')];
+			update_option('ppt_form_data', $saved_data);
 
-			echo '</div>'; // wrap close
+			wp_send_json_success($saved_data);
+		}
+		function ppt_admin_enqueue_script()
+		{
+			wp_enqueue_script(
+				'ppt-form-js',
+				PPT_DIR_URL . './build/form.js',
+				['jquery'],
+				PPT_VERSION,
+				true // footer এ load
+			);
+
+			wp_localize_script('ppt-form-js', 'ppt_ajax_obj', [
+				'ajax_url' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('ppt_nonce')
+			]);
 		}
 
 
+
+
+		//custome column add CPT
 		function et_setCustomColumn_edit($column)
 		{
 			unset($column['date']);
@@ -362,7 +426,7 @@ if (!class_exists('PPTPlugin')) {
 			return $column;
 		}
 
-
+		//column data CPT
 		function et_manageCustomColumn($column_name, $post_id)
 		{
 			if ($column_name == 'shortcode') {
@@ -376,6 +440,8 @@ if (!class_exists('PPTPlugin')) {
 			}
 		}
 
+
+		// Shortcode
 		function testimonial_shortcode($atts)
 		{
 			$post_id = $atts['id'];
@@ -424,7 +490,7 @@ if (!class_exists('PPTPlugin')) {
 		}
 
 
-
+		//data enqueueshortcode
 		function psb_admin_enqueue_script()
 		{
 			global $typenow;

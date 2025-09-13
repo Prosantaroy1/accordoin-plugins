@@ -12,7 +12,8 @@ module.exports = {
 	...defaultConfig,
 	entry: {
 		...defaultConfig.entry(),
-		shortcode: "./src/shortcode/shortcode.js"
+		shortcode: "./src/shortcode/shortcode.js",
+		form: "./src/form/form.js"
 	},
 	plugins: [
 		...plugins,
