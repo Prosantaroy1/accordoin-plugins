@@ -33,6 +33,9 @@ if (!class_exists('PPTPlugin')) {
 			add_action('admin_head-edit-tags.php', [$this, 'et_edit_taxonomy']);
 			add_action('Setting_pre_add_form', [$this, 'et_edit_flied']);
 
+			// ✅ Add this line
+			add_action('admin_menu', [$this, 'add_admin_menu']);
+
 		}
 
 		function onInit()
@@ -103,6 +106,7 @@ if (!class_exists('PPTPlugin')) {
 				'show_ui' => true,
 				'show_in_menu' => true
 			]);
+
 
 		}
 
@@ -245,8 +249,109 @@ if (!class_exists('PPTPlugin')) {
         </style>';
 			}
 		}
+		// admin 
+		function add_admin_menu()
+		{
+			add_menu_page(
+				__('Custom Menu Title', 'pratics-purpuse'), //page title
+				'custom menu',  //menu title
+				'manage_options',  //access admin
+				'mypage',   //slug url
+				[$this, 'my_admin_page'],    //callback
+				'dashicons-businessman',  //url
+				6 //position
+			);
+			add_submenu_page(
+				'mypage',           // Parent slug
+				'Settings',                  // Page title
+				'Settings',                  // Menu title
+				'manage_options',            // Capability
+				'mypage-settings',  // Menu slug
+				[$this, 'admin_settings']    // Callback function
+			);
 
-		
+		}
+		function my_admin_page()
+		{
+			echo '<div class="wrap">';
+			echo '<h1>Welcome to Parties Purpose Dashboard</h1>';
+			echo '<p>এখান থেকে আপনার plugin এর overview দেখতে পারবেন।</p>';
+			echo '</div>';
+		}
+		function admin_settings()
+		{
+			echo '<div class="wrap">';
+
+			// Title & Subtitle
+			echo '<h1 style="color:#2271b1; margin-bottom:10px;">Plugin Settings</h1>';
+			echo '<p style="font-size:16px; color:#555;">এখান থেকে আপনার plugin settings configure করতে পারবেন।</p>';
+
+			// Card Container
+			echo '<div class="custom-cards-container" style="
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+    ">';
+
+			// Card 1
+			echo '<div class="card" style="
+        background:#f9f9f9; 
+        padding:20px; 
+        border-radius:10px; 
+        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+        text-align:center;
+    ">
+        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+        <h2 style="color:#2271b1;">Card 1</h2>
+        <p>এখানে Card 1 এর Description থাকবে।</p>
+    </div>';
+
+			// Card 2
+			echo '<div class="card" style="
+        background:#f9f9f9; 
+        padding:20px; 
+        border-radius:10px; 
+        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+        text-align:center;
+    ">
+        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+        <h2 style="color:#2271b1;">Card 2</h2>
+        <p>এখানে Card 2 এর Description থাকবে।</p>
+    </div>';
+
+			// Card 3
+			echo '<div class="card" style="
+        background:#f9f9f9; 
+        padding:20px; 
+        border-radius:10px; 
+        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+        text-align:center;
+    ">
+        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+        <h2 style="color:#2271b1;">Card 3</h2>
+        <p>এখানে Card 3 এর Description থাকবে।</p>
+    </div>';
+
+			// Card 4
+			echo '<div class="card" style="
+        background:#f9f9f9; 
+        padding:20px; 
+        border-radius:10px; 
+        box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+        text-align:center;
+    ">
+        <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
+        <h2 style="color:#2271b1;">Card 4</h2>
+        <p>এখানে Card 4 এর Description থাকবে।</p>
+    </div>';
+
+			// Close card container
+			echo '</div>';
+
+			echo '</div>'; // wrap close
+		}
+
 
 		function et_setCustomColumn_edit($column)
 		{

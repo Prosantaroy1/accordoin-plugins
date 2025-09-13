@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
+	"apiVersion": 2,
 	"name": "b-blocks/pratics-purpuse",
 	"version": "1.0.0",
 	"title": "parties purpose",
@@ -21,7 +21,7 @@
 		},
 		"theme": {
 			"type": "string",
-			"default": "themeThree"
+			"default": "themeOne"
 		},
 		"dataFaq": {
 			"type": "array",

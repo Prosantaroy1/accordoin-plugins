@@ -870,6 +870,170 @@ const Style = ({
 
 /***/ }),
 
+/***/ "./src/Components/theme/Theme.js":
+/*!***************************************!*\
+  !*** ./src/Components/theme/Theme.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Theme: () => (/* binding */ Theme)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _themeOne__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./themeOne */ "./src/Components/theme/themeOne.js");
+/* harmony import */ var _ThemeThree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ThemeThree */ "./src/Components/theme/ThemeThree.js");
+/* harmony import */ var _ThemeTwo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeTwo */ "./src/Components/theme/ThemeTwo.js");
+
+
+
+
+const Theme = ({
+  attributes,
+  setAttributes
+}) => {
+  const {
+    theme = 'themeOne'
+  } = attributes;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ThemeSwitch, {
+    theme: theme,
+    attributes,
+    setAttributes
+  });
+};
+const ThemeSwitch = ({
+  theme,
+  attributes,
+  setAttributes
+}) => {
+  switch (theme) {
+    case 'themeTwo':
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ThemeTwo__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        attributes,
+        setAttributes
+      });
+    case 'themeThree':
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ThemeThree__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        attributes,
+        setAttributes
+      });
+    default:
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_themeOne__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        attributes,
+        setAttributes
+      });
+  }
+};
+
+/***/ }),
+
+/***/ "./src/Components/theme/ThemeThree.js":
+/*!********************************************!*\
+  !*** ./src/Components/theme/ThemeThree.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const ThemeThree = ({
+  attributes
+}) => {
+  const {
+    dataFaq = []
+  } = attributes || {};
+  const [openIndex, setOpenIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const toggleFaq = index => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "faq_card_warper themeThree"
+  }, dataFaq.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: faq.id || index,
+    className: `faq_item ${openIndex === index ? "open" : ""}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: `faq_question ${openIndex === index ? "active" : ""}`,
+    onClick: () => toggleFaq(index)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "faq_text"
+  }, faq.question), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "icon"
+  }, openIndex === index ? "−" : "+")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "faq_answer_wrapper",
+    style: {
+      maxHeight: openIndex === index ? "200px" : "0px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "faq_answer"
+  }, faq.answer)))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThemeThree);
+
+/***/ }),
+
+/***/ "./src/Components/theme/ThemeTwo.js":
+/*!******************************************!*\
+  !*** ./src/Components/theme/ThemeTwo.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const ThemeTwo = ({
+  attributes
+}) => {
+  const {
+    dataFaq = []
+  } = attributes || {};
+  const [openIndex, setOpenIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const toggleFaq = index => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "faq_card_warper themeTwo"
+  }, dataFaq.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: faq.id || index,
+    className: `faq_item ${openIndex === index ? "open" : ""}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "faq_deco"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: `faq_question ${openIndex === index ? "active" : ""}`,
+    onClick: () => toggleFaq(index)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "faq_question_bg"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "faq_half left_half"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "faq_half right_half"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "faq_text"
+  }, faq.question), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "icon"
+  }, openIndex === index ? "−" : "+"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "faq_answer_wrapper",
+    style: {
+      maxHeight: openIndex === index ? "200px" : "0px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "faq_answer"
+  }, faq.answer)))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThemeTwo);
+
+/***/ }),
+
 /***/ "./src/Components/theme/themeOne.js":
 /*!******************************************!*\
   !*** ./src/Components/theme/themeOne.js ***!
@@ -1065,7 +1229,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Common/Style */ "./src/Components/Common/Style.js");
-/* harmony import */ var _Components_theme_themeOne__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/theme/themeOne */ "./src/Components/theme/themeOne.js");
+/* harmony import */ var _Components_theme_Theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/theme/Theme */ "./src/Components/theme/Theme.js");
 
 
 
@@ -1080,7 +1244,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: blockNameEl.id
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "faq_question_main_wp_div"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_theme_themeOne__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_theme_Theme__WEBPACK_IMPORTED_MODULE_4__.Theme, {
       attributes
     }))));
     blockNameEl?.removeAttribute('data-attributes');

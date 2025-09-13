@@ -3,15 +3,30 @@ import { useState } from "react";
 const ClipBoard = ({ shortcode }) => {
     const [hasCopied, setHasCopied] = useState(false);
 
+
     const handleCopy = async () => {
         try {
-            await navigator.clipboard?.writeText(shortcode);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard?.writeText(shortcode);
+            } else {
+                // fallback
+                const textarea = document.createElement("textarea");
+                textarea.value = shortcode;
+                textarea.style.position = "fixed";
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+            }
             setHasCopied(true);
             setTimeout(() => setHasCopied(false), 2000);
         } catch (err) {
             console.error("Failed to copy:", err);
         }
     };
+
+
 
     return (
         <section className="clipBoard">
@@ -26,3 +41,4 @@ const ClipBoard = ({ shortcode }) => {
 };
 
 export default ClipBoard;
+

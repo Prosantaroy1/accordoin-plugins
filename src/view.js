@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import './style.scss';
 import Style from './Components/Common/Style';
-import ThemeOne from './Components/theme/themeOne';
+import { Theme } from './Components/theme/Theme';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-pratics-purpuse');
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			<Style attributes={attributes} id={blockNameEl.id} />
 
 			<div className='faq_question_main_wp_div'>
-				<ThemeOne {...{ attributes }} />
+				<Theme {...{ attributes }} />
 			</div>
 		</>);
 
