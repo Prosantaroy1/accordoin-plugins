@@ -40,6 +40,10 @@ if (!class_exists('PPTPlugin')) {
 			add_action('wp_ajax_nopriv_ppt_save_data', [$this, 'ppt_save_data']);
 
 
+			//tools
+			add_action('admin_menu', [$this, 'add_tools_menu']);
+			add_action('admin_enqueue_scripts', [$this, 'customTools_admin_enqueue_script']);
+			add_action('wp_ajax_ppt_customTool_save_data', [$this, 'ppt_customTool_save_data']);
 		}
 
 		function onInit()
@@ -253,6 +257,87 @@ if (!class_exists('PPTPlugin')) {
         </style>';
 			}
 		}
+		//tools submenu add
+		function add_tools_menu()
+		{
+			add_submenu_page(
+				'tools.php',
+				'Custom Tool Page',
+				'Custom Tool',
+				'manage_options',
+				'custom-tool-slug',
+				[$this, 'ppt_custom_tool_page']
+			);
+		}
+		function ppt_custom_tool_page()
+		{
+			// get saved data (array)
+			$saved_data = get_option('ppt_tool_texts', []);
+			?>
+			<div class="customTool-wrap">
+				<h1>Custom Tool Page</h1>
+				<p>এখান থেকে আপনার কাস্টম টুল পরিচালনা করতে পারবেন।</p>
+				<form id="customTool-form">
+					Text: <input type="text" id="customTool_name" required>
+					<button type="submit">Save</button>
+				</form>
+				<div id="customTool-result" style="margin-top:20px;">
+					<?php if (!empty($saved_data)): ?>
+						<h3>Saved Entries:</h3>
+						<ul>
+							<?php foreach ($saved_data as $item): ?>
+								<li><?php echo esc_html($item['text']); ?> (<?php echo esc_html($item['time']); ?>)</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			</div>
+			<?php
+		}
+
+		function customTools_admin_enqueue_script($hook)
+		{
+			if ($hook != 'tools_page_custom-tool-slug')
+				return;
+
+			wp_enqueue_script(
+				'ppt-tools-js',
+				PPT_DIR_URL . './build/myform.js',
+				[],
+				'1.0.0',
+				true
+			);
+
+			wp_localize_script('ppt-tools-js', 'ppt_tool_ajax', [
+				'ajax_url' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('ppt_tool_nonce')
+			]);
+		}
+		function ppt_customTool_save_data()
+		{
+			check_ajax_referer('ppt_tool_nonce', 'nonce'); // security check
+
+			$text = sanitize_text_field($_POST['text'] ?? '');
+
+			if (empty($text)) {
+				wp_send_json_error('Text field is empty!');
+			}
+
+			// get current saved data
+			$saved_data = get_option('ppt_tool_texts', []);
+			$saved_data[] = [
+				'text' => $text,
+				'time' => current_time('mysql')
+			];
+
+			update_option('ppt_tool_texts', $saved_data);
+
+			wp_send_json_success(['saved_data' => $saved_data]);
+		}
+
+
+
+
 		// admin 
 		function add_admin_menu()
 		{
@@ -360,6 +445,8 @@ if (!class_exists('PPTPlugin')) {
 		//form admin-setting
 		function admin_settings()
 		{
+			// Database থেকে আগের data load করলাম
+			$saved_data = get_option('ppt_form_data', []);
 			?>
 			<div class="wrap">
 				<h1 style="color:#2271b1;">Form </h1>
@@ -371,12 +458,23 @@ if (!class_exists('PPTPlugin')) {
 					<button type="submit">Save</button>
 				</form>
 
-				<div id="ppt-result"></div>
-
-				<div id="ppt-result" style="margin-top:20px;"></div>
+				<div id="ppt-result" style="margin-top:20px;">
+					<?php if (!empty($saved_data)): ?>
+						<h3>Saved Data:</h3>
+						<ul>
+							<?php foreach ($saved_data as $item): ?>
+								<li><?php echo esc_html($item['name']); ?> -
+									<?php echo esc_html($item['email']); ?>
+									(<?php echo esc_html($item['time']); ?>)
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
 			</div>
 			<?php
 		}
+
 
 		function ppt_save_data()
 		{
