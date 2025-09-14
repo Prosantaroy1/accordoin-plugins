@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
+import { EasyTestimonialTabs } from './EasyTestimonialTabs';
 
 const EasyTestimonialApp = () => {
     const el = document.getElementById("easy-testimonial-app");
@@ -8,12 +9,13 @@ const EasyTestimonialApp = () => {
     const [saved, setSaved] = useState(initialData);
     const [title, setTitle] = useState("");
 
-    // একবার data নেয়ার পর DOM থেকে মুছে ফেলা
-    useEffect(() => {
-        if (el) {
-            el.removeAttribute("data-saved");
-        }
-    }, [el]);
+    //console.log(saved)
+
+    // useEffect(() => {
+    //     if (el) {
+    //         el.removeAttribute("data-saved");
+    //     }
+    // }, [el]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -120,6 +122,7 @@ const EasyTestimonialApp = () => {
                     </div>
                 )}
             </div>
+            <EasyTestimonialTabs />
         </div>
     );
 };
