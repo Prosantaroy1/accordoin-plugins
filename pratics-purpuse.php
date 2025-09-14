@@ -44,6 +44,11 @@ if (!class_exists('PPTPlugin')) {
 			add_action('admin_menu', [$this, 'add_tools_menu']);
 			add_action('admin_enqueue_scripts', [$this, 'customTools_admin_enqueue_script']);
 			add_action('wp_ajax_ppt_customTool_save_data', [$this, 'ppt_customTool_save_data']);
+
+			//testimonial submenu
+			add_action('admin_menu', [$this, 'ppt_add_easy_testimonial_submenu']);
+			add_action('admin_enqueue_scripts', [$this, 'ppt_enqueue_easy_testimonial_react']);
+			add_action('wp_ajax_easy_testimonial_save', [$this, 'ppt_easy_testimonial_save']);
 		}
 
 		function onInit()
@@ -257,6 +262,61 @@ if (!class_exists('PPTPlugin')) {
         </style>';
 			}
 		}
+		// testimonial submenu
+		function ppt_add_easy_testimonial_submenu()
+		{
+			add_submenu_page(
+				'edit.php?post_type=easy_testimonial',
+				'Custom Settings',
+				'Settings',
+				'manage_options',
+				'easy_testimonial_settings',
+				[$this, 'ppt_easy_testimonial_settings_page']
+			);
+		}
+		function ppt_easy_testimonial_settings_page()
+		{
+			// PHP থেকে saved data পাঠানো হবে React component-এ
+			$saved_data = get_option('easy_testimonial_settings', []);
+			?>
+			<div id="easy-testimonial-app" data-saved='<?php echo wp_json_encode($saved_data); ?>'></div>
+			<?php
+		}
+		function ppt_enqueue_easy_testimonial_react($hook)
+		{
+			if ($hook !== 'easy_testimonial_page_easy_testimonial_settings')
+				return;
+
+			wp_enqueue_script(
+				'easy-testimonial-react',
+				PPT_DIR_URL . './build/easy_testimonial.js',
+				['wp-element'], 
+				'PPT_VERSION',
+				true
+			);
+
+			wp_localize_script('easy-testimonial-react', 'easy_testimonial_ajax', [
+				'ajax_url' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('easy_testimonial_nonce')
+			]);
+		}
+		function ppt_easy_testimonial_save()
+		{
+			check_ajax_referer('easy_testimonial_nonce', 'nonce');
+
+			$title = sanitize_text_field($_POST['title'] ?? '');
+			if (!$title)
+				wp_send_json_error('Title is empty!');
+
+			$saved = get_option('easy_testimonial_settings', []);
+			$saved[] = ['title' => $title, 'time' => current_time('mysql')];
+
+			update_option('easy_testimonial_settings', $saved);
+
+			wp_send_json_success(['saved_data' => $saved]);
+		}
+
+
 		//tools submenu add
 		function add_tools_menu()
 		{
@@ -304,7 +364,7 @@ if (!class_exists('PPTPlugin')) {
 				'ppt-tools-js',
 				PPT_DIR_URL . './build/myform.js',
 				[],
-				'1.0.0',
+				'PPT_VERSION',
 				true
 			);
 
