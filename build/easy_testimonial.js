@@ -2,6 +2,38 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+
+var m = __webpack_require__(/*! react-dom */ "react-dom");
+if (false) {} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
+
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "React" ***!
@@ -9,6 +41,16 @@
 /***/ ((module) => {
 
 module.exports = window["React"];
+
+/***/ }),
+
+/***/ "react-dom":
+/*!***************************!*\
+  !*** external "ReactDOM" ***!
+  \***************************/
+/***/ ((module) => {
+
+module.exports = window["ReactDOM"];
 
 /***/ })
 
@@ -87,33 +129,40 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 
-const {
-  useState
-} = wp.element;
-function EasyTestimonialApp() {
-  const el = document.getElementById('easy-testimonial-app');
-  const initialData = el.dataset.saved ? JSON.parse(el.dataset.saved) : [];
-  const [saved, setSaved] = useState(initialData);
-  const [title, setTitle] = useState('');
+
+
+const EasyTestimonialApp = () => {
+  const el = document.getElementById("easy-testimonial-app");
+  const initialData = el?.dataset.saved ? JSON.parse(el.dataset.saved) : [];
+  const [saved, setSaved] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialData);
+  const [title, setTitle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+
+  // একবার data নেয়ার পর DOM থেকে মুছে ফেলা
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (el) {
+      el.removeAttribute("data-saved");
+    }
+  }, [el]);
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!title.trim()) return alert('Title is empty!');
-    const formData = new URLSearchParams();
-    formData.append('action', 'easy_testimonial_save');
+    if (!title.trim()) return alert("Title is empty!");
+    const formData = new FormData();
+    formData.append("action", "easy_testimonial_save");
     // eslint-disable-next-line no-undef
-    formData.append('nonce', easy_testimonial_ajax.nonce);
-    formData.append('title', title.trim());
+    formData.append("nonce", easy_testimonial_ajax.nonce);
+    formData.append("title", title.trim());
     try {
       // eslint-disable-next-line no-undef
       const res = await fetch(easy_testimonial_ajax.ajax_url, {
-        method: 'POST',
+        method: "POST",
         body: formData
       });
       const data = await res.json();
       if (data.success) {
         setSaved(data.data.saved_data);
-        setTitle('');
+        setTitle("");
       } else {
         alert(data.data);
       }
@@ -141,7 +190,7 @@ function EasyTestimonialApp() {
       width: "100%",
       borderCollapse: "collapse",
       marginTop: "10px",
-      textAlign: "center" // সব সেল center এ
+      textAlign: "center"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     style: {
@@ -179,11 +228,14 @@ function EasyTestimonialApp() {
       padding: "8px"
     }
   }, item.time))))))));
-}
+};
 
 // Render in admin
-const el = document.getElementById('easy-testimonial-app');
-if (el) wp.element.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(EasyTestimonialApp, null), el);
+const container = document.getElementById("easy-testimonial-app");
+if (container) {
+  const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
+  root.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(EasyTestimonialApp, null));
+}
 /******/ })()
 ;
 //# sourceMappingURL=easy_testimonial.js.map

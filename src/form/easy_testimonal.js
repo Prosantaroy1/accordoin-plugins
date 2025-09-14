@@ -1,32 +1,41 @@
-const { useState } = wp.element;
+import { useState, useEffect } from "react";
+import { createRoot } from "react-dom/client";
 
-function EasyTestimonialApp() {
-    const el = document.getElementById('easy-testimonial-app');
-    const initialData = el.dataset.saved ? JSON.parse(el.dataset.saved) : [];
+const EasyTestimonialApp = () => {
+    const el = document.getElementById("easy-testimonial-app");
+    const initialData = el?.dataset.saved ? JSON.parse(el.dataset.saved) : [];
 
     const [saved, setSaved] = useState(initialData);
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState("");
+
+    // একবার data নেয়ার পর DOM থেকে মুছে ফেলা
+    useEffect(() => {
+        if (el) {
+            el.removeAttribute("data-saved");
+        }
+    }, [el]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!title.trim()) return alert('Title is empty!');
+        if (!title.trim()) return alert("Title is empty!");
 
-        const formData = new URLSearchParams();
-        formData.append('action', 'easy_testimonial_save');
+        const formData = new FormData();
+        formData.append("action", "easy_testimonial_save");
         // eslint-disable-next-line no-undef
-        formData.append('nonce', easy_testimonial_ajax.nonce);
-        formData.append('title', title.trim());
+        formData.append("nonce", easy_testimonial_ajax.nonce);
+        formData.append("title", title.trim());
 
         try {
             // eslint-disable-next-line no-undef
             const res = await fetch(easy_testimonial_ajax.ajax_url, {
-                method: 'POST',
-                body: formData
+                method: "POST",
+                body: formData,
             });
             const data = await res.json();
+
             if (data.success) {
                 setSaved(data.data.saved_data);
-                setTitle('');
+                setTitle("");
             } else {
                 alert(data.data);
             }
@@ -58,7 +67,7 @@ function EasyTestimonialApp() {
                                 width: "100%",
                                 borderCollapse: "collapse",
                                 marginTop: "10px",
-                                textAlign: "center", // সব সেল center এ
+                                textAlign: "center",
                             }}
                         >
                             <thead>
@@ -112,11 +121,12 @@ function EasyTestimonialApp() {
                 )}
             </div>
         </div>
-
-
     );
-}
+};
 
 // Render in admin
-const el = document.getElementById('easy-testimonial-app');
-if (el) wp.element.render(<EasyTestimonialApp />, el);
+const container = document.getElementById("easy-testimonial-app");
+if (container) {
+    const root = createRoot(container);
+    root.render(<EasyTestimonialApp />);
+}
