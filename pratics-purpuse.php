@@ -33,22 +33,21 @@ if (!class_exists('PPTPlugin')) {
 			add_action('admin_head-edit-tags.php', [$this, 'et_edit_taxonomy']);
 			add_action('Setting_pre_add_form', [$this, 'et_edit_flied']);
 
-			// ✅ Add this line ajax
-			add_action('admin_menu', [$this, 'add_admin_menu']);
-			add_action('admin_enqueue_scripts', [$this, 'ppt_admin_enqueue_script']);
-			add_action('wp_ajax_ppt_save_data', [$this, 'ppt_save_data']); // logged in users
-			add_action('wp_ajax_nopriv_ppt_save_data', [$this, 'ppt_save_data']);
-
 
 			//tools
 			add_action('admin_menu', [$this, 'add_tools_menu']);
 			add_action('admin_enqueue_scripts', [$this, 'customTools_admin_enqueue_script']);
-			add_action('wp_ajax_ppt_customTool_save_data', [$this, 'ppt_customTool_save_data']);
+			add_action('wp_ajax_ppt_customTool_save', [$this, 'ppt_customTool_save_data']);
+			add_action('wp_ajax_ppt_get_customTool_save', [$this, 'ppt_get_customTool_save_handle']);
 
 			//testimonial submenu
 			add_action('admin_menu', [$this, 'ppt_add_easy_testimonial_submenu']);
 			add_action('admin_enqueue_scripts', [$this, 'ppt_enqueue_easy_testimonial_react']);
-			add_action('wp_ajax_easy_testimonial_save', [$this, 'ppt_easy_testimonial_save']);
+			//add_action('wp_ajax_easy_testimonial_save', [$this, 'ppt_easy_testimonial_save']);
+
+			// redirect active plugin dashboard
+			add_action('admin_init', [$this, 'ppt_plugin_redirect_after_activation']);
+			register_activation_hook(__FILE__, [$this, 'ppt_plugin_activate_redirect']);
 		}
 
 		function onInit()
@@ -276,11 +275,9 @@ if (!class_exists('PPTPlugin')) {
 		}
 		function ppt_easy_testimonial_settings_page()
 		{
-			// PHP থেকে saved data পাঠানো হবে React component-এ
-			$saved_data = get_option('easy_testimonial_settings', []);
-			?>
-			<div id="easy-testimonial-app" data-saved='<?php echo wp_json_encode($saved_data); ?>'></div>
-			<?php
+
+			echo '<div id="easy-testimonial-app"/>';
+
 		}
 		function ppt_enqueue_easy_testimonial_react($hook)
 		{
@@ -288,36 +285,66 @@ if (!class_exists('PPTPlugin')) {
 				return;
 
 			wp_enqueue_script(
-				'easy-testimonial-react',
+				'easy-testimonial-js',
 				PPT_DIR_URL . './build/easy_testimonial.js',
-				['wp-element'], 
-				'PPT_VERSION',
+				['react', 'react-dom'],
+				PPT_VERSION,
 				true
 			);
+			wp_enqueue_style(
+				'easy-testimonial-css',
+				PPT_DIR_URL . "./build/easy_testimonial.css",
+				PPT_VERSION
+			);
 
-			wp_localize_script('easy-testimonial-react', 'easy_testimonial_ajax', [
-				'ajax_url' => admin_url('admin-ajax.php'),
-				'nonce' => wp_create_nonce('easy_testimonial_nonce')
-			]);
+			// wp_localize_script('easy-testimonial-react', 'easy_testimonial_ajax', [
+			// 	'ajax_url' => admin_url('admin-ajax.php'),
+			// 	'nonce' => wp_create_nonce('easy_testimonial_nonce')
+			// ]);
 		}
-		function ppt_easy_testimonial_save()
+		// function ppt_easy_testimonial_save()
+		// {
+		// 	check_ajax_referer('easy_testimonial_nonce', 'nonce');
+
+		// 	$title = sanitize_text_field($_POST['title'] ?? '');
+		// 	if (!$title)
+		// 		wp_send_json_error('Title is empty!');
+
+		// 	$saved = get_option('easy_testimonial_settings', []);
+		// 	$saved[] = ['title' => $title, 'time' => current_time('mysql')];
+
+		// 	update_option('easy_testimonial_settings', $saved);
+
+		// 	wp_send_json_success(['saved_data' => $saved]);
+		// }
+
+
+		//--------tools submenu add first kaj-----
+
+
+
+		 function ppt_plugin_activate_redirect() {
+           // Option flag সেট করুন
+             add_option('ppt_plugin_redirect_after_activation', true);
+        }
+         
+ 
+		function ppt_plugin_redirect_after_activation()
 		{
-			check_ajax_referer('easy_testimonial_nonce', 'nonce');
+			if (is_admin() && get_option('ppt_plugin_redirect_after_activation')) {
 
-			$title = sanitize_text_field($_POST['title'] ?? '');
-			if (!$title)
-				wp_send_json_error('Title is empty!');
+				delete_option('ppt_plugin_redirect_after_activation');
 
-			$saved = get_option('easy_testimonial_settings', []);
-			$saved[] = ['title' => $title, 'time' => current_time('mysql')];
+				// Easy Testimonial settings page URL
+				$redirect_url = admin_url('edit.php?post_type=easy_testimonial');
 
-			update_option('easy_testimonial_settings', $saved);
-
-			wp_send_json_success(['saved_data' => $saved]);
+				// Redirect করুন
+				wp_safe_redirect($redirect_url);
+				exit;
+			}
 		}
 
-
-		//tools submenu add
+		//submenu tools
 		function add_tools_menu()
 		{
 			add_submenu_page(
@@ -329,43 +356,29 @@ if (!class_exists('PPTPlugin')) {
 				[$this, 'ppt_custom_tool_page']
 			);
 		}
+		//second kaj
 		function ppt_custom_tool_page()
 		{
-			// get saved data (array)
-			$saved_data = get_option('ppt_tool_texts', []);
-			?>
-			<div class="customTool-wrap">
-				<h1>Custom Tool Page</h1>
-				<p>এখান থেকে আপনার কাস্টম টুল পরিচালনা করতে পারবেন।</p>
-				<form id="customTool-form">
-					Text: <input type="text" id="customTool_name" required>
-					<button type="submit">Save</button>
-				</form>
-				<div id="customTool-result" style="margin-top:20px;">
-					<?php if (!empty($saved_data)): ?>
-						<h3>Saved Entries:</h3>
-						<ul>
-							<?php foreach ($saved_data as $item): ?>
-								<li><?php echo esc_html($item['text']); ?> (<?php echo esc_html($item['time']); ?>)</li>
-							<?php endforeach; ?>
-						</ul>
-					<?php endif; ?>
-				</div>
-			</div>
-			<?php
+			echo '<div id="ppt-custom-tool"/>';
 		}
 
 		function customTools_admin_enqueue_script($hook)
 		{
+			//cheek -> echo $hook; 
 			if ($hook != 'tools_page_custom-tool-slug')
 				return;
 
 			wp_enqueue_script(
 				'ppt-tools-js',
 				PPT_DIR_URL . './build/myform.js',
-				[],
-				'PPT_VERSION',
+				['react', 'react-dom'],
+				PPT_VERSION,
 				true
+			);
+			wp_enqueue_style(
+				'ppt-tools-css',
+				PPT_DIR_URL . "./build/myform.css",
+				PPT_VERSION
 			);
 
 			wp_localize_script('ppt-tools-js', 'ppt_tool_ajax', [
@@ -375,201 +388,40 @@ if (!class_exists('PPTPlugin')) {
 		}
 		function ppt_customTool_save_data()
 		{
-			check_ajax_referer('ppt_tool_nonce', 'nonce'); // security check
-
-			$text = sanitize_text_field($_POST['text'] ?? '');
-
-			if (empty($text)) {
-				wp_send_json_error('Text field is empty!');
+			if (!check_ajax_referer('ppt_tool_nonce', 'nonce', false)) {
+				wp_send_json_error('Invalid nonce');
 			}
-
-			// get current saved data
-			$saved_data = get_option('ppt_tool_texts', []);
-			$saved_data[] = [
-				'text' => $text,
-				'time' => current_time('mysql')
-			];
-
-			update_option('ppt_tool_texts', $saved_data);
-
-			wp_send_json_success(['saved_data' => $saved_data]);
-		}
-
-
-
-
-		// admin 
-		function add_admin_menu()
-		{
-			add_menu_page(
-				__('Custom Menu Title', 'pratics-purpuse'), //page title
-				'custom menu',  //menu title
-				'manage_options',  //access admin
-				'mypage',   //slug url
-				[$this, 'my_admin_page'],    //callback
-				'dashicons-businessman',  //icon
-				6 //position
-			);
-			add_submenu_page(
-				'mypage',           // Parent slug
-				'Settings',                  // Page title
-				'Settings',                  // Menu title
-				'manage_options',            // Capability
-				'mypage-settings',  // Menu slug
-				[$this, 'admin_settings']    // Callback function
-			);
-
-		}
-		function my_admin_page()
-		{
-			echo '<div class="wrap">';
-			echo '<h1>Welcome to Parties Purpose Dashboard</h1>';
-			echo '<p>এখান থেকে আপনার plugin এর overview দেখতে পারবেন।</p>';
-			echo '</div>';
-		}
-
-		// 	function admin_settings()
-		// 	{
-		// 		echo '<div class="wrap">';
-
-		// 		// Title & Subtitle
-		// 		echo '<h1 style="color:#2271b1; margin-bottom:10px;">Plugin Settings</h1>';
-		// 		echo '<p style="font-size:16px; color:#555;">এখান থেকে আপনার plugin settings configure করতে পারবেন।</p>';
-
-		// 		// Card Container
-		// 		echo '<div class="custom-cards-container" style="
-		//     display: grid;
-		//     grid-template-columns: repeat(4, 1fr);
-		//     gap: 20px;
-		//     margin-top: 20px;
-		// ">';
-
-		// 		// Card 1
-		// 		echo '<div class="card" style="
-		//     background:#f9f9f9; 
-		//     padding:20px; 
-		//     border-radius:10px; 
-		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-		//     text-align:center;
-		// ">
-		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-		//     <h2 style="color:#2271b1;">Card 1</h2>
-		//     <p>এখানে Card 1 এর Description থাকবে।</p>
-		// </div>';
-
-		// 		// Card 2
-		// 		echo '<div class="card" style="
-		//     background:#f9f9f9; 
-		//     padding:20px; 
-		//     border-radius:10px; 
-		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-		//     text-align:center;
-		// ">
-		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-		//     <h2 style="color:#2271b1;">Card 2</h2>
-		//     <p>এখানে Card 2 এর Description থাকবে।</p>
-		// </div>';
-
-		// 		// Card 3
-		// 		echo '<div class="card" style="
-		//     background:#f9f9f9; 
-		//     padding:20px; 
-		//     border-radius:10px; 
-		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-		//     text-align:center;
-		// ">
-		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-		//     <h2 style="color:#2271b1;">Card 3</h2>
-		//     <p>এখানে Card 3 এর Description থাকবে।</p>
-		// </div>';
-
-		// 		// Card 4
-		// 		echo '<div class="card" style="
-		//     background:#f9f9f9; 
-		//     padding:20px; 
-		//     border-radius:10px; 
-		//     box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-		//     text-align:center;
-		// ">
-		//     <img src="https://via.placeholder.com/150" style="max-width:100%; border-radius:8px;" />
-		//     <h2 style="color:#2271b1;">Card 4</h2>
-		//     <p>এখানে Card 4 এর Description থাকবে।</p>
-		// </div>';
-
-		// 		// Close card container
-		// 		echo '</div>';
-
-		// 		echo '</div>'; // wrap close
-		// 	}
-
-		//form admin-setting
-		function admin_settings()
-		{
-			// Database থেকে আগের data load করলাম
-			$saved_data = get_option('ppt_form_data', []);
-			?>
-			<div class="wrap">
-				<h1 style="color:#2271b1;">Form </h1>
-				<p style="font-size:16px; color:#555;">এখান থেকে আপনার plugin settings configure করতে পারবেন।</p>
-
-				<form id="ppt-form">
-					Name: <input type="text" id="ppt_name" required>
-					Email: <input type="email" id="ppt_email" required>
-					<button type="submit">Save</button>
-				</form>
-
-				<div id="ppt-result" style="margin-top:20px;">
-					<?php if (!empty($saved_data)): ?>
-						<h3>Saved Data:</h3>
-						<ul>
-							<?php foreach ($saved_data as $item): ?>
-								<li><?php echo esc_html($item['name']); ?> -
-									<?php echo esc_html($item['email']); ?>
-									(<?php echo esc_html($item['time']); ?>)
-								</li>
-							<?php endforeach; ?>
-						</ul>
-					<?php endif; ?>
-				</div>
-			</div>
-			<?php
-		}
-
-
-		function ppt_save_data()
-		{
-			// security check
-			check_ajax_referer('ppt_nonce', 'nonce');
 
 			$name = sanitize_text_field($_POST['name']);
-			$email = sanitize_email($_POST['email']);
+			$role = sanitize_text_field($_POST['role']);
 
-			if (empty($name) || empty($email)) {
-				wp_send_json_error('Name or Email is empty!');
+			$image = $_FILES['image'];
+			$upload = wp_handle_upload($image, array('test_form' => false));
+
+			if ($upload && !isset($upload['error'])) {
+				$tool_data = array(
+					'name' => $name,
+					'role' => $role,
+					'image_url' => $upload['url']
+				);
+
+				update_option('ppt_tool_data', $tool_data);
+				wp_send_json_success('saved successfully');
+			} else {
+				wp_send_json_error('Failed to upload image');
 			}
-
-			// Save data in options (as example)
-			$saved_data = get_option('ppt_form_data', []);
-			$saved_data[] = ['name' => $name, 'email' => $email, 'time' => current_time('mysql')];
-			update_option('ppt_form_data', $saved_data);
-
-			wp_send_json_success($saved_data);
 		}
-		function ppt_admin_enqueue_script()
+
+		function ppt_get_customTool_save_handle()
 		{
-			wp_enqueue_script(
-				'ppt-form-js',
-				PPT_DIR_URL . './build/form.js',
-				['jquery'],
-				PPT_VERSION,
-				true // footer এ load
-			);
+			check_ajax_referer('ppt_tool_nonce', 'nonce');
 
-			wp_localize_script('ppt-form-js', 'ppt_ajax_obj', [
-				'ajax_url' => admin_url('admin-ajax.php'),
-				'nonce' => wp_create_nonce('ppt_nonce')
-			]);
+			$tool_data = get_option('ppt_tool_data', []);
+			wp_send_json_success($tool_data);
 		}
+
+
+
 
 
 

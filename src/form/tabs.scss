@@ -1,103 +1,198 @@
-.tab-container {
-    max-width: 800px;
-    margin: 30px auto;
-    font-family: Arial, sans-serif;
-}
+.testimonial_menu_wrapper {
+    .title {
+        margin-left: 8px;
+        font-size: 28px;
+    }
 
-.tabs-row {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid #ddd;
-    background: #f9f9f9;
-    border-radius: 8px 8px 0 0;
-    overflow: hidden;
-}
+    /* tabs.scss */
+    .tab-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
 
-.tab {
-    flex: 1;
-    padding: 14px 20px;
-    text-align: center;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    color: #555;
-}
 
-.tab:hover {
-    background: #eee;
-    color: #000;
-}
+    .tabs-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
 
-.tab.active {
-    background: #0073aa;
-    color: #fff;
-    font-weight: 700;
-    box-shadow: inset 0 -3px 0 #005177;
-}
 
-.tab-content {
-    border: 1px solid #ddd;
-    border-top: none;
-    padding: 25px;
-    border-radius: 0 0 8px 8px;
-    background: #fff;
-}
+    .tab {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: #f3f3f3;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
 
-.tab-content h2 {
-    margin-bottom: 15px;
-    color: #0073aa;
-}
 
-.tab-content p,
-.tab-content label,
-.tab-content ul {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #444;
-}
+    .tab.active {
+        background: #2271b1;
+        color: #fff;
+        border-color: #2271b1;
+    }
 
-/* ---- Form styling ---- */
-.tab-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
-.tab-content input[type="text"],
-.tab-content textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-}
+    .tab:hover {
+        background: #e1e1e1;
+    }
 
-.tab-content textarea {
-    resize: vertical;
-    min-height: 80px;
-}
 
-.tab-content button {
-    background: #0073aa;
-    color: #fff;
-    border: none;
-    padding: 12px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    transition: background 0.3s;
-}
+    .tab-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-.tab-content button:hover {
-    background: #005177;
-}
 
-/* ---- Checkbox styling ---- */
-.tab-content input[type="checkbox"] {
-    margin-right: 8px;
+    .tab-panel {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    }
+
+
+    .tab-panel h2 {
+        margin-top: 0;
+        color: #2271b1;
+    }
+
+
+    .tab-panel form {
+        display: flex;
+    }
+
+    /* CSS/SCSS--form system */
+    .custom-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        max-width: 500px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+
+    .custom-form .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+
+    .custom-form label {
+        font-weight: 600;
+        color: #333;
+    }
+
+
+    .custom-form input,
+    .custom-form textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        width: 100%;
+        transition: border-color 0.2s;
+    }
+
+
+    .custom-form input:focus,
+    .custom-form textarea:focus {
+        border-color: #2271b1;
+        outline: none;
+    }
+
+
+    .custom-form .submit-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background-color: #2271b1;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        align-self: flex-start;
+    }
+
+
+    .custom-form .submit-btn:hover {
+        background-color: #1a5799;
+    }
+
+    // get price css
+    /* CSS/SCSS */
+    .price-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+    .cards-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+
+    .price-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        flex: 1;
+        min-width: 200px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+
+    .price-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .price-card h3 {
+        margin-top: 0;
+        color: #2271b1;
+    }
+
+
+    .price-card p {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+
+    .btn-select {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 8px;
+        background-color: #2271b1;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+
+    .btn-select:hover {
+        background-color: #1a5799;
+    }
+
 }

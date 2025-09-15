@@ -15,6 +15,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tabs_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs.scss */ "./src/form/tabs.scss");
+/* harmony import */ var _Testimonial_BacisTheme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Testimonial/BacisTheme */ "./src/form/Testimonial/BacisTheme.jsx");
+
 
 
 
@@ -24,33 +26,101 @@ const EasyTestimonialTabs = () => {
     className: "tab-container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "tabs-row"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: activeTab === "basic" ? "tab active" : "tab",
-    onClick: () => setActiveTab("basic")
-  }, "Basic"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: activeTab === "setting" ? "tab active" : "tab",
-    onClick: () => setActiveTab("setting")
-  }, "Setting"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: activeTab === "advance" ? "tab active" : "tab",
-    onClick: () => setActiveTab("advance")
-  }, "Advance"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: activeTab === "get" ? "tab active" : "tab",
-    onClick: () => setActiveTab("get")
-  }, "Get")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, ['basic', 'setting', 'advance', 'get'].map(tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    key: tab,
+    className: activeTab === tab ? "tab active" : "tab",
+    onClick: () => setActiveTab(tab)
+  }, tab.charAt(0).toUpperCase() + tab.slice(1)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "tab-content"
-  }, activeTab === "basic" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Basic Section"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "\u098F\u0996\u09BE\u09A8\u09C7 \u09B6\u09C1\u09A7\u09C1 title \u098F\u09AC\u0982 description \u09A6\u09C7\u0996\u09BE\u09AC\u09C7\u0964 (Static \u09AC\u09BE read-only content \u09B0\u09BE\u0996\u09A4\u09C7 \u09AA\u09BE\u09B0\u09CB\u0964)")), activeTab === "setting" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Settings"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Title:", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  }, activeTab === "basic" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tab-panel"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Basic Section"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "\u098F\u0996\u09BE\u09A8\u09C7 \u09B6\u09C1\u09A7\u09C1 title \u098F\u09AC\u0982 description \u09A6\u09C7\u0996\u09BE\u09AC\u09C7\u0964 (Static \u09AC\u09BE read-only content \u09B0\u09BE\u0996\u09A4\u09C7 \u09AA\u09BE\u09B0\u09CB\u0964)"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Testimonial_BacisTheme__WEBPACK_IMPORTED_MODULE_2__["default"], null)), activeTab === "setting" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tab-panel"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Settings"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    className: "custom-form"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "form-group"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Title"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     placeholder: "Enter title"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Description:", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("textarea", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "form-group"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Description"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("textarea", {
     placeholder: "Enter description"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    type: "submit"
-  }, "Save"))), activeTab === "advance" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Advance Options"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "submit",
+    className: "submit-btn"
+  }, "Save"))), activeTab === "advance" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tab-panel"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Advance Options"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "checkbox"
   }), " Enable Dark Mode"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "checkbox"
-  }), " Show Extra Features")), activeTab === "get" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Get Price"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "\u0986\u09AE\u09BE\u09B0 \u09AA\u09CD\u09B0\u09BE\u0987\u09B8 \u09B2\u09BF\u09B8\u09CD\u099F:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Basic Plan \u2013 $10"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Pro Plan \u2013 $20"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "Enterprise \u2013 $50")))));
+  }), " Show Extra Features")), activeTab === "get" && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tab-panel price-cards"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Get Price"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "\u0986\u09AE\u09BE\u09B0 \u09AA\u09CD\u09B0\u09BE\u0987\u09B8 \u09B2\u09BF\u09B8\u09CD\u099F:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "cards-row"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "price-card"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Basic Plan"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "$10"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn-select"
+  }, "Select")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "price-card"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Pro Plan"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "$20"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn-select"
+  }, "Select")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "price-card"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Enterprise"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "$50"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn-select"
+  }, "Select"))))));
 };
+
+/***/ }),
+
+/***/ "./src/form/Testimonial/BacisTheme.jsx":
+/*!*********************************************!*\
+  !*** ./src/form/Testimonial/BacisTheme.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const BacisTheme = () => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Demo Theme"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIuhy6KYq-YXUxwP_wlFgrRrTW3YJj1v26Lw&s"
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BacisTheme);
+
+/***/ }),
+
+/***/ "./src/form/Testimonial/TestimonialMenu.jsx":
+/*!**************************************************!*\
+  !*** ./src/form/Testimonial/TestimonialMenu.jsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TestimonialMenu)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _EasyTestimonialTabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../EasyTestimonialTabs */ "./src/form/EasyTestimonialTabs.js");
+
+
+function TestimonialMenu() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "testimonial_menu_wrapper"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "title"
+  }, "Admin DashBoard"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_EasyTestimonialTabs__WEBPACK_IMPORTED_MODULE_1__.EasyTestimonialTabs, null));
+}
 
 /***/ }),
 
@@ -194,116 +264,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _EasyTestimonialTabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EasyTestimonialTabs */ "./src/form/EasyTestimonialTabs.js");
+/* harmony import */ var _Testimonial_TestimonialMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Testimonial/TestimonialMenu */ "./src/form/Testimonial/TestimonialMenu.jsx");
 
 
 
-
-const EasyTestimonialApp = () => {
-  const el = document.getElementById("easy-testimonial-app");
-  const initialData = el?.dataset.saved ? JSON.parse(el.dataset.saved) : [];
-  const [saved, setSaved] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialData);
-  const [title, setTitle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-
-  //console.log(saved)
-
-  // useEffect(() => {
-  //     if (el) {
-  //         el.removeAttribute("data-saved");
-  //     }
-  // }, [el]);
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    if (!title.trim()) return alert("Title is empty!");
-    const formData = new FormData();
-    formData.append("action", "easy_testimonial_save");
-    // eslint-disable-next-line no-undef
-    formData.append("nonce", easy_testimonial_ajax.nonce);
-    formData.append("title", title.trim());
-    try {
-      // eslint-disable-next-line no-undef
-      const res = await fetch(easy_testimonial_ajax.ajax_url, {
-        method: "POST",
-        body: formData
-      });
-      const data = await res.json();
-      if (data.success) {
-        setSaved(data.data.saved_data);
-        setTitle("");
-      } else {
-        alert(data.data);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wrap"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Easy Testimonial Settings"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-    onSubmit: handleSubmit
-  }, "Title:", " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    value: title,
-    onChange: e => setTitle(e.target.value),
-    required: true
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    type: "submit"
-  }, "Save")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      marginTop: "20px"
-    }
-  }, saved.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Saved Titles:"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
-    style: {
-      width: "100%",
-      borderCollapse: "collapse",
-      marginTop: "10px",
-      textAlign: "center"
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    style: {
-      border: "1px solid #ddd",
-      padding: "8px",
-      background: "#f4f4f4"
-    }
-  }, "#"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    style: {
-      border: "1px solid #ddd",
-      padding: "8px",
-      background: "#f4f4f4"
-    }
-  }, "Title"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    style: {
-      border: "1px solid #ddd",
-      padding: "8px",
-      background: "#f4f4f4"
-    }
-  }, "Time"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, saved.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
-    key: index
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    style: {
-      border: "1px solid #ddd",
-      padding: "8px"
-    }
-  }, index + 1), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    style: {
-      border: "1px solid #ddd",
-      padding: "8px"
-    }
-  }, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    style: {
-      border: "1px solid #ddd",
-      padding: "8px"
-    }
-  }, item.time))))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_EasyTestimonialTabs__WEBPACK_IMPORTED_MODULE_2__.EasyTestimonialTabs, null));
-};
-
-// Render in admin
-const container = document.getElementById("easy-testimonial-app");
-if (container) {
-  const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-  root.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(EasyTestimonialApp, null));
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const rootId = document.getElementById('easy-testimonial-app');
+  const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(rootId);
+  root.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Testimonial_TestimonialMenu__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+});
 /******/ })()
 ;
 //# sourceMappingURL=easy_testimonial.js.map

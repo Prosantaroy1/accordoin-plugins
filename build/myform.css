@@ -1,0 +1,282 @@
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/form/Component/style.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+#hrb-app-wrapper h2 {
+  font-size: 28px;
+  padding-left: 3px;
+}
+#hrb-app-wrapper .hrb-editor-container {
+  display: flex;
+  gap: 2rem;
+  width: 1700px;
+  margin-top: 30px;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-settings-panel,
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel {
+  flex: 1;
+  width: 50%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-settings-panel .hrb-setting-group {
+  margin-bottom: 20px;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-settings-panel .hrb-setting-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-settings-panel .hrb-setting-group input[type=text] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-settings-panel .hrb-save-button {
+  background: #2271b1;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-settings-panel .hrb-save-button:hover {
+  background: #135e96;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 100%;
+  padding: 0rem 1rem;
+  font-family: inter;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .roomHeading .title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .roomHeading .meta {
+  display: flex;
+  gap: 1.5rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .roomHeading .meta .item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .roomHeading .meta .item .star {
+  width: 1rem;
+  height: 1rem;
+  fill: #facc15;
+  color: #facc15;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .roomHeading .meta .item .font-medium {
+  font-weight: 500;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  padding: 10px 11px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .btn:hover {
+  background: #fff;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .btn.left {
+  left: 1rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .btn.right {
+  right: 1rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .dots .dot.active {
+  background: #fff;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .actions {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .actions .icon-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .actions .icon-btn svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .actions .icon-btn:hover {
+  background: #fff;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .gallery .counter {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .title {
+  font-size: 19px !important;
+  font-weight: 600 !important;
+  padding: 0 !important;
+  line-height: 1.4 !important;
+  margin-bottom: 1rem !important;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .details-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .details-grid .subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  padding: 0 !important;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .details-grid .list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #4b5563;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .details-grid .list li {
+  margin-bottom: 0.25rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .items .item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-height: 60px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .items .item .icon {
+  color: #2563eb;
+  flex-shrink: 0;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .items .item span {
+  flex: 1;
+  display: block;
+}
+#hrb-app-wrapper .hrb-editor-container .hrb-preview-panel .previw .room .desc {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 16px;
+}
+#hrb-app-wrapper .hrb-preview-panel .sic-card {
+  /* card width */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+#hrb-app-wrapper .hrb-preview-panel .sic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+#hrb-app-wrapper .hrb-preview-panel .sic-media {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f3f4f6;
+  overflow: hidden;
+}
+#hrb-app-wrapper .hrb-preview-panel .sic-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* image fits inside without overflow */
+  display: block;
+}
+#hrb-app-wrapper .hrb-preview-panel .sic-body {
+  padding: 14px 16px;
+  text-align: center;
+}
+#hrb-app-wrapper .hrb-preview-panel .sic-name {
+  margin: 1px 0 7px 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+#hrb-app-wrapper .hrb-preview-panel .sic-role {
+  margin: 0;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+#submitdiv {
+  display: none;
+}
+
+/*# sourceMappingURL=myform.css.map*/

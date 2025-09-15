@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import './tabs.scss'
+import BacisTheme from './Testimonial/BacisTheme';
 
 export const EasyTestimonialTabs = () => {
     const [activeTab, setActiveTab] = useState("basic");
@@ -8,85 +9,77 @@ export const EasyTestimonialTabs = () => {
         <div className="tab-container">
             {/* ---- Tabs Header ---- */}
             <div className="tabs-row">
-                <button
-                    className={activeTab === "basic" ? "tab active" : "tab"}
-                    onClick={() => setActiveTab("basic")}
-                >
-                    Basic
-                </button>
-                <button
-                    className={activeTab === "setting" ? "tab active" : "tab"}
-                    onClick={() => setActiveTab("setting")}
-                >
-                    Setting
-                </button>
-                <button
-                    className={activeTab === "advance" ? "tab active" : "tab"}
-                    onClick={() => setActiveTab("advance")}
-                >
-                    Advance
-                </button>
-                <button
-                    className={activeTab === "get" ? "tab active" : "tab"}
-                    onClick={() => setActiveTab("get")}
-                >
-                    Get
-                </button>
+                {['basic', 'setting', 'advance', 'get'].map(tab => (
+                    <button
+                        key={tab}
+                        className={activeTab === tab ? "tab active" : "tab"}
+                        onClick={() => setActiveTab(tab)}
+                    >
+                        {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                    </button>
+                ))}
             </div>
+
 
             {/* ---- Tabs Content ---- */}
             <div className="tab-content">
                 {activeTab === "basic" && (
-                    <div>
+                    <div className="tab-panel">
                         <h2>Basic Section</h2>
-                        <p>
-                            এখানে শুধু title এবং description দেখাবে।
-                            (Static বা read-only content রাখতে পারো।)
-                        </p>
+                        <p>এখানে শুধু title এবং description দেখাবে। (Static বা read-only content রাখতে পারো।)</p>
+                        <BacisTheme />
                     </div>
                 )}
 
+
                 {activeTab === "setting" && (
-                    <div>
+                    <div className="tab-panel">
                         <h2>Settings</h2>
-                        <form>
-                            <label>
-                                Title:
+                        <form className="custom-form">
+                            <div className="form-group">
+                                <label>Title</label>
                                 <input type="text" placeholder="Enter title" />
-                            </label>
-                            <br />
-                            <label>
-                                Description:
+                            </div>
+                            <div className="form-group">
+                                <label>Description</label>
                                 <textarea placeholder="Enter description"></textarea>
-                            </label>
-                            <br />
-                            <button type="submit">Save</button>
+                            </div>
+                            <button type="submit" className="submit-btn">Save</button>
                         </form>
                     </div>
                 )}
 
+
                 {activeTab === "advance" && (
-                    <div>
+                    <div className="tab-panel">
                         <h2>Advance Options</h2>
-                        <label>
-                            <input type="checkbox" /> Enable Dark Mode
-                        </label>
-                        <br />
-                        <label>
-                            <input type="checkbox" /> Show Extra Features
-                        </label>
+                        <label><input type="checkbox" /> Enable Dark Mode</label><br />
+                        <label><input type="checkbox" /> Show Extra Features</label>
                     </div>
                 )}
 
+
                 {activeTab === "get" && (
-                    <div>
+                    <div className="tab-panel price-cards">
                         <h2>Get Price</h2>
                         <p>আমার প্রাইস লিস্ট:</p>
-                        <ul>
-                            <li>Basic Plan – $10</li>
-                            <li>Pro Plan – $20</li>
-                            <li>Enterprise – $50</li>
-                        </ul>
+                        <div className="cards-row">
+                            <div className="price-card">
+                                <h3>Basic Plan</h3>
+                                <p>$10</p>
+                                <button className="btn-select">Select</button>
+                            </div>
+                            <div className="price-card">
+                                <h3>Pro Plan</h3>
+                                <p>$20</p>
+                                <button className="btn-select">Select</button>
+                            </div>
+                            <div className="price-card">
+                                <h3>Enterprise</h3>
+                                <p>$50</p>
+                                <button className="btn-select">Select</button>
+                            </div>
+                        </div>
                     </div>
                 )}
             </div>
