@@ -35465,6 +35465,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/data */ "../bpl-tools/utils/data.js");
+
 
 
 /**
@@ -35591,7 +35593,7 @@ const BButtonGroup = props => {
   }, options.length ? option.label : `Button ${i + 1}`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ref: bgSlideRef,
     style: {
-      background: activeBg || '#4527a4',
+      background: activeBg || _utils_data__WEBPACK_IMPORTED_MODULE_1__.primaryColor,
       transition: 'left 0.2s ease-in-out',
       position: 'absolute',
       top: 0,
@@ -35620,11 +35622,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
-/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/options */ "../bpl-tools/utils/options.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
 /* harmony import */ var _options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./options */ "../bpl-tools/Components/Background/options.js");
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/data */ "../bpl-tools/utils/data.js");
 
 /**
  * @props className (optional): 'mt20' (String)
@@ -35636,7 +35640,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Gradient = _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalGradientPicker || _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.GradientPicker;
+
+const Gradient = _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalGradientPicker || _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.GradientPicker;
 
 
 
@@ -35649,18 +35654,19 @@ const Background = props => {
     defaults = {},
     isSolid = true,
     isGradient = true,
-    isImage = true
+    isImage = true,
+    gradients
   } = props;
   const defaultVal = {
     type: 'solid',
-    color: '#000000b3',
-    gradient: 'linear-gradient(135deg, #4527a4, #8344c5)',
+    color: '',
+    gradient: _utils_data__WEBPACK_IMPORTED_MODULE_6__.gradient,
     image: {},
     position: 'center center',
-    attachment: 'initial',
-    repeat: 'no-repeat',
-    size: 'cover',
-    overlayColor: '#000000b3'
+    attachment: '',
+    repeat: '',
+    size: '',
+    overlayColor: ''
   };
   const getDefault = property => defaults?.[property] || defaultVal[property];
   const setDefault = property => onChange({
@@ -35672,16 +35678,16 @@ const Background = props => {
     ...value,
     [property]: val
   });
-  const resetValue = property => value?.[property] && value?.[property] !== getDefault(property) ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  const resetValue = property => value?.[property] && value?.[property] !== getDefault(property) ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
     icon: "image-rotate",
     className: "bPlResetVal",
     onClick: () => setDefault(property)
   }) : null;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
     className: `bPlDropdown ${className}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
     className: "mb5"
-  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
+  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Dropdown, {
     className: "bPlDropdownContainer",
     contentClassName: "bPlDropdownPopover",
     popoverProps: {
@@ -35690,14 +35696,14 @@ const Background = props => {
     renderToggle: ({
       isOpen,
       onToggle
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
       icon: "edit",
       onClick: onToggle,
       "aria-expanded": isOpen
     }),
-    renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Type:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.BtnGroup, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Type:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.BtnGroup, {
       value: getValue('type'),
       onChange: val => setValue('type', val),
       options: _options__WEBPACK_IMPORTED_MODULE_5__.bgTypes.filter(bgType => {
@@ -35712,7 +35718,7 @@ const Background = props => {
             return true;
         }
       })
-    })), 'solid' === getValue('type') && isSolid && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.ColorControl, {
+    })), 'solid' === getValue('type') && isSolid && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.ColorControl, {
       className: "mt20",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color:'),
       value: getValue('color'),
@@ -35722,37 +35728,37 @@ const Background = props => {
       className: "mt20",
       value: getValue('gradient'),
       onChange: val => setValue('gradient', val),
-      gradients: _utils_options__WEBPACK_IMPORTED_MODULE_4__.gradients
-    }), 'image' === getValue('type') && isImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+      gradients: gradients
+    }), 'image' === getValue('type') && isImage && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: "mb5"
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.InlineDetailMediaUpload, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.InlineDetailMediaUpload, {
       types: ['image'],
       value: getValue('image'),
       onChange: val => setValue('image', val)
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Position')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalAlignmentMatrixControl, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Position')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalAlignmentMatrixControl, {
       value: getValue('position'),
       onChange: val => setValue('position', val)
-    }), resetValue('position')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    }), resetValue('position')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Attachment:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Attachment:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
       value: getValue('attachment'),
       onChange: val => setValue('attachment', val),
       options: _options__WEBPACK_IMPORTED_MODULE_5__.attachments
-    }), resetValue('attachments')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    }), resetValue('attachments')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Repeat:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Repeat:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
       value: getValue('repeat'),
       onChange: val => setValue('repeat', val),
       options: _options__WEBPACK_IMPORTED_MODULE_5__.repeats
-    }), resetValue('repeat')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    }), resetValue('repeat')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Size:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Size:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
       value: getValue('size'),
       onChange: val => setValue('size', val),
       options: _options__WEBPACK_IMPORTED_MODULE_5__.sizes
-    }), resetValue('size')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.ColorControl, {
+    }), resetValue('size')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.ColorControl, {
       className: "mt20",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Overlay Color:'),
       value: getValue('overlayColor'),
@@ -35761,7 +35767,14 @@ const Background = props => {
     })))
   }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Background);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
+  const {
+    gradients
+  } = select('core/block-editor').getSettings();
+  return {
+    gradients: gradients.length > 12 ? gradients.slice(0, 12) : gradients
+  };
+})(Background));
 
 /***/ }),
 
@@ -35790,6 +35803,9 @@ const bgTypes = [{
   value: 'image'
 }];
 const attachments = [{
+  label: 'Default',
+  value: ''
+}, {
   label: 'Initial',
   value: 'initial'
 }, {
@@ -35803,6 +35819,9 @@ const attachments = [{
   value: 'local'
 }];
 const repeats = [{
+  label: 'Default',
+  value: ''
+}, {
   label: 'No Repeat',
   value: 'no-repeat'
 }, {
@@ -35816,6 +35835,9 @@ const repeats = [{
   value: 'repeat-y'
 }];
 const sizes = [{
+  label: 'Default',
+  value: ''
+}, {
   label: 'Cover',
   value: 'cover'
 }, {
@@ -35843,12 +35865,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _BoxControl_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BoxControl.scss */ "../bpl-tools/Components/BoxControl/BoxControl.scss");
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _BoxControl_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BoxControl.scss */ "../bpl-tools/Components/BoxControl/BoxControl.scss");
 
 
 
 
+
+
+/**
+ * BoxControl Component
+ * @param {Object} props
+ * @param {string} [props.label] - Label text for the control
+ * @param {Object} [props.values={}] - Values object containing top, right, bottom, left measurements
+ * @param {Function} [props.onChange=()=>{}] - Callback function when values change
+ * @param {Object} [props.resetValues] - Default values to reset to
+ * @param {Array} [props.units] - Array of unit objects [{label: string, value: string}]
+ * @param {Array} [props.sides] - Array of sides to show ('horizontal', 'vertical' or ['top', 'right', 'bottom', 'left'])
+ * @param {Object} [props.style] - Custom styles for the container
+ * @param {string} [props.className=''] - Additional CSS classes
+ * @param {boolean} [props.disableUnits=false] - Whether to disable unit selection
+ */
 
 const BoxControl = props => {
   const {
@@ -35925,7 +35962,7 @@ const BoxControl = props => {
       ...style
     },
     className: `bPlBoxControl ${className}`
-  }, label && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+  }, label && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_2__.Label, {
     className: "mb5"
   }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `sides ${sides && sides.includes('horizontal', 'vertical') ? 'gap' : ''}`
@@ -35940,7 +35977,7 @@ const BoxControl = props => {
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sideLabel"
   }, val))), !sides && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: `bplBoxControlLinkButton ${link ? "activeLink" : ""}`,
+    className: `bplBoxControlLinkButton ${link ? 'activeLink' : ''}`,
     onClick: () => setLink(!link)
   }, link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "dashicons dashicons-admin-links"
@@ -35976,7 +36013,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "../bpl-tools/Components/BplBlockPreview/style.scss");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "../bpl-tools/Components/BplBlockPreview/style.scss");
+
 
 
 
@@ -35987,11 +36027,12 @@ const BplBlockPreview = ({
   blocks,
   clientId,
   value,
-  minHeight = "",
-  minWidth = "200px"
+  minHeight = '',
+  minWidth = '200px',
+  replaceBlock
 }) => {
   const [activeIndex, setActiveIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const handleButtonClick = (blockValue, idx, content) => {
+  const handleButtonClick = (idx, content) => {
     setActiveIndex(idx);
     handleBlockReplace(content);
   };
@@ -36000,20 +36041,20 @@ const BplBlockPreview = ({
   };
   const handleBlockReplace = blockContent => {
     const parsedBlock = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__.parse)(blockContent);
-    wp.data.dispatch('core/block-editor').replaceBlock(clientId, parsedBlock);
+    replaceBlock(clientId, parsedBlock);
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bPlBlockPreviewWrapper"
   }, blocks.map((block, idx) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: idx
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "    ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-    className: `bPl-previewBtn ${value === block.value ? "bPl-activeBtn" : ""}`,
-    onClick: () => handleButtonClick(block.value, idx, block.content),
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    className: `bPl-previewBtn ${value === block.value ? 'bPl-activeBtn' : ''}`,
+    onClick: () => handleButtonClick(idx, block.content),
     onMouseEnter: () => handleMouseInteraction(idx, true),
     onMouseLeave: () => handleMouseInteraction(idx, false)
   }, block.label)), activeIndex === idx && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
     style: {
-      cursor: "pointer"
+      cursor: 'pointer'
     },
     onClick: () => handleButtonClick(block.value, idx, block.content)
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -36028,7 +36069,11 @@ const BplBlockPreview = ({
     viewportWidth: 1600
   }))))));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BplBlockPreview);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.withDispatch)(dispatch => {
+  return {
+    replaceBlock: dispatch('core/block-editor').replaceBlock
+  };
+})(BplBlockPreview));
 
 /***/ }),
 
@@ -36050,10 +36095,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
 
 /**
- * @props className (optional): 'mt20' (String)
- * @props value (String)
- * @props onChange: (Function)
- * @return Value (String)
+ * Button Group Component
+ * @param {Object} props
+ * @param {string} [props.className] - Additional CSS class for styling (e.g. 'mt20')
+ * @param {string} [props.label=''] - Label text to display above the button group
+ * @param {string} props.value - Currently selected button value
+ * @param {Function} props.onChange - Callback function when button selection changes
+ * Receives (value, default) as parameters
+ * @param {Object[]} props.options - Array of button options
+ * @param {string} props.options[].value - Unique value for the button
+ * @param {string} props.options[].label - Display text for the button
+ * @param {string} [props.options[].icon] - Icon for the button (when isIcon is true)
+ * @param {string} [props.options[].def] - Default value passed to onChange
+ * @param {boolean} [props.isIcon=false] - Whether to show icons instead of text
+ * @param {boolean} [props.isTextIcon=false] - Whether to show icon as text
+ * @param {string} [props.size='compact'] - Button size ('compact' | 'small' | 'default')
+ * @returns {JSX.Element} Button Group component
  */
 
 
@@ -36105,6 +36162,63 @@ const BtnGroup = props => {
 
 /***/ }),
 
+/***/ "../bpl-tools/Components/Button/Button.js":
+/*!************************************************!*\
+  !*** ../bpl-tools/Components/Button/Button.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "../bpl-tools/Components/Button/style.scss");
+
+/**
+ * Button Component
+ * Renders a button or anchor element based on the presence of an onClick handler.
+ *
+ * Props:
+ * - label: string (button/anchor text)
+ * - href: string (anchor href)
+ * - target: string (anchor target)
+ * - onClick: function (button click handler)
+ * - className: string (additional CSS classes)
+ * - variant: string (button style variant)
+ * - size: string (button size)
+ * - ...props: any other props
+ */
+
+
+const Button = ({
+  href = '',
+  target = '',
+  onClick = null,
+  className,
+  variant = 'primary',
+  size = '',
+  children,
+  ...props
+}) => {
+  const cls = `bPlButton ${variant ? `variant-${variant}` : ''} ${size ? `size-${size}` : ''} ${className ? className : ''}`;
+  return 'function' === typeof onClick ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: cls,
+    ...props,
+    onClick: onClick
+  }, children) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: href,
+    target: target,
+    className: cls,
+    ...props
+  }, children);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
 /***/ "../bpl-tools/Components/ColorControl/ColorControl.js":
 /*!************************************************************!*\
   !*** ../bpl-tools/Components/ColorControl/ColorControl.js ***!
@@ -36119,14 +36233,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _ColorControl_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ColorControl.scss */ "../bpl-tools/Components/ColorControl/ColorControl.scss");
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _ColorControl_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ColorControl.scss */ "../bpl-tools/Components/ColorControl/ColorControl.scss");
 
 /**
  * @props className (optional): 'mt20' (String)
@@ -36145,7 +36259,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const ThemeColors = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
   return {
-    themeColors: select("core/block-editor").getSettings().colors
+    themeColors: select('core/block-editor').getSettings().colors
   };
 })(({
   isOpen,
@@ -36161,10 +36275,11 @@ const ThemeColors = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(
     key: color,
     className: "bPlColorButtonContainer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "button",
     className: "bPlColorButton",
     "aria-expanded": isOpen,
     style: {
-      backgroundColor: color || "transparent"
+      backgroundColor: color || 'transparent'
     },
     onClick: () => {
       onChange(color);
@@ -36172,24 +36287,37 @@ const ThemeColors = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(
     }
   })))) : null;
 });
+
+/**
+ * ColorControl Component - A color picker component that supports RGBA color format
+ * @component
+ * @param {Object} props
+ * @param {string} [props.className=''] - Additional CSS class for styling
+ * @param {string} [props.label='Color:'] - Label text for the color control
+ * @param {string} [props.value=''] - Current color value in RGBA format
+ * @param {Function} props.onChange - Callback function when color changes, receives color string as parameter
+ * @param {string} [props.defaultColor] - Default color value for reset functionality
+ * @param {boolean} [props.disableAlpha=false] - Whether to disable alpha channel in color picker
+ * @returns {JSX.Element} ColorControl component with color picker and theme colors
+ */
 const ColorControl = props => {
   const {
-    className = "",
-    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color:"),
-    value = "",
+    className = '',
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Color:'),
+    value = '',
     onChange,
     defaultColor,
     disableAlpha = false
   } = props;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
     className: className
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_5__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
     className: ""
-  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Dropdown, {
+  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
     className: "bPlDropdownContainer bPlColor",
     contentClassName: "bPlDropdownPopover",
     popoverProps: {
-      placement: "top-end"
+      placement: 'top-end'
     },
     renderToggle: ({
       isOpen,
@@ -36198,24 +36326,25 @@ const ColorControl = props => {
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "bPlColorButtonContainer"
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        type: "button",
         className: "bPlColorButton",
         onClick: onToggle,
         "aria-expanded": isOpen,
         style: {
-          backgroundColor: value || "transparent"
+          backgroundColor: value || 'transparent'
         }
-      })), defaultColor && defaultColor != value && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      })), defaultColor && defaultColor != value && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
         className: "bPlResetVal",
         icon: "image-rotate",
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Reset"),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Reset'),
         onClick: () => onChange(defaultColor)
       }));
     },
     renderContent: ({
       isOpen,
       onClose
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
-      color: value || "",
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPicker, {
+      color: value || '',
       disableAlpha: disableAlpha,
       onChangeComplete: c => onChange(`rgba(${c.rgb.r}, ${c.rgb.g}, ${c.rgb.b}, ${c.rgb.a})`)
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ThemeColors, {
@@ -36227,22 +36356,22 @@ const ColorControl = props => {
 };
 const HexColorControl = props => {
   const {
-    className = "",
-    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color:"),
+    className = '',
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Color:'),
     value,
     onChange,
     defaultColor,
     disableAlpha
   } = props;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
     className: className
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_5__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
     className: ""
-  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Dropdown, {
+  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
     className: "bPlDropdownContainer bPlColor",
     contentClassName: "bPlDropdownPopover",
     popoverProps: {
-      placement: "top-end"
+      placement: 'top-end'
     },
     renderToggle: ({
       isOpen,
@@ -36250,26 +36379,27 @@ const HexColorControl = props => {
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "bPlColorButtonContainer"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      type: "button",
       className: "bPlColorButton",
       onClick: onToggle,
       "aria-expanded": isOpen,
       style: {
-        backgroundColor: value || "transparent"
+        backgroundColor: value || 'transparent'
       }
-    })), defaultColor && defaultColor != value && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    })), defaultColor && defaultColor != value && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
       className: "bPlResetVal",
       icon: "image-rotate",
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Reset"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Reset'),
       onClick: () => onChange(defaultColor)
     })),
     renderContent: ({
       isOpen,
       onClose
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPicker, {
       className: "bPlColorControl",
-      color: value || "",
+      color: value || '',
       onChangeComplete: c => {
-        const alphaToHex = disableAlpha ? "" : ("0" + Math.round(c.rgb.a * 255).toString(16)).slice(-2);
+        const alphaToHex = disableAlpha ? '' : ('0' + Math.round(c.rgb.a * 255).toString(16)).slice(-2);
         onChange(c.hex + alphaToHex);
       },
       disableAlpha: disableAlpha
@@ -36298,10 +36428,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
-/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/options */ "../bpl-tools/utils/options.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/options */ "../bpl-tools/utils/options.js");
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/data */ "../bpl-tools/utils/data.js");
 
 /**
  * @props className (optional): 'mt20' (String)
@@ -36313,9 +36446,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Gradient = _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalGradientPicker || _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.GradientPicker;
+
+const Gradient = _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalGradientPicker || _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.GradientPicker;
 
 // Variables
+
 
 
 const ColorsControl = props => {
@@ -36324,13 +36459,14 @@ const ColorsControl = props => {
     label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors:'),
     value,
     onChange,
-    defaults = {}
+    defaults = {},
+    gradients
   } = props;
   const defaultVal = {
     color: '#333',
     bgType: 'solid',
     bg: '',
-    gradient: 'linear-gradient(135deg, #4527a4, #8344c5)'
+    gradient: _utils_data__WEBPACK_IMPORTED_MODULE_6__.gradient
   };
   const getDefault = property => defaults?.[property] || defaultVal[property];
   const getValue = property => value?.[property] || getDefault(property);
@@ -36338,15 +36474,15 @@ const ColorsControl = props => {
     ...value,
     [property]: val
   });
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
     className: `bPlDropdown ${className}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
     className: ""
-  }, label, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorIndicator, {
+  }, label, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorIndicator, {
     colorValue: getValue('color')
-  }), " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorIndicator, {
+  }), " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorIndicator, {
     colorValue: getValue('gradient' === getValue('bgType') ? 'gradient' : 'bg')
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Dropdown, {
     className: "bPlDropdownContainer",
     contentClassName: "bPlDropdownPopover",
     popoverProps: {
@@ -36355,30 +36491,30 @@ const ColorsControl = props => {
     renderToggle: ({
       isOpen,
       onToggle
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
       icon: "edit",
       onClick: onToggle,
       "aria-expanded": isOpen
     }),
-    renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.ColorControl, {
+    renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.ColorControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color:'),
       value: getValue('color'),
       onChange: val => setValue('color', val),
       defaultColor: getDefault('color')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
       className: "mt20"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.BtnGroup, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.BtnGroup, {
       value: getValue('bgType'),
       onChange: val => setValue('bgType', val),
-      options: _utils_options__WEBPACK_IMPORTED_MODULE_4__.bgTypes,
+      options: _utils_options__WEBPACK_IMPORTED_MODULE_5__.bgTypes,
       size: "small"
     })), 'gradient' === getValue('bgType') ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Gradient, {
       value: getValue('gradient'),
       onChange: val => setValue('gradient', val),
-      gradients: _utils_options__WEBPACK_IMPORTED_MODULE_4__.gradients
-    }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.ColorControl, {
+      gradients: gradients
+    }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.ColorControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color:'),
       value: getValue('bg'),
       onChange: val => setValue('bg', val),
@@ -36386,7 +36522,14 @@ const ColorsControl = props => {
     }))
   }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ColorsControl);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
+  const {
+    gradients
+  } = select('core/block-editor').getSettings();
+  return {
+    gradients: gradients.length > 12 ? gradients.slice(0, 12) : gradients
+  };
+})(ColorsControl));
 
 /***/ }),
 
@@ -36499,15 +36642,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const BDevice = ({
-  device = "desktop",
+  device = 'desktop',
   onChange,
-  className = "iconButton",
+  className = 'iconButton',
   style
 }) => {
   const [show, setShow] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  window.addEventListener("click", () => setShow(false));
+  window.addEventListener('click', () => setShow(false));
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "bDevice",
+    className: 'bDevice',
     style: style
   }, !show && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: className,
@@ -36516,16 +36659,16 @@ const BDevice = ({
       setShow(true);
       event.stopPropagation();
     }
-  }, device == "desktop" ? _utils_icons__WEBPACK_IMPORTED_MODULE_2__.desktopIcon : device == "tablet" ? _utils_icons__WEBPACK_IMPORTED_MODULE_2__.tabletIcon : _utils_icons__WEBPACK_IMPORTED_MODULE_2__.mobileIcon), show && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "bDevicePopup"
+  }, device == 'desktop' ? _utils_icons__WEBPACK_IMPORTED_MODULE_2__.desktopIcon : device == 'tablet' ? _utils_icons__WEBPACK_IMPORTED_MODULE_2__.tabletIcon : _utils_icons__WEBPACK_IMPORTED_MODULE_2__.mobileIcon), show && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'bDevicePopup'
   }, [{
-    value: "desktop",
+    value: 'desktop',
     icon: _utils_icons__WEBPACK_IMPORTED_MODULE_2__.desktopIcon
   }, {
-    value: "tablet",
+    value: 'tablet',
     icon: _utils_icons__WEBPACK_IMPORTED_MODULE_2__.tabletIcon
   }, {
-    value: "mobile",
+    value: 'mobile',
     icon: _utils_icons__WEBPACK_IMPORTED_MODULE_2__.mobileIcon
   }].map(({
     icon,
@@ -37246,7 +37389,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.css */ "../bpl-tools/Components/Device/style.css");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.scss */ "../bpl-tools/Components/Device/style.scss");
 
 
 
@@ -37273,12 +37416,12 @@ const Device = ({
     icon: 'dashicons-smartphone'
   }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: className,
-    style: style
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `bPlDeviceControl ${className}`,
     style: {
-      display: position === 'horizontal' ? 'flex' : 'grid',
-      gap: '5px'
+      ...{
+        display: position === 'horizontal' ? 'flex' : 'grid'
+      },
+      ...style
     }
   }, deviceValue.map(({
     label,
@@ -37286,14 +37429,14 @@ const Device = ({
     icon
   }, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     key: i,
-    className: `advancedOptionssingle-device ${name === device ? 'active' : ''}`,
+    className: name === device ? 'active' : '',
     onClick: () => {
       setDevice(label);
       onChange(label.toLowerCase());
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `dashicons ${icon} ${name === device ? 'active' : ''} `
-  })))));
+  }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__.compose)((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
   const {
@@ -37360,9 +37503,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! immer */ "../bpl-tools/node_modules/immer/dist/immer.mjs");
-/* harmony import */ var _Gradient_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Gradient.scss */ "../bpl-tools/Components/Gradient/Gradient.scss");
+/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! immer */ "../bpl-tools/node_modules/immer/dist/immer.mjs");
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/data */ "../bpl-tools/utils/data.js");
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _Gradient_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Gradient.scss */ "../bpl-tools/Components/Gradient/Gradient.scss");
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/functions */ "../bpl-tools/utils/functions.js");
+
+
 
 
 
@@ -37381,82 +37528,57 @@ __webpack_require__.r(__webpack_exports__);
 
 const Gradient = props => {
   const {
-    value,
+    value = {},
     onChange
   } = props;
-  const [advGradient, setAdvGradient] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value || {
-    type: 'linear',
-    radialType: 'ellipse',
-    colors: [{
-      color: '',
-      position: 0
-    }, {
-      color: '',
-      position: 0
-    }],
-    centerPositions: {
+  const {
+    type = 'linear',
+    radialType = 'ellipse',
+    colors = [],
+    centerPositions = {
       x: 0,
       y: 0
     },
-    angel: 90
-  });
-  const {
-    type,
-    radialType,
-    colors,
-    centerPositions,
-    angel
-  } = advGradient;
+    angel = 90
+  } = value;
   const updateColorsProperty = (index, t, val) => {
-    const newColors = (0,immer__WEBPACK_IMPORTED_MODULE_4__.produce)(advGradient.colors, draft => {
+    const newColors = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(value.colors, draft => {
       draft[index][t] = val;
     });
-    setAdvGradient({
-      ...advGradient,
-      colors: newColors
-    });
     onChange({
-      ...advGradient,
+      ...value,
       colors: newColors
     });
   };
   const addColor = () => {
-    const newColor = (0,immer__WEBPACK_IMPORTED_MODULE_4__.produce)(advGradient.colors, draft => {
-      draft.push({
-        color: '#f00',
-        position: 0
-      });
-    });
-    setAdvGradient({
-      ...advGradient,
-      colors: newColor
+    const newColor = [...colors];
+    newColor.push({
+      color: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.getRandomColor)(),
+      position: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.randomNumber)(99)
     });
     onChange({
-      ...advGradient,
+      ...value,
       colors: newColor
     });
   };
   const removeColor = index => {
-    const newColor = (0,immer__WEBPACK_IMPORTED_MODULE_4__.produce)(advGradient.colors, draft => {
+    const newColor = (0,immer__WEBPACK_IMPORTED_MODULE_6__.produce)(value.colors, draft => {
       draft.splice(index, 1);
     });
-    setAdvGradient({
-      ...advGradient,
-      colors: newColor
-    });
     onChange({
-      ...advGradient,
+      ...value,
       colors: newColor
     });
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    onChange(advGradient);
-  }, [advGradient, value]);
+    onChange(value);
+  }, [value, value]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.BButtonGroup, {
+    className: "mt10",
     label: "Gradient Type",
     value: type,
-    onChange: val => setAdvGradient({
-      ...advGradient,
+    onChange: val => onChange({
+      ...value,
       type: val
     }),
     options: [{
@@ -37469,8 +37591,8 @@ const Gradient = props => {
   }), type === 'radial' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.BButtonGroup, {
     label: "Radial Type",
     value: radialType,
-    onChange: val => setAdvGradient({
-      ...advGradient,
+    onChange: val => onChange({
+      ...value,
       radialType: val
     }),
     options: [{
@@ -37508,7 +37630,7 @@ const Gradient = props => {
     onChange: val => updateColorsProperty(i, 'position', val),
     min: 0,
     max: 100
-  })), colors.length > 2 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
+  })), colors.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
     style: {
       cursor: 'pointer',
       color: 'red'
@@ -37525,8 +37647,8 @@ const Gradient = props => {
     text: "Add Color",
     variant: "tertiary",
     style: {
-      background: '#4527a4',
-      color: '#fff'
+      color: '#fff',
+      background: _utils_data__WEBPACK_IMPORTED_MODULE_2__.primaryColor
     },
     icon: "plus",
     iconPosition: "right",
@@ -37534,8 +37656,8 @@ const Gradient = props => {
   })), type === 'radial' ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     label: "Center X Position",
     value: centerPositions?.x,
-    onChange: val => setAdvGradient({
-      ...advGradient,
+    onChange: val => onChange({
+      ...value,
       centerPositions: {
         ...centerPositions,
         x: val
@@ -37546,8 +37668,8 @@ const Gradient = props => {
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     label: "Center Y Position",
     value: centerPositions?.y,
-    onChange: val => setAdvGradient({
-      ...advGradient,
+    onChange: val => onChange({
+      ...value,
       centerPositions: {
         ...centerPositions,
         y: val
@@ -37558,8 +37680,8 @@ const Gradient = props => {
   })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     label: "Angle",
     value: angel,
-    onChange: val => setAdvGradient({
-      ...advGradient,
+    onChange: val => onChange({
+      ...value,
       angel: val
     }),
     min: 0,
@@ -37641,12 +37763,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _IconControl_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./IconControl.scss */ "../bpl-tools/Components/IconControl/IconControl.scss");
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
-/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/options */ "../bpl-tools/utils/options.js");
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./icons */ "../bpl-tools/Components/IconControl/icons.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _IconControl_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./IconControl.scss */ "../bpl-tools/Components/IconControl/IconControl.scss");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/options */ "../bpl-tools/utils/options.js");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./icons */ "../bpl-tools/Components/IconControl/icons.js");
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/data */ "../bpl-tools/utils/data.js");
 
 /**
  * @props className (optional): 'mt20' (String)
@@ -37661,29 +37786,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Gradient = _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.GradientPicker || _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalGradientPicker;
+
+const Gradient = _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.GradientPicker || _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalGradientPicker;
 
 
 
 
-const generateName = cl => cl?.slice(cl?.indexOf(" fa-") + 4);
-const generateTitle = cl => generateName(cl)?.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+
+const generateName = cl => cl?.slice(cl?.indexOf(' fa-') + 4);
+const generateTitle = cl => generateName(cl)?.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 const IconControl = props => {
   const {
-    className = "",
-    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Select Icon:"),
+    className = '',
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Icon:'),
     value = {},
     onChange,
     defaults = {},
     isSize = true,
-    isColor = true
+    isColor = true,
+    gradients
   } = props;
   const defaultVal = {
-    class: "",
+    class: '',
     fontSize: 16,
-    colorType: "solid",
-    color: "inherit",
-    gradient: "linear-gradient(135deg, #4527a4, #8344c5)"
+    colorType: 'solid',
+    color: 'inherit',
+    gradient: _utils_data__WEBPACK_IMPORTED_MODULE_8__.gradient
   };
   const getDefault = property => defaults[property] || defaultVal[property];
   const getValue = property => value[property] || getDefault(property);
@@ -37693,14 +37821,14 @@ const IconControl = props => {
   });
 
   // Font family searching
-  const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [isSearching, setIsSearching] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const searchIcons = _icons__WEBPACK_IMPORTED_MODULE_6__["default"].filter(icon => generateTitle(icon).toLowerCase().includes(query.toLowerCase()));
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+  const searchIcons = _icons__WEBPACK_IMPORTED_MODULE_7__["default"].filter(icon => generateTitle(icon).toLowerCase().includes(query.toLowerCase()));
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
     className: `bPlIconTitle ${className}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_5__.Label, {
     className: "mt0 mb0"
-  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Tooltip, {
+  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
     text: generateTitle(value.class),
     placement: "top",
     position: "top"
@@ -37712,14 +37840,14 @@ const IconControl = props => {
     type: "search",
     value: query,
     onClick: () => setIsSearching(!isSearching),
-    placeholder: generateTitle(getValue("class")) || "Search & Select Icon",
+    placeholder: generateTitle(getValue('class')) || 'Search & Select Icon',
     onChange: e => setQuery(e.target.value)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: `dashicon dashicons dashicons-${isSearching ? "arrow-up" : "arrow-down"}`,
+    className: `dashicon dashicons dashicons-${isSearching ? 'arrow-up' : 'arrow-down'}`,
     onClick: () => setIsSearching(!isSearching)
   }), isSearching && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bPlIconLists"
-  }, searchIcons?.map(icon => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Tooltip, {
+  }, searchIcons?.map(icon => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Tooltip, {
     key: icon,
     text: generateTitle(icon),
     placement: "top",
@@ -37730,40 +37858,47 @@ const IconControl = props => {
         ...value,
         class: icon
       });
-      setQuery("");
+      setQuery('');
       setIsSearching(false);
     },
     className: icon
-  }))))), isSize && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Icon Size:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
-    value: getValue("fontSize"),
-    onChange: val => setValue("fontSize", val),
+  }))))), isSize && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_5__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Icon Size:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    value: getValue('fontSize'),
+    onChange: val => setValue('fontSize', val),
     min: 0,
     max: 400,
     step: 1,
     allowReset: true,
-    resetFallbackValue: getDefault("fontSize"),
-    initialPosition: getDefault("fontSize")
-  })), isColor && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    resetFallbackValue: getDefault('fontSize'),
+    initialPosition: getDefault('fontSize')
+  })), isColor && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
     className: "mt20"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_5__.Label, {
     className: ""
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Color Type:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.BtnGroup, {
-    value: getValue("colorType"),
-    onChange: val => setValue("colorType", val),
-    options: _utils_options__WEBPACK_IMPORTED_MODULE_5__.bgTypes,
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color Type:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_5__.BtnGroup, {
+    value: getValue('colorType'),
+    onChange: val => setValue('colorType', val),
+    options: _utils_options__WEBPACK_IMPORTED_MODULE_6__.bgTypes,
     size: "small"
-  })), "gradient" === getValue("colorType") ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Gradient, {
-    value: getValue("gradient"),
-    onChange: val => setValue("gradient", val),
-    gradients: _utils_options__WEBPACK_IMPORTED_MODULE_5__.gradients
-  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.ColorControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Icon Color:"),
-    value: getValue("color"),
-    onChange: val => setValue("color", val),
-    defaultColor: getDefault("color")
+  })), 'gradient' === getValue('colorType') ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Gradient, {
+    value: getValue('gradient'),
+    onChange: val => setValue('gradient', val),
+    gradients: gradients
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_5__.ColorControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Icon Color:'),
+    value: getValue('color'),
+    onChange: val => setValue('color', val),
+    defaultColor: getDefault('color')
   })));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconControl);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
+  const {
+    gradients
+  } = select('core/block-editor').getSettings();
+  return {
+    gradients: gradients.length > 12 ? gradients.slice(0, 12) : gradients
+  };
+})(IconControl));
 
 /***/ }),
 
@@ -37803,8 +37938,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
 /* harmony import */ var _icons_bootstrap_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icons/bootstrap.json */ "../bpl-tools/Components/IconLibrary/icons/bootstrap.json");
 /* harmony import */ var _icons_font_awesome_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./icons/font-awesome.json */ "../bpl-tools/Components/IconLibrary/icons/font-awesome.json");
-/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/functions */ "../bpl-tools/utils/functions.js");
-/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/icons */ "../bpl-tools/Components/IconLibrary/utils/icons.js");
+/* harmony import */ var _icons_lucidicons_json__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./icons/lucidicons.json */ "../bpl-tools/Components/IconLibrary/icons/lucidicons.json");
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/functions */ "../bpl-tools/utils/functions.js");
+/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/icons */ "../bpl-tools/Components/IconLibrary/utils/icons.js");
+
 
 
 
@@ -37839,6 +37976,9 @@ const IconLibrary = ({
   }, {
     label: 'Bootstrap',
     value: 'bootstrap'
+  }, {
+    label: 'Lucid Icons',
+    value: 'lucid'
   }];
   const library = {
     fontawesome: {
@@ -37847,16 +37987,21 @@ const IconLibrary = ({
       icons: _icons_font_awesome_json__WEBPACK_IMPORTED_MODULE_6__
     },
     bootstrap: {
-      label: 'Font Awesome',
+      label: 'Bootstrap',
       styles: ['regular', 'fill'],
       icons: _icons_bootstrap_json__WEBPACK_IMPORTED_MODULE_5__
+    },
+    lucid: {
+      label: 'Lucid Icons',
+      styles: ['regular'],
+      icons: _icons_lucidicons_json__WEBPACK_IMPORTED_MODULE_7__
     }
   };
   const icons = iconLibrary !== 'all' ? library[iconLibrary] : {
     label: 'All Icons',
-    icons: [..._icons_font_awesome_json__WEBPACK_IMPORTED_MODULE_6__, ..._icons_bootstrap_json__WEBPACK_IMPORTED_MODULE_5__]
+    icons: [..._icons_font_awesome_json__WEBPACK_IMPORTED_MODULE_6__, ..._icons_bootstrap_json__WEBPACK_IMPORTED_MODULE_5__, ..._icons_lucidicons_json__WEBPACK_IMPORTED_MODULE_7__]
   };
-  const handleSearch = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_7__.debounce)(sq => {
+  const handleSearch = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_8__.debounce)(sq => {
     const filteredIcons = searchQuery ? icons.icons.filter(icon => {
       const label = icon.label.toLowerCase();
       const terms = icon.terms ? icon.terms.map(term => term.toLowerCase()) : [];
@@ -37930,9 +38075,9 @@ const IconLibrary = ({
     className: `${prefix}Header`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${prefix}HeaderLogo`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_8__.LogoSmall, null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Icon Library")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_9__.LogoSmall, null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Icon Library")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${prefix}HeaderClose`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_8__.XMarkIcon, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_9__.XMarkIcon, {
     onClick: () => setIsOpen(false)
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${prefix}Body`
@@ -37954,7 +38099,7 @@ const IconLibrary = ({
     type: "text",
     className: `${prefix}SearchInput`,
     placeholder: "Filter by name..."
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_8__.MagnifyingGlass, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_utils_icons__WEBPACK_IMPORTED_MODULE_9__.MagnifyingGlass, {
     className: `${prefix}SearchIcon`
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${prefix}IconsWrapper`
@@ -38004,19 +38149,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/data */ "../bpl-tools/utils/data.js");
+
 
 const LogoSmall = props => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
-  height: 22,
-  viewBox: "0 0 47 47",
+  viewBox: "0 0 512 512",
   ...props
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: "#8F7DC8",
-  opacity: "0.6",
-  d: "M44,29.4C44,36,38.6,41.4,32,41.4h-8.3V30.7c0-3.6,2.9-6.5,6.5-6.5h1.4c3.3,0,6.4-1.3,8.6-3.5 c0.1,0.1,0.2,0.2,0.3,0.2C42.7,23,44,26.1,44,29.4z"
+  fill: _utils_data__WEBPACK_IMPORTED_MODULE_1__.primaryColor,
+  d: "m470 163.9c-0.1 35.6-15.8 68-40.5 91.2-24.1 23-57 37.2-92 37.2h-15.4c-38.6 0-69.9 31.3-69.9 69.9v115.2h-89.4c-10.8 0-19.4-8.8-19.4-19.5v-143.8c0-8.7-4.9-17.3-13-20.5-8.3-3.3-16.9-0.9-22.3 4.3-0.2 0.3-0.4 0.4-0.6 0.6-11.3 12.3-27.4 19.9-45.3 19.9-36.8 0-66-31.9-61.8-69.4 3.3-28.9 27.3-52 56.2-54.6 20.2-1.7 38.7 6.2 51.2 19.7 4.8 4.8 12.1 7.3 19.6 5.5 9.6-2.2 16.1-11.3 16.1-21.3v-144c0-10.8 8.7-19.4 19.4-19.4h63.3c11.1 0 21.2 8.1 22.1 19.1 0.4 6.5-1.9 12.4-6 16.5-12.3 11.4-20.1 27.6-20.1 45.6 0 34.4 27.9 62.1 62.2 62.1 34.4 0 62.1-27.7 62.1-62.1 0-18-7.6-34.1-19.8-45.4-0.2-0.2-0.3-0.4-0.6-0.6-4.7-4.9-7-12.2-5-19.7 2.4-9.6 11.8-15.7 21.7-15.6 34.9 0.5 66.5 14.7 89.4 37.6 23.4 23.5 37.9 55.7 37.8 91.5z"
 }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: "#4527a4",
-  d: "M44,12.1c0,3.3-1.5,6.4-3.8,8.5c-2.3,2.2-5.3,3.5-8.6,3.5h-1.4c-3.6,0-6.5,2.9-6.5,6.5v10.8h-8.4 c-1,0-1.8-0.8-1.8-1.8l0-13.5c0-0.8-0.5-1.6-1.2-1.9c-0.8-0.3-1.6-0.1-2.1,0.4c0,0,0,0,0,0c-1.1,1.1-2.6,1.9-4.3,1.9 c-3.4,0-6.2-3-5.8-6.5c0.3-2.7,2.6-4.9,5.3-5.1c1.9-0.2,3.6,0.6,4.8,1.8c0.5,0.4,1.1,0.7,1.8,0.5c0.9-0.2,1.5-1.1,1.5-2l0-13.5 c0-1,0.8-1.8,1.8-1.8l5.9,0c1,0,2,0.8,2.1,1.8c0,0.6-0.2,1.2-0.6,1.5c-1.2,1.1-1.9,2.6-1.9,4.3c0,3.2,2.6,5.8,5.8,5.8 c3.2,0,5.8-2.6,5.8-5.8c0-1.7-0.7-3.2-1.9-4.3c0,0,0,0,0,0c-0.4-0.5-0.7-1.1-0.5-1.8c0.2-0.9,1.1-1.5,2-1.5c3.3,0,6.2,1.4,8.4,3.5 C42.7,5.7,44,8.7,44,12.1z"
+  fill: _utils_data__WEBPACK_IMPORTED_MODULE_1__.secondaryColor,
+  d: "m470 348.7c0 71.1-57.6 128.7-128.7 128.7h-89.1v-115.2c0-38.6 31.3-69.9 69.9-69.9h15.4c35 0 67.9-14.2 92-37.2 0.9 0.8 1.9 1.7 2.7 2.7 23.4 23.2 37.8 55.4 37.8 90.9z"
 }));
 const MagnifyingGlass = props => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -38065,44 +38210,52 @@ __webpack_require__.r(__webpack_exports__);
 
 const ItemsPanel = properties => {
   const {
+    value,
+    onChange,
     attributes,
     setAttributes,
     clientId,
     arrKey,
     newItem,
     ItemSettings,
-    itemLabel = "Item",
+    itemLabel = 'Item',
     activeIndex,
     setActiveIndex,
-    design = "single",
-    title = "",
+    design = 'single',
+    title = '',
     premiumProps,
+    minItem = 1,
     ...restProps
   } = properties;
-  const items = attributes[arrKey];
+  const items = attributes ? attributes[arrKey] : value;
   const addNewItem = () => {
-    setAttributes({
-      [arrKey]: [...items, newItem]
-    });
+    const newValue = [...items, newItem];
+    attributes ? setAttributes({
+      [arrKey]: newValue
+    }) : onChange(newValue);
     setActiveIndex && setActiveIndex(items.length);
   };
   const duplicateItem = (e, index) => {
     e.preventDefault();
-    setAttributes({
-      [arrKey]: [...items.slice(0, index), {
-        ...items[index]
-      }, ...items.slice(index)]
-    });
+    const newValue = [...items.slice(0, index), {
+      ...items[index]
+    }, ...items.slice(index)];
+    attributes ? setAttributes({
+      [arrKey]: newValue
+    }) : onChange(newValue);
     setActiveIndex && setActiveIndex(index + 1);
   };
   const removeItem = (e, index) => {
     e.preventDefault();
-    setAttributes({
-      [arrKey]: [...items.slice(0, index), ...items.slice(index + 1)]
-    });
+    const newValue = [...items.slice(0, index), ...items.slice(index + 1)];
+    attributes ? setAttributes({
+      [arrKey]: newValue
+    }) : onChange(newValue);
     setActiveIndex && setActiveIndex(0 === index ? 0 : index - 1);
   };
   const props = {
+    value,
+    onChange,
     attributes,
     setAttributes,
     clientId,
@@ -38115,9 +38268,12 @@ const ItemsPanel = properties => {
     setActiveIndex,
     premiumProps,
     title,
+    minItem,
     ...restProps
   };
   const itemProps = {
+    value,
+    onChange,
     attributes,
     setAttributes,
     clientId,
@@ -38125,7 +38281,7 @@ const ItemsPanel = properties => {
     setActiveIndex,
     premiumProps
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, "single" === design && undefined !== activeIndex && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, 'single' === design && undefined !== activeIndex && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: "bplItemTitle"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`${itemLabel} ${activeIndex + 1}:`)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ItemSettings, {
     ...itemProps,
@@ -38135,7 +38291,7 @@ const ItemsPanel = properties => {
     index: activeIndex,
     duplicateItem: duplicateItem,
     removeItem: removeItem
-  })), "all" === design && items.map((item, index) => {
+  })), 'all' === design && items.map((item, index) => {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
       key: index,
       className: "bPlPanelBody itemPanelBody",
@@ -38150,18 +38306,18 @@ const ItemsPanel = properties => {
       duplicateItem: duplicateItem,
       removeItem: removeItem
     }));
-  }), "sortable" === design && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Sortable__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), 'sortable' === design && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Sortable__WEBPACK_IMPORTED_MODULE_4__["default"], {
     ...props
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
     justify: "center",
     className: "addItem mt15"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     variant: "primary",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add New") + " " + itemLabel,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add New') + ' ' + itemLabel,
     onClick: addNewItem
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
     icon: "plus"
-  }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Add New") + " " + itemLabel)));
+  }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add New') + ' ' + itemLabel)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ItemsPanel);
 const ItemAction = ({
@@ -38173,15 +38329,15 @@ const ItemAction = ({
   className: "itemAction mt20 mb15"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
   className: "duplicateItem",
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Duplicate"),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Duplicate'),
   onClick: e => duplicateItem(e, index)
-}, _utils_icons__WEBPACK_IMPORTED_MODULE_3__.copyIcon, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Duplicate")), 1 < items?.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+}, _utils_icons__WEBPACK_IMPORTED_MODULE_3__.copyIcon, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Duplicate')), 1 < items?.length && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
   className: "removeItem",
-  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove"),
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Remove'),
   onClick: e => removeItem(e, index)
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
   icon: "no"
-}), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Remove")));
+}), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Remove')));
 
 /***/ }),
 
@@ -38199,8 +38355,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-sortable-hoc */ "../bpl-tools/node_modules/react-sortable-hoc/dist/react-sortable-hoc.esm.js");
-/* harmony import */ var _Sortable_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sortable.scss */ "../bpl-tools/Components/ItemsPanel/Sortable.scss");
-/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/icons */ "../bpl-tools/utils/icons.js");
+/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/icons */ "../bpl-tools/utils/icons.js");
+/* harmony import */ var _Sortable_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Sortable.scss */ "../bpl-tools/Components/ItemsPanel/Sortable.scss");
 
 
 
@@ -38208,7 +38364,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const DragHandle = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.SortableHandle)(() => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
   className: "gripIcon"
-}, _utils_icons__WEBPACK_IMPORTED_MODULE_3__.gripIcon));
+}, _utils_icons__WEBPACK_IMPORTED_MODULE_2__.gripIcon));
 const SortableItem = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.SortableElement)(({
   sortIndex: index,
   removeItem,
@@ -38217,16 +38373,18 @@ const SortableItem = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.Sortable
   active,
   setActive,
   itemLabel,
+  minItem,
   title,
   ...props
 }) => {
   const {
+    value,
     attributes,
     arrKey,
     setActiveIndex
   } = props;
-  const items = attributes[arrKey];
-  const itemTitle = items?.[index]?.[title] || "";
+  const items = attributes ? attributes[arrKey] : value;
+  const itemTitle = items?.[index]?.[title] || '';
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bPlSortablePanelItem"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -38239,14 +38397,14 @@ const SortableItem = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.Sortable
       setActive(active === index ? null : index);
       setActiveIndex && setActiveIndex(index);
     }
-  }, title ? itemTitle : itemLabel + " " + (index + 1)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, title ? itemTitle : itemLabel + ' ' + (index + 1)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "itemAction"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     onClick: e => duplicateItem(e, index)
-  }, _utils_icons__WEBPACK_IMPORTED_MODULE_3__.copyIcon), items.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, _utils_icons__WEBPACK_IMPORTED_MODULE_2__.copyIcon), items.length > Number(minItem) && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     onClick: e => removeItem(e, index)
-  }, _utils_icons__WEBPACK_IMPORTED_MODULE_3__.closeIcon)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `itemsPanelBody ${active === index ? "" : "hidden"}`
+  }, _utils_icons__WEBPACK_IMPORTED_MODULE_2__.closeIcon)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `itemsPanelBody ${active === index ? '' : 'hidden'}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ItemSettings, {
     ...props,
     index: index
@@ -38254,13 +38412,14 @@ const SortableItem = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.Sortable
 });
 const SortableList = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.SortableContainer)(props => {
   const {
+    value,
     attributes,
     arrKey
   } = props;
-  const items = attributes[arrKey];
+  const items = attributes ? attributes[arrKey] : value;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bPlItemsPanel"
-  }, items.map((__, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(SortableItem, {
+  }, items.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(SortableItem, {
     key: index,
     index: index,
     sortIndex: index,
@@ -38269,20 +38428,23 @@ const SortableList = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.Sortable
 });
 const Sortable = props => {
   const {
+    value,
+    onChange,
     attributes,
     setAttributes,
     arrKey,
     activeIndex
   } = props;
-  const items = attributes[arrKey];
+  const items = attributes ? attributes[arrKey] : value;
   const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(activeIndex || 0);
   const onSortEnd = ({
     oldIndex,
     newIndex
   }) => {
-    setAttributes({
-      [arrKey]: (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.arrayMove)(items, oldIndex, newIndex)
-    });
+    const newValue = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_1__.arrayMove)(items, oldIndex, newIndex);
+    attributes ? setAttributes({
+      [arrKey]: newValue
+    }) : onChange(newValue);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setActive(activeIndex || 0);
@@ -38331,6 +38493,52 @@ const Label = props => {
 
 /***/ }),
 
+/***/ "../bpl-tools/Components/Loading/Loading.js":
+/*!**************************************************!*\
+  !*** ../bpl-tools/Components/Loading/Loading.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "../bpl-tools/Components/Loading/style.scss");
+
+
+const Loading = ({
+  className = '',
+  text = 'Loading...',
+  orientation = 'horizontal',
+  iconSize = '2rem',
+  iconThickness = '4px',
+  textSize = '18px'
+}) => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `bPlLoading ${className}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `loadingContent ${orientation}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "loadingSpinner",
+    style: {
+      width: iconSize,
+      height: iconSize,
+      borderWidth: iconThickness
+    }
+  }), text && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "loadingText",
+    style: {
+      fontSize: textSize
+    }
+  }, text)));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Loading);
+
+/***/ }),
+
 /***/ "../bpl-tools/Components/MediaControl/MediaControl.js":
 /*!************************************************************!*\
   !*** ../bpl-tools/Components/MediaControl/MediaControl.js ***!
@@ -38361,6 +38569,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// import { MimeTypeChecker } from '../../utils/functions';
 
 
 
@@ -38393,7 +38603,7 @@ const InlineMediaUpload = props => {
     value: value,
     onChange: val => onChange(val),
     placeholder: placeholder
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
     allowedTypes: types,
     onSelect: val => onChange(val.url),
     render: ({
@@ -38403,7 +38613,7 @@ const InlineMediaUpload = props => {
       onClick: open,
       icon: 'upload'
     })
-  }))));
+  })));
 };
 
 /**
@@ -38423,8 +38633,7 @@ const InlineDetailMediaUpload = props => {
     value = {},
     types = ['image'],
     onChange,
-    placeholder = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Enter URL'),
-    isMeta = false
+    placeholder = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Enter URL')
   } = props;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: className
@@ -38439,8 +38648,7 @@ const InlineDetailMediaUpload = props => {
       url,
       alt: '',
       title: '',
-      caption: '',
-      artist: ''
+      caption: ''
     }),
     placeholder: placeholder
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
@@ -38450,17 +38658,13 @@ const InlineDetailMediaUpload = props => {
       url,
       alt,
       title,
-      caption,
-      meta
+      caption
     }) => onChange({
       id,
       url,
       alt,
       title,
-      caption,
-      ...(isMeta ? {
-        meta
-      } : {})
+      caption
     }),
     render: ({
       open
@@ -38490,13 +38694,16 @@ const MediaArea = props => {
     className = '',
     label = 'Choose',
     value,
-    types = ['image'],
+    types = ['image/*'],
     onChange = () => {},
     default: defaults = '',
     height = '50px',
     width = '50px',
     style
   } = props;
+  // const [validationError, setValidationError] = useState([])
+  // const { validateFile } = MimeTypeChecker.helpers;
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: style,
     className: `bPlMediaArea ${className}`
@@ -38507,12 +38714,21 @@ const MediaArea = props => {
       url,
       alt,
       title
-    }) => onChange({
-      id,
-      url,
-      alt,
-      title
-    }),
+    }) => {
+      // const { isValid, error } = validateFile(url, { allowedTypes: types })
+      // if (isValid) {
+      // 	onChange({ id, url, alt, title })
+      // 	setValidationError([])
+      // } else {
+      // 	setValidationError(error)
+      // }
+      onChange({
+        id,
+        url,
+        alt,
+        title
+      });
+    },
     gallery: false,
     allowedTypes: types,
     multiple: false,
@@ -38665,18 +38881,35 @@ const MediaEditControl = props => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
     allowedTypes: types,
     value: isMultiple ? value.map(val => val.id) : value?.id,
-    onSelect: ({
-      id,
-      url,
-      alt,
-      title
-    }) => onChange({
-      ...value,
-      id,
-      url,
-      alt,
-      title
-    }),
+    onSelect: value => {
+      if (isMultiple) {
+        const newValue = value.map(val => ({
+          id: val?.id,
+          url: val?.url,
+          alt: val?.alt,
+          name: val?.name,
+          title: val?.title,
+          sizes: val?.sizes,
+          caption: val?.caption,
+          description: val?.description,
+          link: val?.link
+        }));
+        onChange(newValue);
+      } else {
+        const newValue = {
+          id: value?.id,
+          url: value?.url,
+          alt: value?.alt,
+          name: value?.name,
+          title: value?.title,
+          sizes: value?.sizes,
+          caption: value?.caption,
+          description: value?.description,
+          link: value?.link
+        };
+        onChange(newValue);
+      }
+    },
     render: ({
       open
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
@@ -38749,7 +38982,7 @@ const MultiSelectControl = ({
       key: idx,
       className: "valueItem"
     }, selectedItem.label, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dashicon, {
-      onClick: () => onChange(value.filter((__, i) => i !== idx)),
+      onClick: () => onChange(value.filter((_, i) => i !== idx)),
       icon: "no-alt"
     }));
   }) : '', value.length < limit && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
@@ -38843,6 +39076,12 @@ const blendOptions = [{
   label: 'Luminosity',
   value: 'luminosity'
 }];
+const positionDef = {
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0
+};
 const OverlayControl = props => {
   const {
     value,
@@ -38858,7 +39097,9 @@ const OverlayControl = props => {
     brightness = 100,
     contrast = 100,
     saturation = 100,
-    hue = 0
+    hue = 0,
+    position = positionDef,
+    zIndex = -1
   } = value || {};
   const updateOverlay = (property, val, childP = null) => {
     const newBG = (0,immer__WEBPACK_IMPORTED_MODULE_3__.produce)(value || {}, draft => {
@@ -38879,9 +39120,14 @@ const OverlayControl = props => {
     value: isEnabled,
     onChange: val => updateOverlay('isEnabled', val)
   }), isEnabled && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_2__.AdvBackground, {
-    name: "Overlay Type",
+    name: "Overlay",
     value: colors,
     onChange: val => updateOverlay('colors', val)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_2__.BoxControl, {
+    label: "Overlay Position",
+    values: position,
+    resetValues: positionDef,
+    onChange: val => updateOverlay('position', val)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
     className: "mt20",
     label: "Opacity",
@@ -38948,7 +39194,12 @@ const OverlayControl = props => {
     onChange: val => updateOverlay('hue', val),
     min: 0,
     max: 360
-  }))));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalNumberControl, {
+    label: "Z Index",
+    labelPosition: "edge",
+    value: zIndex,
+    onChange: val => updateOverlay('zIndex', val)
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OverlayControl);
 
@@ -39134,6 +39385,162 @@ const SelectPureControl = props => {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectPureControl);
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/SelectTokenField/SelectTokenField.js":
+/*!********************************************************************!*\
+  !*** ../bpl-tools/Components/SelectTokenField/SelectTokenField.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "../bpl-tools/Components/SelectTokenField/style.scss");
+
+
+
+
+/**
+ * SelectTokenField Component
+ * @param {Object} props
+ * @param {boolean} props.multiple - Enable multiple selection mode. Default: false
+ * @param {string|string[]} props.defaultValue - Initial selected value(s). For multiple mode, use array of strings
+ * @param {string|string[]} props.value - Controlled value(s). Takes precedence over defaultValue
+ * @param {Function} props.onChange - Callback function when selection changes. Receives selected value(s)
+ * @param {Array<{value: string, label: string}>} props.options - Array of options to display
+ *		Each option should have:
+ *		- value: unique identifier
+ *		- label: display text
+ */
+const SelectTokenField = ({
+  multiple = true,
+  defaultValue,
+  value,
+  onChange = () => {},
+  options = []
+}) => {
+  const [inputVal, setInputVal] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [toggle, setToggle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const toggleRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  const defaultWithValue = value ? value : defaultValue;
+  const activeItem = options && options.find(option => option.value === defaultWithValue);
+  const activeMultipleItem = options && options.filter(option => defaultWithValue?.includes(option.value));
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handle = e => {
+      if (!toggleRef?.current?.contains(e.target)) {
+        setToggle(false);
+      }
+    };
+    document.addEventListener('mousedown', handle);
+    return () => {
+      document.removeEventListener('mousedown', handle);
+    };
+  }, [toggle]);
+  const searchTerm = options.filter(option => option.label.toLowerCase().includes(inputVal.toLowerCase()));
+  const id = Math.floor(Math.random() * 999999);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bPl-token-field-main-wrapper"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bPl-single-token-field-wrapper",
+    ...(multiple ? {
+      style: {
+        width: '100%'
+      }
+    } : {}),
+    ref: toggleRef
+  }, !multiple && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: () => setToggle(!toggle),
+    className: `bPl-single-token-field ${toggle ? 'activeField' : ''}`
+  }, activeItem ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "bPl-token-field-value"
+  }, activeItem.label) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "bPl-token-field-value"
+  }, "Select an option"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    onClick: () => onChange(''),
+    className: "bPl-xMark-icon"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 384 512",
+    height: "14px"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    onClick: () => setToggle(!toggle),
+    style: {
+      transform: toggle ? 'rotate(180deg)' : 'rotate(0deg)'
+    },
+    className: "bPl-arrow-icon"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 448 512",
+    height: "14px"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+  })))), multiple && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bPl-token-multiple-filed-wrapper"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: `searchText${id}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: () => setToggle(true),
+    className: `bPl-token-multiple-filed-wrapper-item ${toggle ? 'focusItem' : ''}`,
+    style: {
+      cursor: 'text'
+    }
+  }, !toggle && !defaultWithValue?.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bPl-empty-token-field"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Select an option")), activeMultipleItem?.map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: i,
+    className: `bPl-multiple-token-field`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "bPl-multiple-token-field-value"
+  }, item.label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    onClick: () => onChange(defaultWithValue?.filter(val => val !== item.value)),
+    className: "bPl-xMark-icon"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 384 512",
+    height: "14px"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    name: "",
+    id: `searchText${id}`,
+    className: "bPl-multiple-search",
+    onChange: e => setInputVal(e.target.value)
+  })))), options.length > 0 && toggle && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bPl-token-field-dropdown-wrapper"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "bPl-token-field-dropdown-list"
+  }, searchTerm.map((option, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    className: `${multiple ? activeMultipleItem.find(item => item.value === option.value) ? 'multipleActiveItem' : '' : option.value === defaultWithValue ? 'activeItemInList' : ''}`,
+    onClick: () => {
+      if (multiple) {
+        if (defaultWithValue) {
+          onChange([...defaultWithValue, option.value]);
+        } else {
+          onChange([option.value]);
+        }
+        if (defaultWithValue?.includes(option.value)) {
+          setToggle(true);
+        } else {
+          setToggle(false);
+        }
+      } else {
+        onChange(option.value);
+        setToggle(false);
+      }
+    },
+    key: index
+  }, option.label))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectTokenField);
 
 /***/ }),
 
@@ -39446,12 +39853,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../index */ "../bpl-tools/Components/index.js");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "../bpl-tools/Components/SolidBackground/style.css");
+/* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/data */ "../bpl-tools/utils/data.js");
+
 
 
 
@@ -39463,9 +39872,9 @@ const SolidBackground = props => {
     label = 'Color',
     value,
     onChange = () => {},
-    className = ''
+    className = '',
+    gradients
   } = props;
-  const defaultGradients = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)('core/block-editor').getSettings().gradients;
   const [tab, setTab] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('solid');
   const id = Math.floor(Math.random() * 9999999);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -39482,7 +39891,9 @@ const SolidBackground = props => {
       alignItems: 'center',
       justifyContent: 'space-between'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, label)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Dropdown, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    className: ""
+  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
     className: "my-container-class-name",
     contentClassName: "my-popover-content-classname",
     renderToggle: ({
@@ -39503,7 +39914,7 @@ const SolidBackground = props => {
         borderRadius: '50%',
         border: '1px solid #ccc'
       }
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: onToggle,
       "aria-expanded": isOpen,
       icon: "edit"
@@ -39514,7 +39925,7 @@ const SolidBackground = props => {
       onClose
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "panel-custom-color-control-container"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_2__.BButtonGroup, {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.BButtonGroup, {
       label: "Type:",
       options: [{
         label: 'Solid',
@@ -39529,7 +39940,7 @@ const SolidBackground = props => {
       style: {
         marginTop: '20px'
       }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_2__.ColorControl, {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_3__.ColorControl, {
       value: value,
       label: "Color :",
       onChange: value => onChange(value)
@@ -39537,16 +39948,23 @@ const SolidBackground = props => {
       style: {
         marginTop: '10px'
       }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.GradientPicker, {
-      value: value || defaultGradients?.[0]?.gradient,
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.GradientPicker, {
+      value: value || _utils_data__WEBPACK_IMPORTED_MODULE_5__.gradient,
       onChange: value => onChange(value),
-      gradients: defaultGradients
+      gradients: gradients
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       onClick: onClose
     }))
   })));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SolidBackground);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.withSelect)(select => {
+  const {
+    gradients
+  } = select('core/block-editor').getSettings();
+  return {
+    gradients: gradients.length > 12 ? gradients.slice(0, 12) : gradients
+  };
+})(SolidBackground));
 
 /***/ }),
 
@@ -39800,29 +40218,28 @@ __webpack_require__.r(__webpack_exports__);
 
 const Typography = props => {
   const {
-    className = "",
-    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Typography:"),
+    className = '',
+    label = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography:'),
     value,
     onChange,
     defaults = {},
-    isFamily = true,
-    maxFontSize = 120
+    isFamily = true
   } = props;
   const defaultVal = {
-    fontFamily: "Default",
-    fontCategory: "sans-serif",
-    fontWeight: 400,
+    fontFamily: 'Default',
+    fontCategory: 'sans-serif',
+    fontWeight: null,
     isUploadFont: true,
     fontSize: {
-      desktop: 15,
-      tablet: 15,
-      mobile: 15
+      desktop: null,
+      tablet: null,
+      mobile: null
     },
-    fontStyle: "normal",
-    textTransform: "none",
-    textDecoration: "auto",
-    lineHeight: "135%",
-    letterSpace: "0px"
+    fontStyle: null,
+    textTransform: null,
+    textDecoration: null,
+    lineHeight: null,
+    letterSpace: null
   };
   const getDefault = property => defaults?.[property] || defaultVal[property];
   const setDefault = property => onChange({
@@ -39838,8 +40255,8 @@ const Typography = props => {
   });
 
   // Font family searching
-  const [device, setDevice] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("desktop");
-  const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [device, setDevice] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('desktop');
+  const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [isSearching, setIsSearching] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const searchFonts = _fontLists__WEBPACK_IMPORTED_MODULE_7__["default"].filter(({
     family
@@ -39847,7 +40264,7 @@ const Typography = props => {
 
   // Get Font weights
   const fontWeights = () => {
-    const currentFontWeights = _fontLists__WEBPACK_IMPORTED_MODULE_7__["default"].find(font => font.family === getValue("fontFamily"))?.variants;
+    const currentFontWeights = _fontLists__WEBPACK_IMPORTED_MODULE_7__["default"].find(font => font.family === getValue('fontFamily'))?.variants;
     let weights = [];
     currentFontWeights?.map(weight => weights?.push({
       label: weight,
@@ -39876,7 +40293,7 @@ const Typography = props => {
     className: "bPlDropdownContainer",
     contentClassName: "bPlDropdownPopover",
     popoverProps: {
-      placement: "bottom-end"
+      placement: 'bottom-end'
     },
     renderToggle: ({
       isOpen,
@@ -39890,9 +40307,9 @@ const Typography = props => {
       className: "bPlTypoFontTitle"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Font Family:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Family:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Weight:"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Weight:'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
       className: "bPlTypoFont"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "bPlTypoFontSelect"
@@ -39900,10 +40317,10 @@ const Typography = props => {
       type: "search",
       value: query,
       onClick: () => setIsSearching(!isSearching),
-      placeholder: getValue("fontFamily") || "Search Font",
+      placeholder: getValue('fontFamily') || 'Search Font',
       onChange: e => setQuery(e.target.value)
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `dashicon dashicons dashicons-${isSearching ? "arrow-up" : "arrow-down"} `,
+      className: `dashicon dashicons dashicons-${isSearching ? 'arrow-up' : 'arrow-down'} `,
       onClick: () => setIsSearching(!isSearching)
     }), isSearching && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: "bPlTypoFontLists"
@@ -39912,94 +40329,92 @@ const Typography = props => {
       onClick: () => {
         onChange({
           ...value,
-          ["fontFamily"]: font?.family,
-          ["fontCategory"]: font?.category || "sans-serif",
-          ["fontWeight"]: 400,
-          ["fontVariant"]: 400
+          ['fontFamily']: font?.family,
+          ['fontCategory']: font?.category || 'sans-serif',
+          ['fontWeight']: 400,
+          ['fontVariant']: 400
         });
-        setQuery("");
+        setQuery('');
         setIsSearching(false);
       }
     }, font?.family)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-      value: getValue("fontVariant"),
+      value: getValue('fontVariant'),
       onChange: val => {
         onChange({
           ...value,
-          ["fontWeight"]: parseInt(val?.replace("00i", "00")),
-          ["fontVariant"]: val
+          ['fontWeight']: parseInt(val?.replace('00i', '00')),
+          ['fontVariant']: val
         });
       },
       options: fontWeights()
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
       className: "mt10",
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Load Google Font"),
-      checked: getValue("isUploadFont"),
-      onChange: val => setValue("isUploadFont", val)
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Load Google Font'),
+      checked: getValue('isUploadFont'),
+      onChange: val => setValue('isUploadFont', val)
     })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Weight:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-      value: getValue("fontWeight"),
-      onChange: val => setValue("fontWeight", val),
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Weight:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      value: getValue('fontWeight'),
+      onChange: val => setValue('fontWeight', val),
       options: fontWeights()
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+      className: "mt20"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
+      className: ""
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Size:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Deprecated__WEBPACK_IMPORTED_MODULE_5__.BDevice, {
+      device: device,
+      onChange: val => setDevice(val)
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+      value: getValue('fontSize')?.[device] || getValue('fontSize'),
+      onChange: val => setValue('fontSize', val, device),
+      units: [(0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.pxUnit)(16), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.remUnit)(1), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.emUnit)(1), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.vwUnit)(0.85)],
+      style: {
+        width: '100px'
+      }
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
       className: "mt20"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Font Size:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Deprecated__WEBPACK_IMPORTED_MODULE_5__.BDevice, {
-      device: device,
-      onChange: val => setDevice(val)
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
-      value: getValue("fontSize")?.[device] || getValue("fontSize"),
-      onChange: val => setValue("fontSize", val, device),
-      min: 0,
-      max: maxFontSize,
-      step: 1,
-      allowReset: true,
-      resetFallbackValue: getDefault("fontSize")?.[device] || getDefault("fontSize"),
-      initialPosition: getDefault("fontSize")?.[device] || getDefault("fontSize")
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
-      className: "mt20"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
-      className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Font Style:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-      value: getValue("fontStyle"),
-      onChange: val => setValue("fontStyle", val),
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Style:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      value: getValue('fontStyle'),
+      onChange: val => setValue('fontStyle', val),
       options: _options__WEBPACK_IMPORTED_MODULE_8__.fontStyles
-    }), resetValue("fontStyle")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    }), resetValue('fontStyle')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
       className: "mt20"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: "mt5"
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Transform:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.BtnGroup, {
-      value: getValue("textTransform"),
-      onChange: val => setValue("textTransform", val),
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Transform:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.BtnGroup, {
+      value: getValue('textTransform'),
+      onChange: val => setValue('textTransform', val),
       options: _options__WEBPACK_IMPORTED_MODULE_8__.textTransforms,
       isTextIcon: true
     })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
       className: "mt20"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
       className: ""
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Text Decoration:")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-      value: getValue("textDecoration"),
-      onChange: val => setValue("textDecoration", val),
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Decoration:')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+      value: getValue('textDecoration'),
+      onChange: val => setValue('textDecoration', val),
       options: _options__WEBPACK_IMPORTED_MODULE_8__.textDecorations
-    }), resetValue("textDecoration")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    }), resetValue('textDecoration')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
       className: "mt20"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Line Height:"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Line Height:'),
       labelPosition: "left",
-      value: getValue("lineHeight"),
-      onChange: val => setValue("lineHeight", val),
+      value: getValue('lineHeight'),
+      onChange: val => setValue('lineHeight', val),
       units: [(0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.pxUnit)(24), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.perUnit)(135), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.emUnit)(2), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.remUnit)(2)],
       isResetValueOnUnitChange: true
-    }), resetValue("lineHeight")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    }), resetValue('lineHeight')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
       className: "mt20"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Letter Spacing:"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Letter Spacing:'),
       labelPosition: "left",
-      value: getValue("letterSpace"),
-      onChange: val => setValue("letterSpace", val),
+      value: getValue('letterSpace'),
+      onChange: val => setValue('letterSpace', val),
       units: [(0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.pxUnit)(), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.emUnit)(), (0,_utils_options__WEBPACK_IMPORTED_MODULE_6__.remUnit)()]
-    }), resetValue("letterSpace")))
+    }), resetValue('letterSpace')))
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Typography);
@@ -44246,47 +44661,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   textDecorations: () => (/* binding */ textDecorations),
 /* harmony export */   textTransforms: () => (/* binding */ textTransforms)
 /* harmony export */ });
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+
 const fontStyles = [{
-  label: 'Normal',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Normal'),
   value: 'normal'
 }, {
-  label: 'Italic',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Italic'),
   value: 'italic'
 }, {
-  label: 'Oblique',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Oblique'),
   value: 'oblique'
 }];
 const textTransforms = [{
-  label: 'None',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('None'),
   value: 'none',
   icon: 'NO'
 }, {
-  label: 'Capitalize',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Capitalize'),
   value: 'capitalize',
   icon: 'Aa'
 }, {
-  label: 'Uppercase',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Uppercase'),
   value: 'uppercase',
   icon: 'AA'
 }, {
-  label: 'Lowercase',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Lowercase'),
   value: 'lowercase',
   icon: 'aa'
 }];
 const textDecorations = [{
-  label: 'Default',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Default'),
   value: 'auto'
 }, {
-  label: 'Underline',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Underline'),
   value: 'underline'
 }, {
-  label: 'Overline',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Overline'),
   value: 'overline'
 }, {
-  label: 'Line Through',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Line Through'),
   value: 'line-through'
 }, {
-  label: 'None',
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('None'),
   value: 'none'
 }];
 
@@ -44327,70 +44745,79 @@ const BBlocksAds = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AdvBackground: () => (/* reexport safe */ _AdvBackground_AdvBackground__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   BBlocksAds: () => (/* reexport safe */ _Utility_BBlocksAds__WEBPACK_IMPORTED_MODULE_28__["default"]),
+/* harmony export */   BBlocksAds: () => (/* reexport safe */ _Utility_BBlocksAds__WEBPACK_IMPORTED_MODULE_32__["default"]),
 /* harmony export */   BButtonGroup: () => (/* reexport safe */ _BButtonGroup_BButtonGroup__WEBPACK_IMPORTED_MODULE_3__["default"]),
 /* harmony export */   Background: () => (/* reexport safe */ _Background_Background__WEBPACK_IMPORTED_MODULE_2__["default"]),
 /* harmony export */   BoxControl: () => (/* reexport safe */ _BoxControl_BoxControl__WEBPACK_IMPORTED_MODULE_4__["default"]),
-/* harmony export */   BplBlockPreview: () => (/* reexport safe */ _BplBlockPreview_BplBlockPreview__WEBPACK_IMPORTED_MODULE_29__["default"]),
-/* harmony export */   BtnGroup: () => (/* reexport safe */ _BtnGroup_BtnGroup__WEBPACK_IMPORTED_MODULE_5__["default"]),
-/* harmony export */   ColorControl: () => (/* reexport safe */ _ColorControl_ColorControl__WEBPACK_IMPORTED_MODULE_6__.ColorControl),
-/* harmony export */   ColorsControl: () => (/* reexport safe */ _ColorsControl_ColorsControl__WEBPACK_IMPORTED_MODULE_7__["default"]),
-/* harmony export */   CustomCodeEditor: () => (/* reexport safe */ _CustomCodeEditor_CustomCodeEditor__WEBPACK_IMPORTED_MODULE_8__["default"]),
-/* harmony export */   Device: () => (/* reexport safe */ _Device_Device__WEBPACK_IMPORTED_MODULE_9__["default"]),
-/* harmony export */   DynamicTag: () => (/* reexport safe */ _DynamicTag_DynamicTag__WEBPACK_IMPORTED_MODULE_10__["default"]),
-/* harmony export */   Gradient: () => (/* reexport safe */ _Gradient_Gradient__WEBPACK_IMPORTED_MODULE_11__["default"]),
-/* harmony export */   HelpPanel: () => (/* reexport safe */ _HelpPanel_HelpPanel__WEBPACK_IMPORTED_MODULE_12__["default"]),
-/* harmony export */   HexColorControl: () => (/* reexport safe */ _ColorControl_ColorControl__WEBPACK_IMPORTED_MODULE_6__.HexColorControl),
-/* harmony export */   IconControl: () => (/* reexport safe */ _IconControl_IconControl__WEBPACK_IMPORTED_MODULE_13__["default"]),
-/* harmony export */   IconLibrary: () => (/* reexport safe */ _IconLibrary_IconLibrary__WEBPACK_IMPORTED_MODULE_14__["default"]),
-/* harmony export */   InlineDetailMediaUpload: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_17__.InlineDetailMediaUpload),
-/* harmony export */   InlineMediaUpload: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_17__.InlineMediaUpload),
-/* harmony export */   ItemsPanel: () => (/* reexport safe */ _ItemsPanel_ItemsPanel__WEBPACK_IMPORTED_MODULE_15__["default"]),
-/* harmony export */   Label: () => (/* reexport safe */ _Label_Label__WEBPACK_IMPORTED_MODULE_16__["default"]),
-/* harmony export */   MediaArea: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_17__.MediaArea),
-/* harmony export */   MediaEditControl: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_17__.MediaEditControl),
-/* harmony export */   MediaPlaceholder: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_17__.MediaPlaceholder),
-/* harmony export */   MultiSelectControl: () => (/* reexport safe */ _MultiSelectControl_MultiSelectControl__WEBPACK_IMPORTED_MODULE_18__["default"]),
-/* harmony export */   OverlayControl: () => (/* reexport safe */ _OverlayControl_OverlayControl__WEBPACK_IMPORTED_MODULE_19__["default"]),
-/* harmony export */   PanelSelectControl: () => (/* reexport safe */ _PanelSelectControl_PanelSelectControl__WEBPACK_IMPORTED_MODULE_20__["default"]),
-/* harmony export */   SelectPureControl: () => (/* reexport safe */ _SelectPureControl_SelectPureControl__WEBPACK_IMPORTED_MODULE_21__["default"]),
-/* harmony export */   SeparatorControl: () => (/* reexport safe */ _SeparatorControl_SeparatorControl__WEBPACK_IMPORTED_MODULE_22__["default"]),
-/* harmony export */   ShadowControl: () => (/* reexport safe */ _ShadowControl_ShadowControl__WEBPACK_IMPORTED_MODULE_23__["default"]),
-/* harmony export */   SolidBackground: () => (/* reexport safe */ _SolidBackground_SolidBackground__WEBPACK_IMPORTED_MODULE_24__["default"]),
-/* harmony export */   SortableControl: () => (/* reexport safe */ _SortableControl_SortableControl__WEBPACK_IMPORTED_MODULE_25__["default"]),
-/* harmony export */   TinyEditor: () => (/* reexport safe */ _TinyEditor_TinyEditor__WEBPACK_IMPORTED_MODULE_26__["default"]),
-/* harmony export */   Typography: () => (/* reexport safe */ _Typography_Typography__WEBPACK_IMPORTED_MODULE_27__["default"])
+/* harmony export */   BplBlockPreview: () => (/* reexport safe */ _BplBlockPreview_BplBlockPreview__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   BtnGroup: () => (/* reexport safe */ _BtnGroup_BtnGroup__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   Button: () => (/* reexport safe */ _Button_Button__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   ColorControl: () => (/* reexport safe */ _ColorControl_ColorControl__WEBPACK_IMPORTED_MODULE_8__.ColorControl),
+/* harmony export */   ColorsControl: () => (/* reexport safe */ _ColorsControl_ColorsControl__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   CustomCodeEditor: () => (/* reexport safe */ _CustomCodeEditor_CustomCodeEditor__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   Device: () => (/* reexport safe */ _Device_Device__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   DynamicTag: () => (/* reexport safe */ _DynamicTag_DynamicTag__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   Gradient: () => (/* reexport safe */ _Gradient_Gradient__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   HelpPanel: () => (/* reexport safe */ _HelpPanel_HelpPanel__WEBPACK_IMPORTED_MODULE_14__["default"]),
+/* harmony export */   HexColorControl: () => (/* reexport safe */ _ColorControl_ColorControl__WEBPACK_IMPORTED_MODULE_8__.HexColorControl),
+/* harmony export */   IconControl: () => (/* reexport safe */ _IconControl_IconControl__WEBPACK_IMPORTED_MODULE_15__["default"]),
+/* harmony export */   IconLibrary: () => (/* reexport safe */ _IconLibrary_IconLibrary__WEBPACK_IMPORTED_MODULE_16__["default"]),
+/* harmony export */   InlineDetailMediaUpload: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_20__.InlineDetailMediaUpload),
+/* harmony export */   InlineMediaUpload: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_20__.InlineMediaUpload),
+/* harmony export */   ItemsPanel: () => (/* reexport safe */ _ItemsPanel_ItemsPanel__WEBPACK_IMPORTED_MODULE_17__["default"]),
+/* harmony export */   Label: () => (/* reexport safe */ _Label_Label__WEBPACK_IMPORTED_MODULE_18__["default"]),
+/* harmony export */   Loading: () => (/* reexport safe */ _Loading_Loading__WEBPACK_IMPORTED_MODULE_19__["default"]),
+/* harmony export */   MediaArea: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_20__.MediaArea),
+/* harmony export */   MediaEditControl: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_20__.MediaEditControl),
+/* harmony export */   MediaPlaceholder: () => (/* reexport safe */ _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_20__.MediaPlaceholder),
+/* harmony export */   MultiSelectControl: () => (/* reexport safe */ _MultiSelectControl_MultiSelectControl__WEBPACK_IMPORTED_MODULE_21__["default"]),
+/* harmony export */   OverlayControl: () => (/* reexport safe */ _OverlayControl_OverlayControl__WEBPACK_IMPORTED_MODULE_22__["default"]),
+/* harmony export */   PanelSelectControl: () => (/* reexport safe */ _PanelSelectControl_PanelSelectControl__WEBPACK_IMPORTED_MODULE_23__["default"]),
+/* harmony export */   SelectPureControl: () => (/* reexport safe */ _SelectPureControl_SelectPureControl__WEBPACK_IMPORTED_MODULE_24__["default"]),
+/* harmony export */   SelectTokenField: () => (/* reexport safe */ _SelectTokenField_SelectTokenField__WEBPACK_IMPORTED_MODULE_25__["default"]),
+/* harmony export */   SeparatorControl: () => (/* reexport safe */ _SeparatorControl_SeparatorControl__WEBPACK_IMPORTED_MODULE_26__["default"]),
+/* harmony export */   ShadowControl: () => (/* reexport safe */ _ShadowControl_ShadowControl__WEBPACK_IMPORTED_MODULE_27__["default"]),
+/* harmony export */   SolidBackground: () => (/* reexport safe */ _SolidBackground_SolidBackground__WEBPACK_IMPORTED_MODULE_28__["default"]),
+/* harmony export */   SortableControl: () => (/* reexport safe */ _SortableControl_SortableControl__WEBPACK_IMPORTED_MODULE_29__["default"]),
+/* harmony export */   TinyEditor: () => (/* reexport safe */ _TinyEditor_TinyEditor__WEBPACK_IMPORTED_MODULE_30__["default"]),
+/* harmony export */   Typography: () => (/* reexport safe */ _Typography_Typography__WEBPACK_IMPORTED_MODULE_31__["default"])
 /* harmony export */ });
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "../bpl-tools/Components/style.scss");
 /* harmony import */ var _AdvBackground_AdvBackground__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdvBackground/AdvBackground */ "../bpl-tools/Components/AdvBackground/AdvBackground.js");
 /* harmony import */ var _Background_Background__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Background/Background */ "../bpl-tools/Components/Background/Background.js");
 /* harmony import */ var _BButtonGroup_BButtonGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BButtonGroup/BButtonGroup */ "../bpl-tools/Components/BButtonGroup/BButtonGroup.js");
 /* harmony import */ var _BoxControl_BoxControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BoxControl/BoxControl */ "../bpl-tools/Components/BoxControl/BoxControl.js");
-/* harmony import */ var _BtnGroup_BtnGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BtnGroup/BtnGroup */ "../bpl-tools/Components/BtnGroup/BtnGroup.js");
-/* harmony import */ var _ColorControl_ColorControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ColorControl/ColorControl */ "../bpl-tools/Components/ColorControl/ColorControl.js");
-/* harmony import */ var _ColorsControl_ColorsControl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ColorsControl/ColorsControl */ "../bpl-tools/Components/ColorsControl/ColorsControl.js");
-/* harmony import */ var _CustomCodeEditor_CustomCodeEditor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CustomCodeEditor/CustomCodeEditor */ "../bpl-tools/Components/CustomCodeEditor/CustomCodeEditor.js");
-/* harmony import */ var _Device_Device__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Device/Device */ "../bpl-tools/Components/Device/Device.js");
-/* harmony import */ var _DynamicTag_DynamicTag__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./DynamicTag/DynamicTag */ "../bpl-tools/Components/DynamicTag/DynamicTag.js");
-/* harmony import */ var _Gradient_Gradient__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Gradient/Gradient */ "../bpl-tools/Components/Gradient/Gradient.js");
-/* harmony import */ var _HelpPanel_HelpPanel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./HelpPanel/HelpPanel */ "../bpl-tools/Components/HelpPanel/HelpPanel.js");
-/* harmony import */ var _IconControl_IconControl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./IconControl/IconControl */ "../bpl-tools/Components/IconControl/IconControl.js");
-/* harmony import */ var _IconLibrary_IconLibrary__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./IconLibrary/IconLibrary */ "../bpl-tools/Components/IconLibrary/IconLibrary.js");
-/* harmony import */ var _ItemsPanel_ItemsPanel__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ItemsPanel/ItemsPanel */ "../bpl-tools/Components/ItemsPanel/ItemsPanel.js");
-/* harmony import */ var _Label_Label__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Label/Label */ "../bpl-tools/Components/Label/Label.js");
-/* harmony import */ var _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./MediaControl/MediaControl */ "../bpl-tools/Components/MediaControl/MediaControl.js");
-/* harmony import */ var _MultiSelectControl_MultiSelectControl__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./MultiSelectControl/MultiSelectControl */ "../bpl-tools/Components/MultiSelectControl/MultiSelectControl.js");
-/* harmony import */ var _OverlayControl_OverlayControl__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./OverlayControl/OverlayControl */ "../bpl-tools/Components/OverlayControl/OverlayControl.js");
-/* harmony import */ var _PanelSelectControl_PanelSelectControl__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./PanelSelectControl/PanelSelectControl */ "../bpl-tools/Components/PanelSelectControl/PanelSelectControl.js");
-/* harmony import */ var _SelectPureControl_SelectPureControl__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./SelectPureControl/SelectPureControl */ "../bpl-tools/Components/SelectPureControl/SelectPureControl.js");
-/* harmony import */ var _SeparatorControl_SeparatorControl__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./SeparatorControl/SeparatorControl */ "../bpl-tools/Components/SeparatorControl/SeparatorControl.js");
-/* harmony import */ var _ShadowControl_ShadowControl__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./ShadowControl/ShadowControl */ "../bpl-tools/Components/ShadowControl/ShadowControl.js");
-/* harmony import */ var _SolidBackground_SolidBackground__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./SolidBackground/SolidBackground */ "../bpl-tools/Components/SolidBackground/SolidBackground.js");
-/* harmony import */ var _SortableControl_SortableControl__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./SortableControl/SortableControl */ "../bpl-tools/Components/SortableControl/SortableControl.js");
-/* harmony import */ var _TinyEditor_TinyEditor__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./TinyEditor/TinyEditor */ "../bpl-tools/Components/TinyEditor/TinyEditor.js");
-/* harmony import */ var _Typography_Typography__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./Typography/Typography */ "../bpl-tools/Components/Typography/Typography.js");
-/* harmony import */ var _Utility_BBlocksAds__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Utility/BBlocksAds */ "../bpl-tools/Components/Utility/BBlocksAds.js");
-/* harmony import */ var _BplBlockPreview_BplBlockPreview__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./BplBlockPreview/BplBlockPreview */ "../bpl-tools/Components/BplBlockPreview/BplBlockPreview.js");
+/* harmony import */ var _BplBlockPreview_BplBlockPreview__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BplBlockPreview/BplBlockPreview */ "../bpl-tools/Components/BplBlockPreview/BplBlockPreview.js");
+/* harmony import */ var _BtnGroup_BtnGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./BtnGroup/BtnGroup */ "../bpl-tools/Components/BtnGroup/BtnGroup.js");
+/* harmony import */ var _Button_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Button/Button */ "../bpl-tools/Components/Button/Button.js");
+/* harmony import */ var _ColorControl_ColorControl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ColorControl/ColorControl */ "../bpl-tools/Components/ColorControl/ColorControl.js");
+/* harmony import */ var _ColorsControl_ColorsControl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ColorsControl/ColorsControl */ "../bpl-tools/Components/ColorsControl/ColorsControl.js");
+/* harmony import */ var _CustomCodeEditor_CustomCodeEditor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CustomCodeEditor/CustomCodeEditor */ "../bpl-tools/Components/CustomCodeEditor/CustomCodeEditor.js");
+/* harmony import */ var _Device_Device__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Device/Device */ "../bpl-tools/Components/Device/Device.js");
+/* harmony import */ var _DynamicTag_DynamicTag__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./DynamicTag/DynamicTag */ "../bpl-tools/Components/DynamicTag/DynamicTag.js");
+/* harmony import */ var _Gradient_Gradient__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Gradient/Gradient */ "../bpl-tools/Components/Gradient/Gradient.js");
+/* harmony import */ var _HelpPanel_HelpPanel__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./HelpPanel/HelpPanel */ "../bpl-tools/Components/HelpPanel/HelpPanel.js");
+/* harmony import */ var _IconControl_IconControl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./IconControl/IconControl */ "../bpl-tools/Components/IconControl/IconControl.js");
+/* harmony import */ var _IconLibrary_IconLibrary__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./IconLibrary/IconLibrary */ "../bpl-tools/Components/IconLibrary/IconLibrary.js");
+/* harmony import */ var _ItemsPanel_ItemsPanel__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ItemsPanel/ItemsPanel */ "../bpl-tools/Components/ItemsPanel/ItemsPanel.js");
+/* harmony import */ var _Label_Label__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Label/Label */ "../bpl-tools/Components/Label/Label.js");
+/* harmony import */ var _Loading_Loading__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Loading/Loading */ "../bpl-tools/Components/Loading/Loading.js");
+/* harmony import */ var _MediaControl_MediaControl__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./MediaControl/MediaControl */ "../bpl-tools/Components/MediaControl/MediaControl.js");
+/* harmony import */ var _MultiSelectControl_MultiSelectControl__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./MultiSelectControl/MultiSelectControl */ "../bpl-tools/Components/MultiSelectControl/MultiSelectControl.js");
+/* harmony import */ var _OverlayControl_OverlayControl__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./OverlayControl/OverlayControl */ "../bpl-tools/Components/OverlayControl/OverlayControl.js");
+/* harmony import */ var _PanelSelectControl_PanelSelectControl__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./PanelSelectControl/PanelSelectControl */ "../bpl-tools/Components/PanelSelectControl/PanelSelectControl.js");
+/* harmony import */ var _SelectPureControl_SelectPureControl__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./SelectPureControl/SelectPureControl */ "../bpl-tools/Components/SelectPureControl/SelectPureControl.js");
+/* harmony import */ var _SelectTokenField_SelectTokenField__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./SelectTokenField/SelectTokenField */ "../bpl-tools/Components/SelectTokenField/SelectTokenField.js");
+/* harmony import */ var _SeparatorControl_SeparatorControl__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./SeparatorControl/SeparatorControl */ "../bpl-tools/Components/SeparatorControl/SeparatorControl.js");
+/* harmony import */ var _ShadowControl_ShadowControl__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./ShadowControl/ShadowControl */ "../bpl-tools/Components/ShadowControl/ShadowControl.js");
+/* harmony import */ var _SolidBackground_SolidBackground__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./SolidBackground/SolidBackground */ "../bpl-tools/Components/SolidBackground/SolidBackground.js");
+/* harmony import */ var _SortableControl_SortableControl__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./SortableControl/SortableControl */ "../bpl-tools/Components/SortableControl/SortableControl.js");
+/* harmony import */ var _TinyEditor_TinyEditor__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./TinyEditor/TinyEditor */ "../bpl-tools/Components/TinyEditor/TinyEditor.js");
+/* harmony import */ var _Typography_Typography__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./Typography/Typography */ "../bpl-tools/Components/Typography/Typography.js");
+/* harmony import */ var _Utility_BBlocksAds__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./Utility/BBlocksAds */ "../bpl-tools/Components/Utility/BBlocksAds.js");
+
+
+
 
 
 
@@ -44437,6 +44864,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   escapeHTML: () => (/* binding */ escapeHTML),
 /* harmony export */   isExist: () => (/* binding */ isExist),
 /* harmony export */   sanitizeHTML: () => (/* binding */ sanitizeHTML),
+/* harmony export */   sanitizeInput: () => (/* binding */ sanitizeInput),
 /* harmony export */   sanitizeURL: () => (/* binding */ sanitizeURL)
 /* harmony export */ });
 const isExist = value => {
@@ -44523,8 +44951,8 @@ const sanitizeHTML = input => {
         node.removeAttribute(attr.name);
       }
 
-      // if (attr.name === "href" && attr.value.trim().toLowerCase().startsWith("javascript:")) {
-      // 	node.removeAttribute("href");
+      // if (attr.name === 'href' && attr.value.trim().toLowerCase().startsWith('javascript:')) {
+      // 	node.removeAttribute('href');
       // }
 
       if (attr.name === 'href') {
@@ -44539,6 +44967,9 @@ const sanitizeHTML = input => {
   });
   return doc.body.innerHTML;
 };
+const sanitizeInput = input => {
+  return input.replace(/[<>]/g, '').replace(/javascript:/gi, '').replace(/on\w+=/gi, '').trim();
+};
 
 /***/ }),
 
@@ -44551,13 +44982,43 @@ const sanitizeHTML = input => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   contentColor: () => (/* binding */ contentColor),
 /* harmony export */   deskBreakpoint: () => (/* binding */ deskBreakpoint),
+/* harmony export */   gradient: () => (/* binding */ gradient),
 /* harmony export */   mobileBreakpoint: () => (/* binding */ mobileBreakpoint),
-/* harmony export */   tabBreakpoint: () => (/* binding */ tabBreakpoint)
+/* harmony export */   primaryColor: () => (/* binding */ primaryColor),
+/* harmony export */   primaryColor100: () => (/* binding */ primaryColor100),
+/* harmony export */   primaryColor1000: () => (/* binding */ primaryColor1000),
+/* harmony export */   primaryColor200: () => (/* binding */ primaryColor200),
+/* harmony export */   primaryColor300: () => (/* binding */ primaryColor300),
+/* harmony export */   primaryColor400: () => (/* binding */ primaryColor400),
+/* harmony export */   primaryColor500: () => (/* binding */ primaryColor500),
+/* harmony export */   primaryColor600: () => (/* binding */ primaryColor600),
+/* harmony export */   primaryColor700: () => (/* binding */ primaryColor700),
+/* harmony export */   primaryColor800: () => (/* binding */ primaryColor800),
+/* harmony export */   primaryColor900: () => (/* binding */ primaryColor900),
+/* harmony export */   secondaryColor: () => (/* binding */ secondaryColor),
+/* harmony export */   tabBreakpoint: () => (/* binding */ tabBreakpoint),
+/* harmony export */   titleColor: () => (/* binding */ titleColor)
 /* harmony export */ });
 const deskBreakpoint = '@media only screen and (min-width: 1025px)';
 const tabBreakpoint = '@media only screen and (max-width: 1024px)';
 const mobileBreakpoint = '@media only screen and (max-width: 640px)';
+const primaryColor = '#146EF5';
+const primaryColor100 = '#e7f0fe';
+const primaryColor200 = '#b6d2fc';
+const primaryColor300 = '#85b4fa';
+const primaryColor400 = '#5495f8';
+const primaryColor500 = '#2377f6';
+const primaryColor600 = '#095edc';
+const primaryColor700 = '#0749ab';
+const primaryColor800 = '#05347a';
+const primaryColor900 = '#031f49';
+const primaryColor1000 = '#010a18';
+const secondaryColor = '#FF7A00';
+const titleColor = '#070127';
+const contentColor = '#485781';
+const gradient = 'linear-gradient(135deg, #0040E3, #18D4FD)';
 
 /***/ }),
 
@@ -44570,9 +45031,13 @@ const mobileBreakpoint = '@media only screen and (max-width: 640px)';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MimeTypeChecker: () => (/* binding */ MimeTypeChecker),
+/* harmony export */   SVGSanitizer: () => (/* binding */ SVGSanitizer),
 /* harmony export */   debounce: () => (/* binding */ debounce),
 /* harmony export */   getBoxValue: () => (/* binding */ getBoxValue),
 /* harmony export */   getImageSizes: () => (/* binding */ getImageSizes),
+/* harmony export */   getRandomColor: () => (/* binding */ getRandomColor),
+/* harmony export */   randomNumber: () => (/* binding */ randomNumber),
 /* harmony export */   tabController: () => (/* binding */ tabController),
 /* harmony export */   updateAttributes: () => (/* binding */ updateAttributes),
 /* harmony export */   updateData: () => (/* binding */ updateData)
@@ -44653,6 +45118,282 @@ const debounce = (fn, delay) => {
     }, delay);
   };
 };
+const getRandomColor = () => {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+};
+const randomNumber = number => parseInt(Math.random() * number);
+class MimeTypeChecker {
+  // Common MIME types mapping
+
+  static get mimeTypes() {
+    return {
+      // Images
+      'jpg': 'image/jpeg',
+      'jpeg': 'image/jpeg',
+      'png': 'image/png',
+      'gif': 'image/gif',
+      'webp': 'image/webp',
+      'svg': 'image/svg+xml',
+      'bmp': 'image/bmp',
+      'ico': 'image/x-icon',
+      // Documents
+      'pdf': 'application/pdf',
+      'doc': 'application/msword',
+      'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'xls': 'application/vnd.ms-excel',
+      'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'ppt': 'application/vnd.ms-powerpoint',
+      'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      'txt': 'text/plain',
+      'csv': 'text/csv',
+      // Audio/Video
+      'mp3': 'audio/mpeg',
+      'wav': 'audio/wav',
+      'ogg': 'audio/ogg',
+      'mp4': 'video/mp4',
+      'webm': 'video/webm',
+      'avi': 'video/x-msvideo',
+      'mov': 'video/quicktime',
+      // Archives
+      'zip': 'application/zip',
+      'rar': 'application/x-rar-compressed',
+      'tar': 'application/x-tar',
+      'gz': 'application/gzip',
+      // Code
+      'js': 'application/javascript',
+      'css': 'text/css',
+      'html': 'text/html',
+      'json': 'application/json',
+      'xml': 'application/xml'
+    };
+  }
+
+  // Check if a file has a valid MIME type (now handles both string and array)
+  static isValidMimeType(file, allowedTypes = []) {
+    if (!file) return false;
+    const fileType = this.getMimeTypeFromFile(file);
+    if (!fileType) return false;
+
+    // Convert single string to array for consistent processing
+    const typesArray = Array.isArray(allowedTypes) ? allowedTypes : [allowedTypes];
+    if (typesArray.length === 0) return true;
+    return typesArray.some(allowedType => {
+      if (allowedType.includes('*')) {
+        // Handle wildcard types like 'image/*'
+        const baseType = allowedType.split('/*')[0];
+        return fileType.startsWith(baseType);
+      }
+      return fileType === allowedType;
+    });
+  }
+
+  // Get MIME type from file extension
+  static getMimeTypeFromExtension(filename) {
+    if (!filename) return null;
+    const extension = filename.split('.').pop().toLowerCase();
+    return this.mimeTypes[extension] || null;
+  }
+
+  // Get MIME type from File object
+  static getMimeTypeFromFile(file) {
+    if (file instanceof File || file instanceof Blob) {
+      return file.type || this.getMimeTypeFromExtension(file.name);
+    }
+    return this.getMimeTypeFromExtension(file);
+  }
+
+  // Check if file is an image
+  static isImage(file) {
+    const mimeType = this.getMimeTypeFromFile(file);
+    return mimeType ? mimeType.startsWith('image/') : false;
+  }
+
+  // Check if file is a video
+  static isVideo(file) {
+    const mimeType = this.getMimeTypeFromFile(file);
+    return mimeType ? mimeType.startsWith('video/') : false;
+  }
+
+  // Check if file is an audio file
+  static isAudio(file) {
+    const mimeType = this.getMimeTypeFromFile(file);
+    return mimeType ? mimeType.startsWith('audio/') : false;
+  }
+
+  // Check if file is a document
+  static isDocument(file) {
+    const mimeType = this.getMimeTypeFromFile(file);
+    return mimeType ? mimeType.startsWith('application/') || mimeType.startsWith('text/') || mimeType.includes('word') || mimeType.includes('excel') || mimeType.includes('powerpoint') || mimeType.includes('pdf') : false;
+  }
+
+  // Validate file against specific MIME types
+  // Validate file against specific MIME types (updated to handle string/array)
+  static validateFile(file, options = {}) {
+    const {
+      allowedTypes = [],
+      maxSize = Infinity,
+      minSize = 0
+    } = options;
+    const errors = [];
+
+    // Convert allowedTypes to array if it's a string
+    const typesArray = Array.isArray(allowedTypes) ? allowedTypes : [allowedTypes];
+
+    // Check MIME type
+    if (typesArray.length > 0 && !this.isValidMimeType(file, typesArray)) {
+      const allowedTypesString = typesArray.join(', ');
+      errors.push(`File type not allowed. Allowed types: ${allowedTypesString}`);
+    }
+
+    // Check file size (only if it's a File/Blob object)
+    if (file instanceof File || file instanceof Blob) {
+      if (file.size > maxSize) {
+        errors.push(`File size too large. Maximum size: ${this.formatBytes(maxSize)}`);
+      }
+      if (file.size < minSize) {
+        errors.push(`File size too small. Minimum size: ${this.formatBytes(minSize)}`);
+      }
+    }
+    return {
+      isValid: errors.length === 0,
+      errors,
+      mimeType: this.getMimeTypeFromFile(file),
+      size: file instanceof File || file instanceof Blob ? file.size : null
+    };
+  }
+
+  // Helper to format bytes
+  static formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  }
+  static addMimeType(extension, mimeType) {
+    const types = this.mimeTypes;
+    types[extension.toLowerCase()] = mimeType;
+  }
+
+  // Add an instance property that references the static methods
+  static get helpers() {
+    return {
+      validateFile: this.validateFile.bind(this),
+      isValidMimeType: this.isValidMimeType.bind(this),
+      isImage: this.isImage.bind(this),
+      isVideo: this.isVideo.bind(this),
+      isAudio: this.isAudio.bind(this),
+      isDocument: this.isDocument.bind(this),
+      getMimeTypeFromFile: this.getMimeTypeFromFile.bind(this),
+      getMimeTypeFromExtension: this.getMimeTypeFromExtension.bind(this),
+      addMimeType: this.addMimeType.bind(this)
+    };
+  }
+}
+
+//-------- Sanitize SVG ----------//
+class SVGSanitizer {
+  constructor(options = {}) {
+    this.defaultOptions = {
+      allowedTags: ['svg', 'g', 'path', 'rect', 'circle', 'ellipse', 'line', 'polyline', 'polygon', 'text', 'tspan', 'defs', 'clipPath', 'mask', 'linearGradient', 'radialGradient', 'stop', 'style', 'title', 'desc'],
+      allowedAttributes: ['id', 'class', 'style', 'transform', 'd', 'x', 'y', 'width', 'height', 'cx', 'cy', 'r', 'rx', 'ry', 'points', 'x1', 'y1', 'x2', 'y2', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'opacity', 'fill-opacity', 'stroke-opacity', 'viewBox', 'preserveAspectRatio', 'xmlns', 'xmlns:xlink'],
+      allowedProtocols: ['http', 'https', 'data'],
+      removeScripts: true,
+      removeEvents: true,
+      removeExternalResources: true,
+      sanitizeStyle: true
+    };
+    this.options = {
+      ...this.defaultOptions,
+      ...options
+    };
+  }
+  sanitize(svgString) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svgString, 'image/svg+xml');
+    this.removeScripts(doc);
+    this.sanitizeElements(doc);
+    const serializer = new XMLSerializer();
+    return serializer.serializeToString(doc.documentElement);
+  }
+  removeScripts(doc) {
+    if (this.options.removeScripts) {
+      const scripts = doc.querySelectorAll('script');
+      scripts.forEach(script => script.remove());
+
+      // Also remove script elements in other namespaces
+      const allElements = doc.querySelectorAll('*');
+      allElements.forEach(el => {
+        if (el.tagName.toLowerCase().includes('script')) {
+          el.remove();
+        }
+      });
+    }
+  }
+  sanitizeElements(doc) {
+    const allElements = doc.querySelectorAll('*');
+    allElements.forEach(element => {
+      const tagName = element.tagName.toLowerCase();
+
+      // Remove disallowed tags
+      if (!this.options.allowedTags.includes(tagName)) {
+        element.remove();
+        return;
+      }
+      this.sanitizeAttributes(element);
+    });
+  }
+  sanitizeAttributes(element) {
+    const attributes = Array.from(element.attributes);
+    attributes.forEach(attr => {
+      const attrName = attr.name.toLowerCase();
+      const attrValue = attr.value;
+
+      // Remove event handlers
+      if (this.options.removeEvents && attrName.startsWith('on')) {
+        element.removeAttribute(attrName);
+        return;
+      }
+
+      // Handle external resources
+      if (this.options.removeExternalResources) {
+        if ((attrName === 'href' || attrName === 'xlink:href') && !this.isAllowedUrl(attrValue)) {
+          element.removeAttribute(attrName);
+          return;
+        }
+      }
+
+      // Remove disallowed attributes
+      const baseAttrName = attrName.replace('xlink:', '');
+      if (!this.options.allowedAttributes.includes(baseAttrName)) {
+        element.removeAttribute(attrName);
+        return;
+      }
+
+      // Sanitize style attribute
+      if (attrName === 'style' && this.options.sanitizeStyle) {
+        this.sanitizeStyleAttribute(element, attrValue);
+      }
+    });
+  }
+  isAllowedUrl(url) {
+    if (url.startsWith('data:') || url.startsWith('#')) {
+      return true;
+    }
+    try {
+      const parsedUrl = new URL(url);
+      return this.options.allowedProtocols.includes(parsedUrl.protocol.replace(':', ''));
+    } catch {
+      return false;
+    }
+  }
+  sanitizeStyleAttribute(element, styleValue) {
+    // Remove dangerous CSS properties and values
+    const safeStyle = styleValue.replace(/expression\(|javascript:|url\(javascript:/gi, '').replace(/behavior\s*:/gi, '').replace(/binding\s*:/gi, '');
+    element.setAttribute('style', safeStyle);
+  }
+}
 
 /***/ }),
 
@@ -44689,8 +45430,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Mask_assets_shapes_hexagon_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/hexagon.svg */ "../bpl-tools/Components/Mask/assets/shapes/hexagon.svg");
 /* harmony import */ var _Components_Mask_assets_shapes_sketch_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/sketch.svg */ "../bpl-tools/Components/Mask/assets/shapes/sketch.svg");
 /* harmony import */ var _Components_Mask_assets_shapes_triangle_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/Mask/assets/shapes/triangle.svg */ "../bpl-tools/Components/Mask/assets/shapes/triangle.svg");
-/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./data */ "../bpl-tools/utils/data.js");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./common */ "../bpl-tools/utils/common.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./common */ "../bpl-tools/utils/common.js");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./data */ "../bpl-tools/utils/data.js");
 
 
 
@@ -44699,14 +45440,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const isValidCSS = (p, v) => (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(v) ? `${p}: ${v};` : '';
+const isValidCSS = (p, v) => (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(v) ? `${p}: ${v};` : '';
 const getBackgroundCSS = (bg, isSolid = true, isGradient = true, isImage = true) => {
   const {
     type = 'solid',
     color = '',
-    gradient = '',
+    gradient = _data__WEBPACK_IMPORTED_MODULE_7__.gradient,
     image = {},
-    position = '',
+    position = 'center center',
     attachment = '',
     repeat = '',
     size = '',
@@ -44721,25 +45462,23 @@ const getBackgroundCSS = (bg, isSolid = true, isGradient = true, isImage = true)
 				${isValidCSS('background-repeat', repeat)}
 				background-blend-mode: overlay;` : isSolid && isValidCSS('background', color);
   return styles;
-}; // PHP version in Stepped Content
-
+};
 const getBorderCSS = border => {
   const {
-    width = '0px',
+    width = '',
     style = 'solid',
     color = '',
     side = 'all',
-    radius = '0px'
+    radius = ''
   } = border || {};
   const borderSideCheck = s => {
     const bSide = side?.toLowerCase();
     return bSide?.includes('all') || bSide?.includes(s);
   };
-  const noWidth = width === '0px' || !width;
   const borderCSS = `${width} ${style} ${color}`;
   const styles = `
-		${noWidth ? '' : ['top', 'right', 'bottom', 'left'].map(side => borderSideCheck(side) ? `border-${side}: ${borderCSS};` : '').join('')}
-		${!radius ? '' : `border-radius: ${radius};`}
+		${!width || parseInt(width) === 0 ? '' : ['top', 'right', 'bottom', 'left'].map(side => borderSideCheck(side) ? `border-${side}: ${borderCSS};` : '').join('')}
+		${isValidCSS('border-radius', radius)}
 	`;
   return styles;
 };
@@ -44765,13 +45504,13 @@ const getBorderBoxCSS = border => {
 };
 const getColorsCSS = colors => {
   const {
-    color = '#333',
+    color = '',
     bgType = 'solid',
     bg = '',
-    gradient = 'linear-gradient(135deg, #4527a4, #8344c5)'
+    gradient = _data__WEBPACK_IMPORTED_MODULE_7__.gradient
   } = colors || {};
   const styles = `
-		${color ? `color: ${color};` : ''}
+		${isValidCSS('color', color)}
 		${gradient || bg ? isValidCSS('background', 'gradient' === bgType ? gradient : bg) : ''}
 	`;
   return styles;
@@ -44781,7 +45520,7 @@ const getIconCSS = (icon, isSize = true, isColor = true) => {
     fontSize = 16,
     colorType = 'solid',
     color = 'inherit',
-    gradient = 'linear-gradient(135deg, #4527a4, #8344c5)'
+    gradient = _data__WEBPACK_IMPORTED_MODULE_7__.gradient
   } = icon || {};
   const colorCSS = 'gradient' === colorType ? `color: transparent; background-image: ${gradient}; -webkit-background-clip: text; background-clip: text;` : isValidCSS('color', color);
   const styles = `
@@ -44798,7 +45537,7 @@ const getMultiShadowCSS = (value, type = 'box') => {
       vOffset = '0px',
       blur = '0px',
       spreed = '0px',
-      color = '#7090b0',
+      color = '#e7f0fe',
       isInset = false
     } = item || {};
     const inset = isInset ? 'inset' : '';
@@ -44806,18 +45545,18 @@ const getMultiShadowCSS = (value, type = 'box') => {
     const isComa = index + 1 >= value.length ? '' : ', ';
     styles += 'text' === type ? `${offsetBlur} ${color}${isComa}` : `${offsetBlur} ${spreed} ${color} ${inset}${isComa}`;
   });
-  return styles || 'none';
+  return styles || '';
 };
 const getSeparatorCSS = separator => {
   const {
     width = '50%',
     height = '2px',
     style = 'solid',
-    color = '#bbb'
+    color = _data__WEBPACK_IMPORTED_MODULE_7__.primaryColor300
   } = separator || {};
   const styles = `
-		width: ${width};
-		${'0px' === height && '0em' === height && '0rem' === height ? '' : `border-top: ${height} ${style} ${color};`}
+		${isValidCSS('width', width)}
+		${0 === parseInt(height) ? '' : `border-top: ${height} ${style} ${color};`}
 	`;
   return styles;
 };
@@ -44853,27 +45592,37 @@ const getTypoCSS = (selector, typo, isFamily = true) => {
     fontFamily = 'Default',
     fontCategory = 'sans-serif',
     fontVariant = 400,
-    fontWeight = 400,
+    fontWeight,
     isUploadFont = true,
     fontSize = {
-      desktop: 15,
-      tablet: 15,
-      mobile: 15
+      desktop: null,
+      tablet: null,
+      mobile: null
     },
-    fontStyle = 'normal',
-    textTransform = 'none',
-    textDecoration = 'auto',
-    lineHeight = '135%',
-    letterSpace = '0px'
+    fontStyle,
+    textTransform,
+    textDecoration,
+    lineHeight,
+    letterSpace
   } = typo || {};
   const isEmptyFamily = !isFamily || !fontFamily || 'Default' === fontFamily;
   const desktopFontSize = fontSize?.desktop || fontSize;
   const tabletFontSize = fontSize?.tablet || desktopFontSize;
   const mobileFontSize = fontSize?.mobile || tabletFontSize;
+  const checkUnit = size => {
+    const value = String(size);
+    const units = ['px', 'em', 'rem', '%', 'vh', 'vw'];
+    if (units.some(unit => value.endsWith(unit))) {
+      return value;
+    } else if (typeof size === 'number') {
+      return `${value}px`;
+    }
+    return '';
+  };
   const styles = `
 		${isEmptyFamily ? '' : `font-family: '${fontFamily}', ${fontCategory};`}
 		${isValidCSS('font-weight', fontWeight)}
-		${isValidCSS('font-size', desktopFontSize ? `${desktopFontSize}px` : '')}
+		${isValidCSS('font-size', checkUnit(desktopFontSize))}
 		${isValidCSS('font-style', fontStyle)}
 		${isValidCSS('text-transform', textTransform)}
 		${isValidCSS('text-decoration', textDecoration)}
@@ -44889,14 +45638,14 @@ const getTypoCSS = (selector, typo, isFamily = true) => {
     styles: `${selector}{
 			${styles}
 		}
-		${_data__WEBPACK_IMPORTED_MODULE_6__.tabBreakpoint} {
+		${_data__WEBPACK_IMPORTED_MODULE_7__.tabBreakpoint} {
 			${selector}{
-				${isValidCSS('font-size', tabletFontSize ? `${tabletFontSize}px` : '')}
+				${isValidCSS('font-size', checkUnit(tabletFontSize))}
 			}
 		}
-		${_data__WEBPACK_IMPORTED_MODULE_6__.mobileBreakpoint} {
+		${_data__WEBPACK_IMPORTED_MODULE_7__.mobileBreakpoint} {
 			${selector}{
-				${isValidCSS('font-size', mobileFontSize ? `${mobileFontSize}px` : '')}
+				${isValidCSS('font-size', checkUnit(mobileFontSize))}
 			}
 		}`.replace(/\s+/g, ' ').trim()
   };
@@ -44916,20 +45665,23 @@ const getBoxCSS = val => {
 // Murad Wahid
 const getGradientCSS = gradient => {
   const {
-    type,
-    radialType,
-    colors,
-    centerPositions,
-    angel
+    type = 'linear',
+    radialType = 'ellipse',
+    colors = [],
+    centerPositions = {
+      x: 0,
+      y: 0
+    },
+    angel = 0
   } = gradient || {};
-  if (gradient) {
+  if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(gradient)) {
     const gradientColors = colors?.map(({
       color,
       position
     }) => `${color} ${position}%`);
     const liner = `linear-gradient(${angel}deg, ${gradientColors})`;
     const radial = `radial-gradient(${radialType} at ${centerPositions?.x}% ${centerPositions?.y}%,${gradientColors})`;
-    return isValidCSS('background', type === 'linear' ? liner : radial);
+    return isValidCSS('background', type === 'radial' ? radial : liner);
   }
   return '';
 };
@@ -44943,7 +45695,7 @@ const getImagePosition = img => {
     size = 'cover',
     customSize = '0px'
   } = img || {};
-  const cd = v => 'initial' !== v || (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(v);
+  const cd = v => 'initial' !== v || (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(v);
   return `
 		${cd(position) ? `background-position: ${'custom' === position ? `${xPosition} ${yPosition}` : position};` : ''}
 		${attachment && cd(attachment) ? `background-attachment: ${attachment};` : ''}
@@ -44954,9 +45706,9 @@ const getImagePosition = img => {
 const getImageCSS = (img = {}) => {
   if (img) {
     return {
-      desktop: (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? `background-image: url(${img.url}); ${getImagePosition(img?.desktop)}` : '',
-      tablet: (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? getImagePosition(img?.tablet) : '',
-      mobile: (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(img.url) ? getImagePosition(img?.mobile) : ''
+      desktop: (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(img.url) ? `background-image: url(${img.url}); ${getImagePosition(img?.desktop)}` : '',
+      tablet: (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(img.url) ? getImagePosition(img?.tablet) : '',
+      mobile: (0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(img.url) ? getImagePosition(img?.mobile) : ''
     };
   }
   return '';
@@ -45009,13 +45761,13 @@ const getAdvBGCSS = (background, selector, isHover = false) => {
 			${bgCSS}
 		}` : ''}
 
-		${tablet ? `${_data__WEBPACK_IMPORTED_MODULE_6__.tabBreakpoint} {
+		${tablet ? `${_data__WEBPACK_IMPORTED_MODULE_7__.tabBreakpoint} {
 			${sl}{
 				${tablet}
 			}
 		}` : ''}
 
-		${mobile ? `${_data__WEBPACK_IMPORTED_MODULE_6__.mobileBreakpoint} {
+		${mobile ? `${_data__WEBPACK_IMPORTED_MODULE_7__.mobileBreakpoint} {
 			${sl}{
 				${mobile}
 			}
@@ -45033,16 +45785,31 @@ const getOverlayCSS = (overlay, selector, isHover = false) => {
     brightness = 100,
     contrast = 100,
     saturation = 100,
-    hue = 0
+    hue = 0,
+    position = {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0
+    },
+    zIndex = -1
   } = overlay || {};
   const filterCSSValue = `${100 !== brightness ? `brightness(${brightness}%)` : ''} ${100 !== contrast ? `contrast(${contrast}%)` : ''} ${100 !== saturation ? `saturate(${saturation}%)` : ''} ${0 !== blur ? `blur(${blur}px)` : ''} ${0 !== hue ? `hue-rotate(${hue}deg)` : ''}`;
   const filterCSS = `${filter}: ${filter ? filterCSSValue : ''}; -webkit-${filter}: ${filter ? filterCSSValue : ''};`;
   const sl = isHover ? `${selector}:hover::after` : `${selector}::after`;
   return isEnabled ? `
+		${selector}{
+			position:relative;
+			z-index:1;
+		}
 		${selector}::after{
 			content: '';
 			position: absolute;
-			inset: 0;
+			top:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.top) ? position.top : 0};
+			right:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.right) ? position.right : 0};
+			bottom:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.bottom) ? position.bottom : 0};
+			left:${(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(position.left) ? position.left : 0};
+			z-index:${zIndex};
 		}
 		${getAdvBGCSS(colors, sl, false)}
 		${sl}{
@@ -45054,7 +45821,7 @@ const getOverlayCSS = (overlay, selector, isHover = false) => {
 };
 const getTransformCSS = (transform, selector, isHover = false) => {
   const generateTransformCSS = (value, device = 'desktop') => {
-    if (!(0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(value)) return '';
+    if (!(0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(value)) return '';
     const {
       skew,
       scale,
@@ -45071,36 +45838,36 @@ const getTransformCSS = (transform, selector, isHover = false) => {
     } = scale || {};
     const transforms = [];
     //skew
-    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew)) {
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew?.[device]?.x)) transforms.push(`skewX(${skew[device].x}deg)`);
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(skew?.[device]?.y)) transforms.push(`skewY(${skew[device].y}deg)`);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(skew)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(skew?.[device]?.x)) transforms.push(`skewX(${skew[device].x}deg)`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(skew?.[device]?.y)) transforms.push(`skewY(${skew[device].y}deg)`);
     }
     //scale
     if (isProportion) {
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.scale)) transforms.push(`scale(${scale[device].scale})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(scale?.[device]?.scale)) transforms.push(`scale(${scale[device].scale})`);
     } else {
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.x)) transforms.push(`scaleX(${scale[device].x})`);
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(scale?.[device]?.y)) transforms.push(`scaleY(${scale[device].y})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(scale?.[device]?.x)) transforms.push(`scaleX(${scale[device].x})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(scale?.[device]?.y)) transforms.push(`scaleY(${scale[device].y})`);
     }
 
     //rotate
-    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate)) {
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.z)) transforms.push(`rotateZ(${rotate[device].z}deg)`);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate?.[device]?.z)) transforms.push(`rotateZ(${rotate[device].z}deg)`);
       if (threeDRotate) {
-        if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.x)) transforms.push(`rotateX(${rotate[device].x}deg)`);
-        if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(rotate?.[device]?.y)) transforms.push(`rotateY(${rotate[device].y}deg)`);
+        if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate?.[device]?.x)) transforms.push(`rotateX(${rotate[device].x}deg)`);
+        if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(rotate?.[device]?.y)) transforms.push(`rotateY(${rotate[device].y}deg)`);
       }
     }
 
     //offset
-    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset)) {
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset?.[device]?.x)) transforms.push(`translateX(${offset[device].x})`);
-      if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(offset?.[device]?.y)) transforms.push(`translateY(${offset[device].y})`);
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(offset)) {
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(offset?.[device]?.x)) transforms.push(`translateX(${offset[device].x})`);
+      if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(offset?.[device]?.y)) transforms.push(`translateY(${offset[device].y})`);
     }
 
     //flip
-    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(flipX)) transforms.push(flipX ? 'scaleX(-1)' : '');
-    if ((0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(flipY)) transforms.push(flipY ? 'scaleY(-1)' : '');
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(flipX)) transforms.push(flipX ? 'scaleX(-1)' : '');
+    if ((0,_common__WEBPACK_IMPORTED_MODULE_6__.isExist)(flipY)) transforms.push(flipY ? 'scaleY(-1)' : '');
     if (transforms.length === 0) return '';
     return isValidCSS('transform', transforms.join(' '));
   };
@@ -45111,12 +45878,12 @@ const getTransformCSS = (transform, selector, isHover = false) => {
 		${sl} {
 			${generateTransformCSS(transform, 'desktop')}
 		}
-		${_data__WEBPACK_IMPORTED_MODULE_6__.tabBreakpoint}{
+		${_data__WEBPACK_IMPORTED_MODULE_7__.tabBreakpoint}{
 			${sl} {
 				${generateTransformCSS(transform, 'tablet')}
 			}
 		}
-		${_data__WEBPACK_IMPORTED_MODULE_6__.mobileBreakpoint}{
+		${_data__WEBPACK_IMPORTED_MODULE_7__.mobileBreakpoint}{
 			${sl} {
 				${generateTransformCSS(transform, 'mobile')}
 			}
@@ -45179,31 +45946,39 @@ const getMaskCSS = mask => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   bookIcon: () => (/* binding */ bookIcon),
+/* harmony export */   checkIcon: () => (/* binding */ checkIcon),
 /* harmony export */   closeIcon: () => (/* binding */ closeIcon),
 /* harmony export */   copyIcon: () => (/* binding */ copyIcon),
+/* harmony export */   demoIcon: () => (/* binding */ demoIcon),
 /* harmony export */   desktopIcon: () => (/* binding */ desktopIcon),
+/* harmony export */   docsIcon: () => (/* binding */ docsIcon),
 /* harmony export */   gearIcon: () => (/* binding */ gearIcon),
 /* harmony export */   gripIcon: () => (/* binding */ gripIcon),
 /* harmony export */   headsetIcon: () => (/* binding */ headsetIcon),
 /* harmony export */   listIcon: () => (/* binding */ listIcon),
+/* harmony export */   minusIcon: () => (/* binding */ minusIcon),
 /* harmony export */   mobileIcon: () => (/* binding */ mobileIcon),
+/* harmony export */   nextIcon: () => (/* binding */ nextIcon),
 /* harmony export */   plusIcon: () => (/* binding */ plusIcon),
+/* harmony export */   prevIcon: () => (/* binding */ prevIcon),
 /* harmony export */   rightArrowIcon: () => (/* binding */ rightArrowIcon),
 /* harmony export */   scrollIcon: () => (/* binding */ scrollIcon),
+/* harmony export */   searchIcon: () => (/* binding */ searchIcon),
 /* harmony export */   starIcon: () => (/* binding */ starIcon),
 /* harmony export */   tabletIcon: () => (/* binding */ tabletIcon)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data */ "../bpl-tools/utils/data.js");
 
-const color = '#4527a4';
+
 const desktopIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "https://www.w3.org/2000/svg",
   width: 15,
   height: 15,
   viewBox: "0 0 548.172 548.172"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: color,
+  fill: _data__WEBPACK_IMPORTED_MODULE_1__.primaryColor,
   d: "M534.75 49.965c-8.945-8.945-19.694-13.422-32.261-13.422H45.681c-12.562 0-23.313 4.477-32.264 13.422C4.471 58.913 0 69.663 0 82.226v310.633c0 12.566 4.471 23.315 13.417 32.265 8.951 8.945 19.702 13.414 32.264 13.414h155.318c0 7.231-1.524 14.661-4.57 22.269-3.044 7.614-6.09 14.273-9.136 19.981-3.042 5.715-4.565 9.897-4.565 12.56 0 4.948 1.807 9.24 5.424 12.847 3.615 3.621 7.898 5.435 12.847 5.435h146.179c4.949 0 9.233-1.813 12.848-5.435 3.62-3.606 5.427-7.898 5.427-12.847 0-2.468-1.526-6.611-4.571-12.415-3.046-5.801-6.092-12.566-9.134-20.267-3.046-7.71-4.569-15.085-4.569-22.128h155.318c12.56 0 23.309-4.469 32.254-13.414 8.949-8.949 13.422-19.698 13.422-32.265V82.226c.003-12.563-4.474-23.313-13.423-32.261zm-23.123 269.803c0 2.475-.903 4.613-2.711 6.424-1.81 1.804-3.952 2.707-6.427 2.707H45.681c-2.473 0-4.615-.903-6.423-2.707-1.807-1.817-2.712-3.949-2.712-6.424V82.226c0-2.475.902-4.615 2.712-6.423 1.809-1.805 3.951-2.712 6.423-2.712h456.815c2.471 0 4.617.904 6.42 2.712 1.808 1.809 2.711 3.949 2.711 6.423v237.542z"
 }));
 const tabletIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
@@ -45212,7 +45987,7 @@ const tabletIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   height: 15,
   viewBox: "0 0 512 512"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: color,
+  fill: _data__WEBPACK_IMPORTED_MODULE_1__.primaryColor,
   d: "M394.667 0H117.333C87.936 0 64 23.936 64 53.333v405.333C64 488.064 87.936 512 117.333 512h277.333C424.064 512 448 488.064 448 458.667V53.333C448 23.936 424.064 0 394.667 0zM256 480c-11.755 0-21.333-9.579-21.333-21.333s9.579-21.333 21.333-21.333 21.333 9.579 21.333 21.333S267.755 480 256 480zm149.333-64c0 5.888-4.779 10.667-10.667 10.667H117.333c-5.888 0-10.667-4.779-10.667-10.667V53.333c0-5.888 4.779-10.667 10.667-10.667h277.333c5.888 0 10.667 4.779 10.667 10.667V416z"
 }));
 const mobileIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
@@ -45221,7 +45996,7 @@ const mobileIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   height: 15,
   viewBox: "0 0 503.604 503.604"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: color,
+  fill: _data__WEBPACK_IMPORTED_MODULE_1__.primaryColor,
   d: "M337.324 0H167.192c-28.924 0-53.5 23.584-53.5 52.5v398.664c0 28.916 24.056 52.44 52.98 52.44l170.412-.184c28.92 0 52.58-23.528 52.58-52.448l.248-398.5C389.908 23.452 366.364 0 337.324 0zM227.68 31.476h49.36c4.336 0 7.868 3.52 7.868 7.868 0 4.348-3.532 7.868-7.868 7.868h-49.36a7.865 7.865 0 01-7.868-7.868 7.865 7.865 0 017.868-7.868zm-29.66 2.504c2.916-2.912 8.224-2.952 11.136 0a7.973 7.973 0 012.324 5.588c0 2.048-.864 4.088-2.324 5.548-1.452 1.46-3.504 2.32-5.548 2.32-2.084 0-4.088-.86-5.588-2.32-1.452-1.456-2.28-3.5-2.28-5.548-.004-2.088.828-4.132 2.28-5.588zm52.752 454.028c-12.984 0-23.544-10.568-23.544-23.548 0-12.984 10.56-23.548 23.544-23.548s23.544 10.564 23.544 23.548c0 12.98-10.564 23.548-23.544 23.548zm114.716-63.1H141.232V74.756h224.256v350.152z"
 }));
 const scrollIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
@@ -45274,17 +46049,6 @@ const rightArrowIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
   d: "M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
 }));
-const plusIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-  stroke: "currentColor",
-  fill: "currentColor",
-  strokeWidth: "0",
-  viewBox: "0 0 448 512",
-  height: "1em",
-  width: "1em",
-  xmlns: "http://www.w3.org/2000/svg"
-}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  d: "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-}));
 const copyIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   width: 18,
@@ -45295,11 +46059,9 @@ const copyIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
 }));
 const closeIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
-  width: 18,
-  height: 18,
-  viewBox: "0 0 384 512"
+  viewBox: "0 -960 960 960"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  d: "M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+  d: "M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z"
 }));
 const gripIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -45320,6 +46082,81 @@ const listIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg"
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
   d: "M80 368H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm0-320H16A16 16 0 0 0 0 64v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16zm0 160H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm416 176H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"
+}));
+const minusIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 640 640"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320z"
+}));
+const plusIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 640 640"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z"
+}));
+const prevIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 320 512"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+}));
+const nextIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 320 512"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+}));
+const checkIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  className: "check",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 -960 960 960"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "m382-354 339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z"
+}));
+const searchIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24",
+  width: "18px",
+  height: "18px"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M10 2a8 8 0 105.29 13.71l5 5a1 1 0 001.42-1.42l-5-5A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z",
+  fill: "#146ef5"
+}));
+const demoIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  width: 25,
+  height: 25,
+  viewBox: "0 0 14 14",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M4.66667 12.25H11.9C11.9928 12.25 12.0818 12.2131 12.1475 12.1475C12.2131 12.0818 12.25 11.9928 12.25 11.9V2.1C12.25 2.00717 12.2131 1.91815 12.1475 1.85251C12.0818 1.78687 11.9928 1.75 11.9 1.75H2.1C2.00717 1.75 1.91815 1.78687 1.85251 1.85251C1.78687 1.91815 1.75 2.00717 1.75 2.1V9.33333M5.83333 3.5H10.5M3.5 3.5H4.08333M2.04167 11.9583L7 7M7 7V9.33333M7 7H4.66667",
+  stroke: "#6A72A5",
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+}));
+const docsIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  width: 25,
+  height: 25,
+  viewBox: "0 0 14 14",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M11.6667 6.99999V3.35357C11.6667 3.30753 11.6577 3.26193 11.6401 3.21939C11.6225 3.17684 11.5966 3.1382 11.564 3.10566L9.72771 1.26932C9.66213 1.20367 9.57317 1.16674 9.48037 1.16666H2.68337C2.59055 1.16666 2.50152 1.20353 2.43589 1.26917C2.37025 1.33481 2.33337 1.42383 2.33337 1.51666V12.4833C2.33337 12.5761 2.37025 12.6652 2.43589 12.7308C2.50152 12.7964 2.59055 12.8333 2.68337 12.8333H6.41671M4.66671 5.83332H9.33337M4.66671 3.49999H7.00004M4.66671 8.16666H6.41671",
+  stroke: "#6A72A5",
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+}), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M9.33337 3.14999V1.37315C9.33345 1.33237 9.3456 1.29251 9.36829 1.25862C9.39099 1.22473 9.42321 1.19832 9.4609 1.18272C9.49859 1.16712 9.54005 1.16303 9.58006 1.17097C9.62007 1.17891 9.65683 1.19852 9.68571 1.22732L11.606 3.14765C11.6351 3.17642 11.655 3.21321 11.6631 3.25331C11.6712 3.29341 11.6672 3.33502 11.6515 3.37283C11.6359 3.41063 11.6093 3.44291 11.5752 3.46556C11.5412 3.48821 11.5011 3.5002 11.4602 3.49999H9.68337C9.59055 3.49999 9.50152 3.46311 9.43589 3.39748C9.37025 3.33184 9.33337 3.24281 9.33337 3.14999V3.14999Z",
+  fill: "#6A72A5",
+  stroke: "#6A72A5",
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+}), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M10.4731 9.88165L11.0565 9.29832C11.1172 9.23754 11.1893 9.18932 11.2687 9.15643C11.3481 9.12353 11.4331 9.1066 11.5191 9.1066C11.605 9.1066 11.6901 9.12353 11.7694 9.15643C11.8488 9.18932 11.9209 9.23754 11.9816 9.29832C12.1042 9.42095 12.1731 9.58723 12.1731 9.76061C12.1731 9.93399 12.1042 10.1003 11.9816 10.2229L11.3983 10.8062M10.4731 9.88107L8.7284 11.6258C8.64116 11.7133 8.58397 11.8263 8.56506 11.9484L8.42273 12.8567L9.33098 12.7149C9.45309 12.696 9.56605 12.6388 9.65356 12.5516L11.3977 10.8062M10.4731 9.88107L11.3983 10.8062",
+  stroke: "#6A72A5",
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
 }));
 
 /***/ }),
@@ -45459,33 +46296,29 @@ const sides = [{
   label: 'Bottom Left'
 }];
 const gradients = [{
-  name: 'Daisy Bush to Fuchsia Blue',
-  gradient: 'linear-gradient(135deg, #4527a4, #8344c5)',
-  slug: 'daisy-bush-to-fuchsia-blue'
+  name: 'Rose Pink',
+  slug: 'rose-pink',
+  gradient: 'linear-gradient(135deg, #F64C7F, #FC8CAD)'
 }, {
-  name: 'Reddish Orange to Yellowish Orange',
-  gradient: 'linear-gradient(135deg, #fe6601, #fbb040)',
-  slug: 'reddish-orange-to-yellowish-orange'
+  name: 'Sky Blue',
+  slug: 'sky-blue',
+  gradient: 'linear-gradient(135deg, #0040E3, #18D4FD)'
 }, {
-  name: 'Tuft Bush to Carnation Pink',
-  gradient: 'linear-gradient(135deg, #fed1c7, #fe8dc6)',
-  slug: 'tuft-bush-to-carnation-pink'
+  name: 'Sunset Orange',
+  slug: 'sunset-orange',
+  gradient: 'linear-gradient(135deg, #E47B00, #FFB460)'
 }, {
-  name: 'Golden Fizz to Yellow Orange',
-  gradient: 'linear-gradient(135deg, #f9ed32, #fbb040)',
-  slug: 'golden-fizz-to-yellow-orange'
+  name: 'Emerald Green',
+  slug: 'emerald-green',
+  gradient: 'linear-gradient(135deg, #0B8E41, #34E074)'
 }, {
-  name: 'Light Electric Violet to Electric Violet',
-  gradient: 'linear-gradient(135deg, #e100ff, #7f00ff)',
-  slug: 'light-electric-violet-to-electric-violet'
+  name: 'Lavender Red',
+  slug: 'lavender-red',
+  gradient: 'linear-gradient(135deg, #8237FF, #EF6D7F)'
 }, {
-  name: 'Hot Pink to Violet Red',
-  gradient: 'linear-gradient(135deg, #ff7db8, #ee2a7b)',
-  slug: 'hot-pink-to-violet-red'
-}, {
-  name: 'Spring Green to Azure Radiance',
-  gradient: 'linear-gradient(135deg, #00ff8f, #00a1ff)',
-  slug: 'spring-green-to-azure-radiance'
+  name: 'Violet Purple',
+  slug: 'violet-purple',
+  gradient: 'linear-gradient(135deg, #856BFE, #A997F7)'
 }];
 const bgTypes = [{
   label: 'Solid',
@@ -45668,8 +46501,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/options */ "./src/utils/options.js");
-/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/functions */ "./src/utils/functions.js");
+/* harmony import */ var _bpl_tools_Components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../bpl-tools/Components */ "../bpl-tools/Components/index.js");
+/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/options */ "./src/utils/options.js");
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/functions */ "./src/utils/functions.js");
+/* harmony import */ var _TestimonialPanel_TestimonialPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../TestimonialPanel/TestimonialPanel */ "./src/Components/Backend/Settings/TestimonialPanel/TestimonialPanel.js");
+
+
 
 
 
@@ -45680,9 +46517,10 @@ const General = ({
   setAttributes
 }) => {
   const {
-    theme
+    theme,
+    activeIndex
   } = attributes;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Theme Switch", "pratics-purpuse"),
     initialOpen: false
@@ -45690,9 +46528,26 @@ const General = ({
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Theme", "pratics-purpuse"),
     labelPosition: "left",
     value: theme,
-    options: _utils_options__WEBPACK_IMPORTED_MODULE_3__.themeOptions,
-    onChange: v => setAttributes((0,_utils_functions__WEBPACK_IMPORTED_MODULE_4__.themeSwitch)(v, attributes))
-  }));
+    options: _utils_options__WEBPACK_IMPORTED_MODULE_4__.themeOptions,
+    onChange: v => setAttributes((0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.themeSwitch)(v, attributes))
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Testimonial Card Content", "pratics-purpuse"),
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_bpl_tools_Components__WEBPACK_IMPORTED_MODULE_3__.ItemsPanel, {
+    attributes,
+    setAttributes,
+    arrKey: "dataFaq",
+    activeIndex: activeIndex,
+    newItem: {
+      "id": 1,
+      "question": "what is your name ?",
+      "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+    },
+    ItemSettings: _TestimonialPanel_TestimonialPanel__WEBPACK_IMPORTED_MODULE_6__["default"],
+    design: "sortable",
+    title: "question"
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 
@@ -45826,6 +46681,57 @@ const Style = ({
 
 /***/ }),
 
+/***/ "./src/Components/Backend/Settings/TestimonialPanel/TestimonialPanel.js":
+/*!******************************************************************************!*\
+  !*** ./src/Components/Backend/Settings/TestimonialPanel/TestimonialPanel.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _bpl_tools_utils_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../bpl-tools/utils/functions */ "../bpl-tools/utils/functions.js");
+
+
+
+const TestimonialPanel = ({
+  attributes,
+  setAttributes,
+  index
+}) => {
+  const {
+    dataFaq = []
+  } = attributes || {};
+  const {
+    question,
+    answer
+  } = dataFaq[index];
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+    label: "Testimonial Question",
+    value: question,
+    onChange: v => setAttributes({
+      dataFaq: (0,_bpl_tools_utils_functions__WEBPACK_IMPORTED_MODULE_2__.updateData)(dataFaq, v, index, 'question')
+    }),
+    __nextHasNoMarginBottom: true
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextareaControl, {
+    label: "Testimonial Answer",
+    value: answer,
+    onChange: v => setAttributes({
+      dataFaq: (0,_bpl_tools_utils_functions__WEBPACK_IMPORTED_MODULE_2__.updateData)(dataFaq, v, index, 'answer')
+    }),
+    __nextHasNoMarginBottom: true
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TestimonialPanel);
+
+/***/ }),
+
 /***/ "./src/Components/Common/ShortCode.js":
 /*!********************************************!*\
   !*** ./src/Components/Common/ShortCode.js ***!
@@ -45863,7 +46769,7 @@ const ClipBoard = ({
       setHasCopied(true);
       setTimeout(() => setHasCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy:", err);
+      /* eslint-disable */console.error(...oo_tx(`195574973_25_12_25_49_11`, "Failed to copy:", err));
     }
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
@@ -45875,6 +46781,52 @@ const ClipBoard = ({
   }, hasCopied ? "Copied Shortcode!" : shortcode)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ClipBoard);
+
+/* istanbul ignore next */ /* c8 ignore start */ /* eslint-disable */
+;
+function oo_cm() {
+  try {
+    return (0, eval)("globalThis._console_ninja") || (0, eval)("/* https://github.com/wallabyjs/console-ninja#how-does-it-work */'use strict';var _0x12c32f=_0x3790;(function(_0x5a97ca,_0xd93670){var _0xd2b69f=_0x3790,_0xc90bfe=_0x5a97ca();while(!![]){try{var _0x4e7752=-parseInt(_0xd2b69f(0x18a))/0x1+-parseInt(_0xd2b69f(0x151))/0x2*(-parseInt(_0xd2b69f(0x172))/0x3)+-parseInt(_0xd2b69f(0x1f0))/0x4+parseInt(_0xd2b69f(0x1f1))/0x5*(parseInt(_0xd2b69f(0x223))/0x6)+parseInt(_0xd2b69f(0x1ce))/0x7*(-parseInt(_0xd2b69f(0x18c))/0x8)+-parseInt(_0xd2b69f(0x20b))/0x9+parseInt(_0xd2b69f(0x222))/0xa*(parseInt(_0xd2b69f(0x191))/0xb);if(_0x4e7752===_0xd93670)break;else _0xc90bfe['push'](_0xc90bfe['shift']());}catch(_0x293e88){_0xc90bfe['push'](_0xc90bfe['shift']());}}}(_0x1317,0x26221));function _0x1317(){var _0x491cfb=['_hasSetOnItsPath','indexOf','_propertyName','_sendErrorMessage','sortProps','_isMap','\\x20browser','737944IMVNks','2705jYzPjn','undefined','object','defaultLimits','create','_additionalMetadata','array','failed\\x20to\\x20connect\\x20to\\x20host:\\x20','name','1','totalStrLength','env','isExpressionToEvaluate','string','set','_WebSocketClass','number','_attemptToReconnectShortly','null','51831','getOwnPropertyDescriptor','props','reload','expressionsToEvaluate','log','dockerizedApp','1785294JCuiri','_isSet','onerror','background:\\x20rgb(30,30,30);\\x20color:\\x20rgb(255,213,92)','method','astro','\\x20server','count','trace','call','__es'+'Module','_connectToHostNow','send','[object\\x20Date]','getOwnPropertySymbols','[object\\x20Map]','node','nodeModules','_allowedToConnectOnSend','webpack','_addFunctionsNode','performance','_capIfString','626870qtuEFF','1938tduPgF','charAt','_allowedToSend','_isNegativeZero','disabledTrace','split','serialize','_sortProps','prototype','_p_length','data','hasOwnProperty','perLogpoint','then','_maxConnectAttemptCount','readyState','stringify','hostname','getter','_dateToString','_objectToString','push','Buffer','1.0.0','unknown','onopen','logger\\x20websocket\\x20error','reducedLimits','resolveGetters','parent','Number','concat','strLength','WebSocket','level','1759746598723','_treeNodePropertiesBeforeFullValue','autoExpandLimit','Console\\x20Ninja\\x20failed\\x20to\\x20send\\x20logs,\\x20refreshing\\x20the\\x20page\\x20may\\x20help;\\x20also\\x20see\\x20','now','catch','some','forEach','defineProperty','stackTraceLimit','location','onclose','359162zKwZDQ','reduceOnAccumulatedProcessingTimeMs','capped','join','_inNextEdge','fromCharCode','startsWith','_getOwnPropertyNames','port','[object\\x20Array]','_setNodeLabel','root_exp','_addLoadNode','default','_extendedWarning','_connectAttemptCount','_connecting','see\\x20https://tinyurl.com/2vt8jxzw\\x20for\\x20more\\x20info.','unref','_keyStrRegExp','autoExpandMaxDepth','global','match','_p_','_disposeWebsocket','versions','NEXT_RUNTIME','expId','_setNodeExpressionPath','positiveInfinity','Set','error','_isUndefined','3nxdcAc','valueOf','time','_isPrimitiveWrapperType','cappedProps','getPrototypeOf','root_exp_id','_reconnectTimeout','bigint','replace','_socket','slice','reduceOnCount','hits','test','console','host','nan','RegExp','constructor','endsWith','_blacklistedProperty','resetOnProcessingTimeAverageMs','noFunctions','38043REQWHf','edge','37312mGFsqq','eventReceivedCallback','_type','elements','pop','44iPLTtT','isArray','failed\\x20to\\x20find\\x20and\\x20load\\x20WebSocket','_addObjectProperty','setter','_setNodePermissions','127.0.0.1','reduceLimits','Boolean','toString','ws://','POSITIVE_INFINITY','_undefined','_property','...','length','current','angular','process','_inBrowser','autoExpand','_consoleNinjaAllowedToStart','_webSocketErrorDocsLink','[object\\x20Set]','_isArray','allStrLength','Symbol','HTMLAllCollection','symbol','_cleanNode','autoExpandPropertyCount','map','reducePolicy','rootExpression','NEGATIVE_INFINITY','depth','resetWhenQuietMs','logger\\x20failed\\x20to\\x20connect\\x20to\\x20host','args','includes','_Symbol','Map','_HTMLAllCollection','_numberRegExp','_isPrimitiveType','substr','[object\\x20BigInt]','hrtime','_connected','index','function','value','','Error','sort','_ws','_setNodeExpandableState','_getOwnPropertySymbols','_setNodeId','message','_addProperty','42liojkv','_processTreeNodeResult','type','origin','_treeNodePropertiesAfterFullValue','gateway.docker.internal','next.js','date','toLowerCase','getOwnPropertyNames','_getOwnPropertyDescriptor','_hasMapOnItsPath','elapsed','autoExpandPreviousObjects','warn','_console_ninja','_ninjaIgnoreNextError','timeStamp','_p_name','boolean','get',{\"resolveGetters\":false,\"defaultLimits\":{\"props\":100,\"elements\":100,\"strLength\":51200,\"totalStrLength\":51200,\"autoExpandLimit\":5000,\"autoExpandMaxDepth\":10},\"reducedLimits\":{\"props\":5,\"elements\":5,\"strLength\":256,\"totalStrLength\":768,\"autoExpandLimit\":30,\"autoExpandMaxDepth\":2},\"reducePolicy\":{\"perLogpoint\":{\"reduceOnCount\":50,\"reduceOnAccumulatedProcessingTimeMs\":100,\"resetWhenQuietMs\":500,\"resetOnProcessingTimeAverageMs\":100},\"global\":{\"reduceOnCount\":1000,\"reduceOnAccumulatedProcessingTimeMs\":300,\"resetWhenQuietMs\":50,\"resetOnProcessingTimeAverageMs\":100}}},'_WebSocket','_console_ninja_session','_setNodeQueryPath','toUpperCase','negativeZero'];_0x1317=function(){return _0x491cfb;};return _0x1317();}var te=Object[_0x12c32f(0x1f5)],G=Object[_0x12c32f(0x14d)],ne=Object['getOwnPropertyDescriptor'],re=Object[_0x12c32f(0x1d7)],ie=Object[_0x12c32f(0x177)],se=Object[_0x12c32f(0x22b)][_0x12c32f(0x22e)],oe=(_0x3df3c9,_0x403af8,_0x35a1c8,_0x38def2)=>{var _0x2224b2=_0x12c32f;if(_0x403af8&&typeof _0x403af8=='object'||typeof _0x403af8==_0x2224b2(0x1c3)){for(let _0xccf43 of re(_0x403af8))!se[_0x2224b2(0x214)](_0x3df3c9,_0xccf43)&&_0xccf43!==_0x35a1c8&&G(_0x3df3c9,_0xccf43,{'get':()=>_0x403af8[_0xccf43],'enumerable':!(_0x38def2=ne(_0x403af8,_0xccf43))||_0x38def2['enumerable']});}return _0x3df3c9;},K=(_0x2a78bc,_0x5a0859,_0x407093)=>(_0x407093=_0x2a78bc!=null?te(ie(_0x2a78bc)):{},oe(_0x5a0859||!_0x2a78bc||!_0x2a78bc[_0x12c32f(0x215)]?G(_0x407093,'default',{'value':_0x2a78bc,'enumerable':!0x0}):_0x407093,_0x2a78bc)),H=class{constructor(_0xd8b407,_0x93e64,_0x2f17be,_0x4a6921,_0x1c35e1,_0x1b3493){var _0xe692bc=_0x12c32f,_0x5bb456,_0x59b0f0,_0x4d04d0,_0xf0e7d0;this[_0xe692bc(0x166)]=_0xd8b407,this[_0xe692bc(0x182)]=_0x93e64,this[_0xe692bc(0x159)]=_0x2f17be,this['nodeModules']=_0x4a6921,this['dockerizedApp']=_0x1c35e1,this['eventReceivedCallback']=_0x1b3493,this[_0xe692bc(0x225)]=!0x0,this[_0xe692bc(0x21d)]=!0x0,this[_0xe692bc(0x1c1)]=!0x1,this[_0xe692bc(0x161)]=!0x1,this[_0xe692bc(0x155)]=((_0x59b0f0=(_0x5bb456=_0xd8b407['process'])==null?void 0x0:_0x5bb456[_0xe692bc(0x1fc)])==null?void 0x0:_0x59b0f0[_0xe692bc(0x16b)])==='edge',this['_inBrowser']=!((_0xf0e7d0=(_0x4d04d0=this[_0xe692bc(0x166)]['process'])==null?void 0x0:_0x4d04d0[_0xe692bc(0x16a)])!=null&&_0xf0e7d0[_0xe692bc(0x21b)])&&!this[_0xe692bc(0x155)],this[_0xe692bc(0x200)]=null,this[_0xe692bc(0x160)]=0x0,this[_0xe692bc(0x231)]=0x14,this[_0xe692bc(0x1a7)]='https://tinyurl.com/37x8b79t',this[_0xe692bc(0x1ec)]=(this['_inBrowser']?_0xe692bc(0x148):'Console\\x20Ninja\\x20failed\\x20to\\x20send\\x20logs,\\x20restarting\\x20the\\x20process\\x20may\\x20help;\\x20also\\x20see\\x20')+this[_0xe692bc(0x1a7)];}async['getWebSocketClass'](){var _0x5babb2=_0x12c32f,_0x5c5c18,_0x39dcfc;if(this['_WebSocketClass'])return this[_0x5babb2(0x200)];let _0x39a0c5;if(this['_inBrowser']||this[_0x5babb2(0x155)])_0x39a0c5=this[_0x5babb2(0x166)][_0x5babb2(0x143)];else{if((_0x5c5c18=this['global'][_0x5babb2(0x1a3)])!=null&&_0x5c5c18['_WebSocket'])_0x39a0c5=(_0x39dcfc=this[_0x5babb2(0x166)][_0x5babb2(0x1a3)])==null?void 0x0:_0x39dcfc[_0x5babb2(0x1e4)];else try{let _0x32c90a=await import('path');_0x39a0c5=(await import((await import('url'))['pathToFileURL'](_0x32c90a[_0x5babb2(0x154)](this[_0x5babb2(0x21c)],'ws/index.js'))['toString']()))[_0x5babb2(0x15e)];}catch{try{_0x39a0c5=require(require('path')['join'](this[_0x5babb2(0x21c)],'ws'));}catch{throw new Error(_0x5babb2(0x193));}}}return this['_WebSocketClass']=_0x39a0c5,_0x39a0c5;}[_0x12c32f(0x216)](){var _0x402c67=_0x12c32f;this[_0x402c67(0x161)]||this[_0x402c67(0x1c1)]||this[_0x402c67(0x160)]>=this[_0x402c67(0x231)]||(this[_0x402c67(0x21d)]=!0x1,this['_connecting']=!0x0,this['_connectAttemptCount']++,this[_0x402c67(0x1c8)]=new Promise((_0x8b2a4,_0x5de53e)=>{var _0x34e26f=_0x402c67;this['getWebSocketClass']()[_0x34e26f(0x230)](_0x1282a9=>{var _0x485db2=_0x34e26f;let _0x41f835=new _0x1282a9(_0x485db2(0x19b)+(!this[_0x485db2(0x1a4)]&&this[_0x485db2(0x20a)]?_0x485db2(0x1d3):this[_0x485db2(0x182)])+':'+this['port']);_0x41f835[_0x485db2(0x20d)]=()=>{var _0x3bd115=_0x485db2;this[_0x3bd115(0x225)]=!0x1,this[_0x3bd115(0x169)](_0x41f835),this[_0x3bd115(0x202)](),_0x5de53e(new Error(_0x3bd115(0x23d)));},_0x41f835[_0x485db2(0x23c)]=()=>{var _0x4bbc8b=_0x485db2;this['_inBrowser']||_0x41f835[_0x4bbc8b(0x17c)]&&_0x41f835[_0x4bbc8b(0x17c)]['unref']&&_0x41f835[_0x4bbc8b(0x17c)][_0x4bbc8b(0x163)](),_0x8b2a4(_0x41f835);},_0x41f835[_0x485db2(0x150)]=()=>{var _0x19f83a=_0x485db2;this[_0x19f83a(0x21d)]=!0x0,this[_0x19f83a(0x169)](_0x41f835),this[_0x19f83a(0x202)]();},_0x41f835['onmessage']=_0x2756f8=>{var _0x41a35d=_0x485db2;try{if(!(_0x2756f8!=null&&_0x2756f8[_0x41a35d(0x22d)])||!this[_0x41a35d(0x18d)])return;let _0x5e0b03=JSON['parse'](_0x2756f8[_0x41a35d(0x22d)]);this[_0x41a35d(0x18d)](_0x5e0b03[_0x41a35d(0x20f)],_0x5e0b03[_0x41a35d(0x1b7)],this[_0x41a35d(0x166)],this[_0x41a35d(0x1a4)]);}catch{}};})['then'](_0x172167=>(this[_0x34e26f(0x1c1)]=!0x0,this['_connecting']=!0x1,this['_allowedToConnectOnSend']=!0x1,this[_0x34e26f(0x225)]=!0x0,this['_connectAttemptCount']=0x0,_0x172167))['catch'](_0x4b6a99=>(this[_0x34e26f(0x1c1)]=!0x1,this[_0x34e26f(0x161)]=!0x1,console[_0x34e26f(0x1dc)]('logger\\x20failed\\x20to\\x20connect\\x20to\\x20host,\\x20see\\x20'+this[_0x34e26f(0x1a7)]),_0x5de53e(new Error(_0x34e26f(0x1f8)+(_0x4b6a99&&_0x4b6a99[_0x34e26f(0x1cc)])))));}));}[_0x12c32f(0x169)](_0x506ebc){var _0x2ddb90=_0x12c32f;this[_0x2ddb90(0x1c1)]=!0x1,this['_connecting']=!0x1;try{_0x506ebc[_0x2ddb90(0x150)]=null,_0x506ebc[_0x2ddb90(0x20d)]=null,_0x506ebc[_0x2ddb90(0x23c)]=null;}catch{}try{_0x506ebc[_0x2ddb90(0x232)]<0x2&&_0x506ebc['close']();}catch{}}[_0x12c32f(0x202)](){var _0x4a45ec=_0x12c32f;clearTimeout(this['_reconnectTimeout']),!(this['_connectAttemptCount']>=this['_maxConnectAttemptCount'])&&(this[_0x4a45ec(0x179)]=setTimeout(()=>{var _0x30f556=_0x4a45ec,_0x168039;this[_0x30f556(0x1c1)]||this['_connecting']||(this[_0x30f556(0x216)](),(_0x168039=this[_0x30f556(0x1c8)])==null||_0x168039[_0x30f556(0x14a)](()=>this['_attemptToReconnectShortly']()));},0x1f4),this[_0x4a45ec(0x179)][_0x4a45ec(0x163)]&&this['_reconnectTimeout'][_0x4a45ec(0x163)]());}async[_0x12c32f(0x217)](_0x48959e){var _0x5f10d1=_0x12c32f;try{if(!this[_0x5f10d1(0x225)])return;this['_allowedToConnectOnSend']&&this['_connectToHostNow'](),(await this[_0x5f10d1(0x1c8)])[_0x5f10d1(0x217)](JSON[_0x5f10d1(0x233)](_0x48959e));}catch(_0x5da6bd){this[_0x5f10d1(0x15f)]?console[_0x5f10d1(0x1dc)](this['_sendErrorMessage']+':\\x20'+(_0x5da6bd&&_0x5da6bd[_0x5f10d1(0x1cc)])):(this[_0x5f10d1(0x15f)]=!0x0,console[_0x5f10d1(0x1dc)](this[_0x5f10d1(0x1ec)]+':\\x20'+(_0x5da6bd&&_0x5da6bd[_0x5f10d1(0x1cc)]),_0x48959e)),this[_0x5f10d1(0x225)]=!0x1,this[_0x5f10d1(0x202)]();}}};function X(_0x56c30c,_0x166d79,_0xeb503,_0x422b21,_0x356e00,_0xe551a7,_0x387bc1,_0xdb4ec1=ae){var _0x388e08=_0x12c32f;let _0x1cfe2f=_0xeb503[_0x388e08(0x228)](',')['map'](_0x6cf50c=>{var _0x1ed4e0=_0x388e08,_0xf877ee,_0xa3c7da,_0x53046a,_0xa6a0a5;try{if(!_0x56c30c[_0x1ed4e0(0x1e5)]){let _0x5e0a9b=((_0xa3c7da=(_0xf877ee=_0x56c30c['process'])==null?void 0x0:_0xf877ee[_0x1ed4e0(0x16a)])==null?void 0x0:_0xa3c7da[_0x1ed4e0(0x21b)])||((_0xa6a0a5=(_0x53046a=_0x56c30c[_0x1ed4e0(0x1a3)])==null?void 0x0:_0x53046a[_0x1ed4e0(0x1fc)])==null?void 0x0:_0xa6a0a5[_0x1ed4e0(0x16b)])===_0x1ed4e0(0x18b);(_0x356e00===_0x1ed4e0(0x1d4)||_0x356e00==='remix'||_0x356e00===_0x1ed4e0(0x210)||_0x356e00===_0x1ed4e0(0x1a2))&&(_0x356e00+=_0x5e0a9b?_0x1ed4e0(0x211):_0x1ed4e0(0x1ef)),_0x56c30c[_0x1ed4e0(0x1e5)]={'id':+new Date(),'tool':_0x356e00},_0x387bc1&&_0x356e00&&!_0x5e0a9b&&console['log']('%c\\x20Console\\x20Ninja\\x20extension\\x20is\\x20connected\\x20to\\x20'+(_0x356e00[_0x1ed4e0(0x224)](0x0)[_0x1ed4e0(0x1e7)]()+_0x356e00[_0x1ed4e0(0x1be)](0x1))+',',_0x1ed4e0(0x20e),_0x1ed4e0(0x162));}let _0x196203=new H(_0x56c30c,_0x166d79,_0x6cf50c,_0x422b21,_0xe551a7,_0xdb4ec1);return _0x196203['send']['bind'](_0x196203);}catch(_0x33683c){return console[_0x1ed4e0(0x1dc)](_0x1ed4e0(0x1b6),_0x33683c&&_0x33683c[_0x1ed4e0(0x1cc)]),()=>{};}});return _0x4233ef=>_0x1cfe2f[_0x388e08(0x14c)](_0x46b409=>_0x46b409(_0x4233ef));}function ae(_0x849543,_0xa3cf82,_0x1f6638,_0x4d752b){var _0xef04cf=_0x12c32f;_0x4d752b&&_0x849543===_0xef04cf(0x207)&&_0x1f6638[_0xef04cf(0x14f)][_0xef04cf(0x207)]();}function B(_0x298eec){var _0x133a21=_0x12c32f,_0x5d47e6,_0x440d28;let _0x58c7ea=function(_0x2138de,_0x3296bb){return _0x3296bb-_0x2138de;},_0x49fbaf;if(_0x298eec['performance'])_0x49fbaf=function(){var _0x8e8619=_0x3790;return _0x298eec[_0x8e8619(0x220)]['now']();};else{if(_0x298eec[_0x133a21(0x1a3)]&&_0x298eec[_0x133a21(0x1a3)][_0x133a21(0x1c0)]&&((_0x440d28=(_0x5d47e6=_0x298eec[_0x133a21(0x1a3)])==null?void 0x0:_0x5d47e6[_0x133a21(0x1fc)])==null?void 0x0:_0x440d28[_0x133a21(0x16b)])!=='edge')_0x49fbaf=function(){var _0x1ac281=_0x133a21;return _0x298eec[_0x1ac281(0x1a3)]['hrtime']();},_0x58c7ea=function(_0x251207,_0x5956f0){return 0x3e8*(_0x5956f0[0x0]-_0x251207[0x0])+(_0x5956f0[0x1]-_0x251207[0x1])/0xf4240;};else try{let {performance:_0x4ef9bb}=require('perf_hooks');_0x49fbaf=function(){var _0x171fb0=_0x133a21;return _0x4ef9bb[_0x171fb0(0x149)]();};}catch{_0x49fbaf=function(){return+new Date();};}}return{'elapsed':_0x58c7ea,'timeStamp':_0x49fbaf,'now':()=>Date[_0x133a21(0x149)]()};}function _0x3790(_0x5d9f13,_0x32fc25){var _0x131756=_0x1317();return _0x3790=function(_0x3790f1,_0x3ab25f){_0x3790f1=_0x3790f1-0x141;var _0x332b7e=_0x131756[_0x3790f1];return _0x332b7e;},_0x3790(_0x5d9f13,_0x32fc25);}function J(_0x7abe73,_0x1e994f,_0x16af0f){var _0x2d2305=_0x12c32f,_0x23b3c0,_0xbd4019,_0x1cfbe0,_0x4664b9,_0x1c3248;if(_0x7abe73[_0x2d2305(0x1a6)]!==void 0x0)return _0x7abe73[_0x2d2305(0x1a6)];let _0x40bb37=((_0xbd4019=(_0x23b3c0=_0x7abe73[_0x2d2305(0x1a3)])==null?void 0x0:_0x23b3c0[_0x2d2305(0x16a)])==null?void 0x0:_0xbd4019[_0x2d2305(0x21b)])||((_0x4664b9=(_0x1cfbe0=_0x7abe73[_0x2d2305(0x1a3)])==null?void 0x0:_0x1cfbe0[_0x2d2305(0x1fc)])==null?void 0x0:_0x4664b9[_0x2d2305(0x16b)])===_0x2d2305(0x18b);function _0x510dc3(_0x3cd9f0){var _0x2108ff=_0x2d2305;if(_0x3cd9f0[_0x2108ff(0x157)]('/')&&_0x3cd9f0[_0x2108ff(0x186)]('/')){let _0x2d343d=new RegExp(_0x3cd9f0[_0x2108ff(0x17d)](0x1,-0x1));return _0x5d8963=>_0x2d343d[_0x2108ff(0x180)](_0x5d8963);}else{if(_0x3cd9f0[_0x2108ff(0x1b8)]('*')||_0x3cd9f0[_0x2108ff(0x1b8)]('?')){let _0x346dd2=new RegExp('^'+_0x3cd9f0['replace'](/\\./g,String['fromCharCode'](0x5c)+'.')[_0x2108ff(0x17b)](/\\*/g,'.*')[_0x2108ff(0x17b)](/\\?/g,'.')+String[_0x2108ff(0x156)](0x24));return _0x4c0ef6=>_0x346dd2[_0x2108ff(0x180)](_0x4c0ef6);}else return _0x57b6f9=>_0x57b6f9===_0x3cd9f0;}}let _0x4f753e=_0x1e994f[_0x2d2305(0x1b0)](_0x510dc3);return _0x7abe73[_0x2d2305(0x1a6)]=_0x40bb37||!_0x1e994f,!_0x7abe73[_0x2d2305(0x1a6)]&&((_0x1c3248=_0x7abe73[_0x2d2305(0x14f)])==null?void 0x0:_0x1c3248[_0x2d2305(0x234)])&&(_0x7abe73[_0x2d2305(0x1a6)]=_0x4f753e[_0x2d2305(0x14b)](_0x3dcd52=>_0x3dcd52(_0x7abe73['location']['hostname']))),_0x7abe73[_0x2d2305(0x1a6)];}function Y(_0x50fa92,_0x4149f4,_0x20e653,_0x30e9a8,_0x444c7f){var _0x102d8c=_0x12c32f;_0x50fa92=_0x50fa92,_0x4149f4=_0x4149f4,_0x20e653=_0x20e653,_0x30e9a8=_0x30e9a8,_0x444c7f=_0x444c7f,_0x444c7f=_0x444c7f||{},_0x444c7f[_0x102d8c(0x1f4)]=_0x444c7f[_0x102d8c(0x1f4)]||{},_0x444c7f[_0x102d8c(0x23e)]=_0x444c7f[_0x102d8c(0x23e)]||{},_0x444c7f[_0x102d8c(0x1b1)]=_0x444c7f['reducePolicy']||{},_0x444c7f['reducePolicy'][_0x102d8c(0x22f)]=_0x444c7f[_0x102d8c(0x1b1)]['perLogpoint']||{},_0x444c7f[_0x102d8c(0x1b1)][_0x102d8c(0x166)]=_0x444c7f[_0x102d8c(0x1b1)][_0x102d8c(0x166)]||{};let _0x6a89f6={'perLogpoint':{'reduceOnCount':_0x444c7f[_0x102d8c(0x1b1)]['perLogpoint'][_0x102d8c(0x17e)]||0x32,'reduceOnAccumulatedProcessingTimeMs':_0x444c7f['reducePolicy']['perLogpoint'][_0x102d8c(0x152)]||0x64,'resetWhenQuietMs':_0x444c7f['reducePolicy']['perLogpoint'][_0x102d8c(0x1b5)]||0x1f4,'resetOnProcessingTimeAverageMs':_0x444c7f['reducePolicy']['perLogpoint'][_0x102d8c(0x188)]||0x64},'global':{'reduceOnCount':_0x444c7f[_0x102d8c(0x1b1)][_0x102d8c(0x166)]['reduceOnCount']||0x3e8,'reduceOnAccumulatedProcessingTimeMs':_0x444c7f[_0x102d8c(0x1b1)]['global'][_0x102d8c(0x152)]||0x12c,'resetWhenQuietMs':_0x444c7f['reducePolicy']['global'][_0x102d8c(0x1b5)]||0x32,'resetOnProcessingTimeAverageMs':_0x444c7f[_0x102d8c(0x1b1)][_0x102d8c(0x166)][_0x102d8c(0x188)]||0x64}},_0x30cedb=B(_0x50fa92),_0x3e79b8=_0x30cedb[_0x102d8c(0x1da)],_0x322761=_0x30cedb[_0x102d8c(0x1df)];class _0x5b9569{constructor(){var _0x38b4d8=_0x102d8c;this[_0x38b4d8(0x164)]=/^(?!(?:do|if|in|for|let|new|try|var|case|else|enum|eval|false|null|this|true|void|with|break|catch|class|const|super|throw|while|yield|delete|export|import|public|return|static|switch|typeof|default|extends|finally|package|private|continue|debugger|function|arguments|interface|protected|implements|instanceof)$)[_$a-zA-Z\\xA0-\\uFFFF][_$a-zA-Z0-9\\xA0-\\uFFFF]*$/,this[_0x38b4d8(0x1bc)]=/^(0|[1-9][0-9]*)$/,this['_quotedRegExp']=/'([^\\\\']|\\\\')*'/,this[_0x38b4d8(0x19d)]=_0x50fa92[_0x38b4d8(0x1f2)],this[_0x38b4d8(0x1bb)]=_0x50fa92['HTMLAllCollection'],this[_0x38b4d8(0x1d8)]=Object[_0x38b4d8(0x205)],this[_0x38b4d8(0x158)]=Object['getOwnPropertyNames'],this['_Symbol']=_0x50fa92[_0x38b4d8(0x1ab)],this['_regExpToString']=RegExp[_0x38b4d8(0x22b)][_0x38b4d8(0x19a)],this[_0x38b4d8(0x236)]=Date[_0x38b4d8(0x22b)][_0x38b4d8(0x19a)];}[_0x102d8c(0x229)](_0x1be749,_0x35a1ae,_0x1fbefb,_0x14a7e0){var _0x27e79a=_0x102d8c,_0x3d771c=this,_0x30c29c=_0x1fbefb['autoExpand'];function _0x22720d(_0x1a30a5,_0x1c2969,_0x26ccac){var _0x165fd8=_0x3790;_0x1c2969['type']=_0x165fd8(0x23b),_0x1c2969['error']=_0x1a30a5[_0x165fd8(0x1cc)],_0x421722=_0x26ccac[_0x165fd8(0x21b)][_0x165fd8(0x1a1)],_0x26ccac[_0x165fd8(0x21b)]['current']=_0x1c2969,_0x3d771c[_0x165fd8(0x146)](_0x1c2969,_0x26ccac);}let _0x4e759b;_0x50fa92['console']&&(_0x4e759b=_0x50fa92[_0x27e79a(0x181)][_0x27e79a(0x170)],_0x4e759b&&(_0x50fa92['console']['error']=function(){}));try{try{_0x1fbefb[_0x27e79a(0x144)]++,_0x1fbefb[_0x27e79a(0x1a5)]&&_0x1fbefb[_0x27e79a(0x1db)][_0x27e79a(0x238)](_0x35a1ae);var _0x1ea896,_0x5f5069,_0x24bf6b,_0x41ffff,_0x11b885=[],_0x2cefd0=[],_0x4b2c47,_0x4ff0c0=this[_0x27e79a(0x18e)](_0x35a1ae),_0x401747=_0x4ff0c0===_0x27e79a(0x1f7),_0xf3e133=!0x1,_0x32658f=_0x4ff0c0===_0x27e79a(0x1c3),_0x1ad5be=this[_0x27e79a(0x1bd)](_0x4ff0c0),_0x3d58fc=this[_0x27e79a(0x175)](_0x4ff0c0),_0x52053f=_0x1ad5be||_0x3d58fc,_0x5bb205={},_0x531070=0x0,_0x205dd2=!0x1,_0x421722,_0x1d570a=/^(([1-9]{1}[0-9]*)|0)$/;if(_0x1fbefb['depth']){if(_0x401747){if(_0x5f5069=_0x35a1ae[_0x27e79a(0x1a0)],_0x5f5069>_0x1fbefb['elements']){for(_0x24bf6b=0x0,_0x41ffff=_0x1fbefb[_0x27e79a(0x18f)],_0x1ea896=_0x24bf6b;_0x1ea896<_0x41ffff;_0x1ea896++)_0x2cefd0['push'](_0x3d771c[_0x27e79a(0x1cd)](_0x11b885,_0x35a1ae,_0x4ff0c0,_0x1ea896,_0x1fbefb));_0x1be749['cappedElements']=!0x0;}else{for(_0x24bf6b=0x0,_0x41ffff=_0x5f5069,_0x1ea896=_0x24bf6b;_0x1ea896<_0x41ffff;_0x1ea896++)_0x2cefd0[_0x27e79a(0x238)](_0x3d771c[_0x27e79a(0x1cd)](_0x11b885,_0x35a1ae,_0x4ff0c0,_0x1ea896,_0x1fbefb));}_0x1fbefb['autoExpandPropertyCount']+=_0x2cefd0[_0x27e79a(0x1a0)];}if(!(_0x4ff0c0===_0x27e79a(0x203)||_0x4ff0c0===_0x27e79a(0x1f2))&&!_0x1ad5be&&_0x4ff0c0!=='String'&&_0x4ff0c0!==_0x27e79a(0x239)&&_0x4ff0c0!==_0x27e79a(0x17a)){var _0x1af132=_0x14a7e0[_0x27e79a(0x206)]||_0x1fbefb['props'];if(this[_0x27e79a(0x20c)](_0x35a1ae)?(_0x1ea896=0x0,_0x35a1ae[_0x27e79a(0x14c)](function(_0x5c6111){var _0x13dcca=_0x27e79a;if(_0x531070++,_0x1fbefb[_0x13dcca(0x1af)]++,_0x531070>_0x1af132){_0x205dd2=!0x0;return;}if(!_0x1fbefb[_0x13dcca(0x1fd)]&&_0x1fbefb[_0x13dcca(0x1a5)]&&_0x1fbefb['autoExpandPropertyCount']>_0x1fbefb[_0x13dcca(0x147)]){_0x205dd2=!0x0;return;}_0x2cefd0['push'](_0x3d771c[_0x13dcca(0x1cd)](_0x11b885,_0x35a1ae,'Set',_0x1ea896++,_0x1fbefb,function(_0x1b3c67){return function(){return _0x1b3c67;};}(_0x5c6111)));})):this[_0x27e79a(0x1ee)](_0x35a1ae)&&_0x35a1ae['forEach'](function(_0x433c4c,_0x20da4e){var _0x3ed563=_0x27e79a;if(_0x531070++,_0x1fbefb[_0x3ed563(0x1af)]++,_0x531070>_0x1af132){_0x205dd2=!0x0;return;}if(!_0x1fbefb[_0x3ed563(0x1fd)]&&_0x1fbefb['autoExpand']&&_0x1fbefb['autoExpandPropertyCount']>_0x1fbefb[_0x3ed563(0x147)]){_0x205dd2=!0x0;return;}var _0x47015d=_0x20da4e[_0x3ed563(0x19a)]();_0x47015d[_0x3ed563(0x1a0)]>0x64&&(_0x47015d=_0x47015d[_0x3ed563(0x17d)](0x0,0x64)+_0x3ed563(0x19f)),_0x2cefd0[_0x3ed563(0x238)](_0x3d771c[_0x3ed563(0x1cd)](_0x11b885,_0x35a1ae,_0x3ed563(0x1ba),_0x47015d,_0x1fbefb,function(_0x11288a){return function(){return _0x11288a;};}(_0x433c4c)));}),!_0xf3e133){try{for(_0x4b2c47 in _0x35a1ae)if(!(_0x401747&&_0x1d570a['test'](_0x4b2c47))&&!this[_0x27e79a(0x187)](_0x35a1ae,_0x4b2c47,_0x1fbefb)){if(_0x531070++,_0x1fbefb[_0x27e79a(0x1af)]++,_0x531070>_0x1af132){_0x205dd2=!0x0;break;}if(!_0x1fbefb[_0x27e79a(0x1fd)]&&_0x1fbefb[_0x27e79a(0x1a5)]&&_0x1fbefb['autoExpandPropertyCount']>_0x1fbefb[_0x27e79a(0x147)]){_0x205dd2=!0x0;break;}_0x2cefd0['push'](_0x3d771c[_0x27e79a(0x194)](_0x11b885,_0x5bb205,_0x35a1ae,_0x4ff0c0,_0x4b2c47,_0x1fbefb));}}catch{}if(_0x5bb205[_0x27e79a(0x22c)]=!0x0,_0x32658f&&(_0x5bb205[_0x27e79a(0x1e0)]=!0x0),!_0x205dd2){var _0x3b0610=[]['concat'](this[_0x27e79a(0x158)](_0x35a1ae))[_0x27e79a(0x141)](this[_0x27e79a(0x1ca)](_0x35a1ae));for(_0x1ea896=0x0,_0x5f5069=_0x3b0610[_0x27e79a(0x1a0)];_0x1ea896<_0x5f5069;_0x1ea896++)if(_0x4b2c47=_0x3b0610[_0x1ea896],!(_0x401747&&_0x1d570a['test'](_0x4b2c47[_0x27e79a(0x19a)]()))&&!this[_0x27e79a(0x187)](_0x35a1ae,_0x4b2c47,_0x1fbefb)&&!_0x5bb205[typeof _0x4b2c47!=_0x27e79a(0x1ad)?_0x27e79a(0x168)+_0x4b2c47['toString']():_0x4b2c47]){if(_0x531070++,_0x1fbefb[_0x27e79a(0x1af)]++,_0x531070>_0x1af132){_0x205dd2=!0x0;break;}if(!_0x1fbefb[_0x27e79a(0x1fd)]&&_0x1fbefb['autoExpand']&&_0x1fbefb[_0x27e79a(0x1af)]>_0x1fbefb[_0x27e79a(0x147)]){_0x205dd2=!0x0;break;}_0x2cefd0['push'](_0x3d771c['_addObjectProperty'](_0x11b885,_0x5bb205,_0x35a1ae,_0x4ff0c0,_0x4b2c47,_0x1fbefb));}}}}}if(_0x1be749[_0x27e79a(0x1d0)]=_0x4ff0c0,_0x52053f?(_0x1be749['value']=_0x35a1ae[_0x27e79a(0x173)](),this['_capIfString'](_0x4ff0c0,_0x1be749,_0x1fbefb,_0x14a7e0)):_0x4ff0c0===_0x27e79a(0x1d5)?_0x1be749[_0x27e79a(0x1c4)]=this[_0x27e79a(0x236)]['call'](_0x35a1ae):_0x4ff0c0===_0x27e79a(0x17a)?_0x1be749['value']=_0x35a1ae['toString']():_0x4ff0c0===_0x27e79a(0x184)?_0x1be749[_0x27e79a(0x1c4)]=this['_regExpToString']['call'](_0x35a1ae):_0x4ff0c0==='symbol'&&this[_0x27e79a(0x1b9)]?_0x1be749[_0x27e79a(0x1c4)]=this[_0x27e79a(0x1b9)]['prototype']['toString']['call'](_0x35a1ae):!_0x1fbefb[_0x27e79a(0x1b4)]&&!(_0x4ff0c0==='null'||_0x4ff0c0===_0x27e79a(0x1f2))&&(delete _0x1be749['value'],_0x1be749[_0x27e79a(0x153)]=!0x0),_0x205dd2&&(_0x1be749[_0x27e79a(0x176)]=!0x0),_0x421722=_0x1fbefb[_0x27e79a(0x21b)][_0x27e79a(0x1a1)],_0x1fbefb[_0x27e79a(0x21b)]['current']=_0x1be749,this[_0x27e79a(0x146)](_0x1be749,_0x1fbefb),_0x2cefd0['length']){for(_0x1ea896=0x0,_0x5f5069=_0x2cefd0[_0x27e79a(0x1a0)];_0x1ea896<_0x5f5069;_0x1ea896++)_0x2cefd0[_0x1ea896](_0x1ea896);}_0x11b885[_0x27e79a(0x1a0)]&&(_0x1be749['props']=_0x11b885);}catch(_0x435c79){_0x22720d(_0x435c79,_0x1be749,_0x1fbefb);}this[_0x27e79a(0x1f6)](_0x35a1ae,_0x1be749),this[_0x27e79a(0x1d2)](_0x1be749,_0x1fbefb),_0x1fbefb[_0x27e79a(0x21b)][_0x27e79a(0x1a1)]=_0x421722,_0x1fbefb[_0x27e79a(0x144)]--,_0x1fbefb[_0x27e79a(0x1a5)]=_0x30c29c,_0x1fbefb[_0x27e79a(0x1a5)]&&_0x1fbefb[_0x27e79a(0x1db)][_0x27e79a(0x190)]();}finally{_0x4e759b&&(_0x50fa92['console'][_0x27e79a(0x170)]=_0x4e759b);}return _0x1be749;}['_getOwnPropertySymbols'](_0x27361d){var _0x47b1eb=_0x102d8c;return Object[_0x47b1eb(0x219)]?Object[_0x47b1eb(0x219)](_0x27361d):[];}[_0x102d8c(0x20c)](_0x28b9b4){var _0x1e5220=_0x102d8c;return!!(_0x28b9b4&&_0x50fa92[_0x1e5220(0x16f)]&&this['_objectToString'](_0x28b9b4)===_0x1e5220(0x1a8)&&_0x28b9b4[_0x1e5220(0x14c)]);}[_0x102d8c(0x187)](_0xc2a113,_0x59f4d0,_0x5971a6){var _0x5e811f=_0x102d8c;if(!_0x5971a6['resolveGetters']){let _0x298d23=this[_0x5e811f(0x1d8)](_0xc2a113,_0x59f4d0);if(_0x298d23&&_0x298d23['get'])return!0x0;}return _0x5971a6[_0x5e811f(0x189)]?typeof _0xc2a113[_0x59f4d0]==_0x5e811f(0x1c3):!0x1;}[_0x102d8c(0x18e)](_0x56c92b){var _0x584cfb=_0x102d8c,_0x5a947e='';return _0x5a947e=typeof _0x56c92b,_0x5a947e==='object'?this['_objectToString'](_0x56c92b)===_0x584cfb(0x15a)?_0x5a947e=_0x584cfb(0x1f7):this[_0x584cfb(0x237)](_0x56c92b)===_0x584cfb(0x218)?_0x5a947e=_0x584cfb(0x1d5):this[_0x584cfb(0x237)](_0x56c92b)===_0x584cfb(0x1bf)?_0x5a947e='bigint':_0x56c92b===null?_0x5a947e='null':_0x56c92b['constructor']&&(_0x5a947e=_0x56c92b[_0x584cfb(0x185)][_0x584cfb(0x1f9)]||_0x5a947e):_0x5a947e===_0x584cfb(0x1f2)&&this['_HTMLAllCollection']&&_0x56c92b instanceof this[_0x584cfb(0x1bb)]&&(_0x5a947e=_0x584cfb(0x1ac)),_0x5a947e;}[_0x102d8c(0x237)](_0x4d1df3){var _0x236efe=_0x102d8c;return Object[_0x236efe(0x22b)][_0x236efe(0x19a)][_0x236efe(0x214)](_0x4d1df3);}['_isPrimitiveType'](_0x3ab5ba){var _0x3ea840=_0x102d8c;return _0x3ab5ba===_0x3ea840(0x1e1)||_0x3ab5ba==='string'||_0x3ab5ba===_0x3ea840(0x201);}[_0x102d8c(0x175)](_0x4aa425){var _0x4c1b85=_0x102d8c;return _0x4aa425===_0x4c1b85(0x199)||_0x4aa425==='String'||_0x4aa425==='Number';}[_0x102d8c(0x1cd)](_0x313a97,_0x25cacc,_0x4f5139,_0x53c5ca,_0x1482ef,_0xc39a3c){var _0x4d958c=this;return function(_0x4bd769){var _0x3e42ab=_0x3790,_0xad1520=_0x1482ef['node'][_0x3e42ab(0x1a1)],_0x1904a7=_0x1482ef['node'][_0x3e42ab(0x1c2)],_0x34d4a4=_0x1482ef[_0x3e42ab(0x21b)][_0x3e42ab(0x240)];_0x1482ef[_0x3e42ab(0x21b)][_0x3e42ab(0x240)]=_0xad1520,_0x1482ef[_0x3e42ab(0x21b)][_0x3e42ab(0x1c2)]=typeof _0x53c5ca==_0x3e42ab(0x201)?_0x53c5ca:_0x4bd769,_0x313a97[_0x3e42ab(0x238)](_0x4d958c[_0x3e42ab(0x19e)](_0x25cacc,_0x4f5139,_0x53c5ca,_0x1482ef,_0xc39a3c)),_0x1482ef['node']['parent']=_0x34d4a4,_0x1482ef['node'][_0x3e42ab(0x1c2)]=_0x1904a7;};}[_0x102d8c(0x194)](_0x8992a8,_0xc57108,_0x2adf09,_0x48cf2e,_0x345a3b,_0x14e115,_0x4d939c){var _0xd5bbe9=_0x102d8c,_0x2fbcb9=this;return _0xc57108[typeof _0x345a3b!='symbol'?_0xd5bbe9(0x168)+_0x345a3b[_0xd5bbe9(0x19a)]():_0x345a3b]=!0x0,function(_0x13488c){var _0x32a296=_0xd5bbe9,_0x144ee2=_0x14e115['node'][_0x32a296(0x1a1)],_0x4bc945=_0x14e115[_0x32a296(0x21b)][_0x32a296(0x1c2)],_0x225b0d=_0x14e115[_0x32a296(0x21b)][_0x32a296(0x240)];_0x14e115[_0x32a296(0x21b)][_0x32a296(0x240)]=_0x144ee2,_0x14e115[_0x32a296(0x21b)]['index']=_0x13488c,_0x8992a8[_0x32a296(0x238)](_0x2fbcb9[_0x32a296(0x19e)](_0x2adf09,_0x48cf2e,_0x345a3b,_0x14e115,_0x4d939c)),_0x14e115['node']['parent']=_0x225b0d,_0x14e115['node'][_0x32a296(0x1c2)]=_0x4bc945;};}[_0x102d8c(0x19e)](_0x3d3781,_0x28dda1,_0x210ee1,_0x30d308,_0x5c56d8){var _0x1f1707=_0x102d8c,_0x4b6ab4=this;_0x5c56d8||(_0x5c56d8=function(_0x4c26cb,_0x27b894){return _0x4c26cb[_0x27b894];});var _0xfbc59b=_0x210ee1[_0x1f1707(0x19a)](),_0x51876f=_0x30d308['expressionsToEvaluate']||{},_0x1be602=_0x30d308[_0x1f1707(0x1b4)],_0x13e499=_0x30d308[_0x1f1707(0x1fd)];try{var _0x249c84=this['_isMap'](_0x3d3781),_0x496fc7=_0xfbc59b;_0x249c84&&_0x496fc7[0x0]==='\\x27'&&(_0x496fc7=_0x496fc7[_0x1f1707(0x1be)](0x1,_0x496fc7['length']-0x2));var _0x10fc58=_0x30d308[_0x1f1707(0x208)]=_0x51876f[_0x1f1707(0x168)+_0x496fc7];_0x10fc58&&(_0x30d308['depth']=_0x30d308[_0x1f1707(0x1b4)]+0x1),_0x30d308[_0x1f1707(0x1fd)]=!!_0x10fc58;var _0x128c4f=typeof _0x210ee1==_0x1f1707(0x1ad),_0x5ce2de={'name':_0x128c4f||_0x249c84?_0xfbc59b:this[_0x1f1707(0x1eb)](_0xfbc59b)};if(_0x128c4f&&(_0x5ce2de[_0x1f1707(0x1ad)]=!0x0),!(_0x28dda1==='array'||_0x28dda1===_0x1f1707(0x1c6))){var _0x288be8=this[_0x1f1707(0x1d8)](_0x3d3781,_0x210ee1);if(_0x288be8&&(_0x288be8[_0x1f1707(0x1ff)]&&(_0x5ce2de[_0x1f1707(0x195)]=!0x0),_0x288be8[_0x1f1707(0x1e2)]&&!_0x10fc58&&!_0x30d308['resolveGetters']))return _0x5ce2de[_0x1f1707(0x235)]=!0x0,this[_0x1f1707(0x1cf)](_0x5ce2de,_0x30d308),_0x5ce2de;}var _0x31fa16;try{_0x31fa16=_0x5c56d8(_0x3d3781,_0x210ee1);}catch(_0x28437e){return _0x5ce2de={'name':_0xfbc59b,'type':_0x1f1707(0x23b),'error':_0x28437e['message']},this['_processTreeNodeResult'](_0x5ce2de,_0x30d308),_0x5ce2de;}var _0x4c0ffc=this[_0x1f1707(0x18e)](_0x31fa16),_0x2e636b=this[_0x1f1707(0x1bd)](_0x4c0ffc);if(_0x5ce2de[_0x1f1707(0x1d0)]=_0x4c0ffc,_0x2e636b)this[_0x1f1707(0x1cf)](_0x5ce2de,_0x30d308,_0x31fa16,function(){var _0x330337=_0x1f1707;_0x5ce2de[_0x330337(0x1c4)]=_0x31fa16[_0x330337(0x173)](),!_0x10fc58&&_0x4b6ab4[_0x330337(0x221)](_0x4c0ffc,_0x5ce2de,_0x30d308,{});});else{var _0x206e61=_0x30d308['autoExpand']&&_0x30d308[_0x1f1707(0x144)]<_0x30d308[_0x1f1707(0x165)]&&_0x30d308[_0x1f1707(0x1db)][_0x1f1707(0x1ea)](_0x31fa16)<0x0&&_0x4c0ffc!==_0x1f1707(0x1c3)&&_0x30d308[_0x1f1707(0x1af)]<_0x30d308['autoExpandLimit'];_0x206e61||_0x30d308[_0x1f1707(0x144)]<_0x1be602||_0x10fc58?(this[_0x1f1707(0x229)](_0x5ce2de,_0x31fa16,_0x30d308,_0x10fc58||{}),this[_0x1f1707(0x1f6)](_0x31fa16,_0x5ce2de)):this[_0x1f1707(0x1cf)](_0x5ce2de,_0x30d308,_0x31fa16,function(){var _0x5ba488=_0x1f1707;_0x4c0ffc==='null'||_0x4c0ffc===_0x5ba488(0x1f2)||(delete _0x5ce2de[_0x5ba488(0x1c4)],_0x5ce2de[_0x5ba488(0x153)]=!0x0);});}return _0x5ce2de;}finally{_0x30d308['expressionsToEvaluate']=_0x51876f,_0x30d308[_0x1f1707(0x1b4)]=_0x1be602,_0x30d308[_0x1f1707(0x1fd)]=_0x13e499;}}[_0x102d8c(0x221)](_0x1b73e7,_0x1197c6,_0x35db1f,_0xf700b){var _0x5f344f=_0x102d8c,_0x181423=_0xf700b[_0x5f344f(0x142)]||_0x35db1f[_0x5f344f(0x142)];if((_0x1b73e7===_0x5f344f(0x1fe)||_0x1b73e7==='String')&&_0x1197c6[_0x5f344f(0x1c4)]){let _0x192a97=_0x1197c6[_0x5f344f(0x1c4)][_0x5f344f(0x1a0)];_0x35db1f[_0x5f344f(0x1aa)]+=_0x192a97,_0x35db1f[_0x5f344f(0x1aa)]>_0x35db1f[_0x5f344f(0x1fb)]?(_0x1197c6['capped']='',delete _0x1197c6['value']):_0x192a97>_0x181423&&(_0x1197c6[_0x5f344f(0x153)]=_0x1197c6['value'][_0x5f344f(0x1be)](0x0,_0x181423),delete _0x1197c6[_0x5f344f(0x1c4)]);}}['_isMap'](_0x5dc4c6){var _0x9997dc=_0x102d8c;return!!(_0x5dc4c6&&_0x50fa92[_0x9997dc(0x1ba)]&&this[_0x9997dc(0x237)](_0x5dc4c6)===_0x9997dc(0x21a)&&_0x5dc4c6['forEach']);}[_0x102d8c(0x1eb)](_0x50c22c){var _0x2b746e=_0x102d8c;if(_0x50c22c[_0x2b746e(0x167)](/^\\d+$/))return _0x50c22c;var _0x1b578d;try{_0x1b578d=JSON[_0x2b746e(0x233)](''+_0x50c22c);}catch{_0x1b578d='\\x22'+this[_0x2b746e(0x237)](_0x50c22c)+'\\x22';}return _0x1b578d[_0x2b746e(0x167)](/^\"([a-zA-Z_][a-zA-Z_0-9]*)\"$/)?_0x1b578d=_0x1b578d[_0x2b746e(0x1be)](0x1,_0x1b578d[_0x2b746e(0x1a0)]-0x2):_0x1b578d=_0x1b578d[_0x2b746e(0x17b)](/'/g,'\\x5c\\x27')[_0x2b746e(0x17b)](/\\\\\"/g,'\\x22')[_0x2b746e(0x17b)](/(^\"|\"$)/g,'\\x27'),_0x1b578d;}['_processTreeNodeResult'](_0x311434,_0x1ca188,_0x16f575,_0x19e857){var _0x378f86=_0x102d8c;this[_0x378f86(0x146)](_0x311434,_0x1ca188),_0x19e857&&_0x19e857(),this[_0x378f86(0x1f6)](_0x16f575,_0x311434),this[_0x378f86(0x1d2)](_0x311434,_0x1ca188);}[_0x102d8c(0x146)](_0x42ce4d,_0x283c73){var _0x4899a1=_0x102d8c;this[_0x4899a1(0x1cb)](_0x42ce4d,_0x283c73),this[_0x4899a1(0x1e6)](_0x42ce4d,_0x283c73),this[_0x4899a1(0x16d)](_0x42ce4d,_0x283c73),this[_0x4899a1(0x196)](_0x42ce4d,_0x283c73);}[_0x102d8c(0x1cb)](_0x58c1bc,_0x15d9e6){}[_0x102d8c(0x1e6)](_0x537112,_0xf06326){}[_0x102d8c(0x15b)](_0x13cd11,_0xe01aff){}[_0x102d8c(0x171)](_0x1d1587){var _0x321c13=_0x102d8c;return _0x1d1587===this[_0x321c13(0x19d)];}['_treeNodePropertiesAfterFullValue'](_0x3f061f,_0x38438f){var _0x289540=_0x102d8c;this[_0x289540(0x15b)](_0x3f061f,_0x38438f),this[_0x289540(0x1c9)](_0x3f061f),_0x38438f[_0x289540(0x1ed)]&&this[_0x289540(0x22a)](_0x3f061f),this[_0x289540(0x21f)](_0x3f061f,_0x38438f),this[_0x289540(0x15d)](_0x3f061f,_0x38438f),this[_0x289540(0x1ae)](_0x3f061f);}[_0x102d8c(0x1f6)](_0x1c0e8a,_0x2ce417){var _0x3721a9=_0x102d8c;try{_0x1c0e8a&&typeof _0x1c0e8a[_0x3721a9(0x1a0)]==_0x3721a9(0x201)&&(_0x2ce417['length']=_0x1c0e8a['length']);}catch{}if(_0x2ce417[_0x3721a9(0x1d0)]===_0x3721a9(0x201)||_0x2ce417['type']===_0x3721a9(0x241)){if(isNaN(_0x2ce417['value']))_0x2ce417[_0x3721a9(0x183)]=!0x0,delete _0x2ce417['value'];else switch(_0x2ce417[_0x3721a9(0x1c4)]){case Number[_0x3721a9(0x19c)]:_0x2ce417[_0x3721a9(0x16e)]=!0x0,delete _0x2ce417[_0x3721a9(0x1c4)];break;case Number[_0x3721a9(0x1b3)]:_0x2ce417['negativeInfinity']=!0x0,delete _0x2ce417[_0x3721a9(0x1c4)];break;case 0x0:this[_0x3721a9(0x226)](_0x2ce417['value'])&&(_0x2ce417[_0x3721a9(0x1e8)]=!0x0);break;}}else _0x2ce417[_0x3721a9(0x1d0)]===_0x3721a9(0x1c3)&&typeof _0x1c0e8a[_0x3721a9(0x1f9)]==_0x3721a9(0x1fe)&&_0x1c0e8a[_0x3721a9(0x1f9)]&&_0x2ce417[_0x3721a9(0x1f9)]&&_0x1c0e8a['name']!==_0x2ce417['name']&&(_0x2ce417['funcName']=_0x1c0e8a[_0x3721a9(0x1f9)]);}[_0x102d8c(0x226)](_0x1107d9){return 0x1/_0x1107d9===Number['NEGATIVE_INFINITY'];}['_sortProps'](_0x5472b8){var _0x3cb1b8=_0x102d8c;!_0x5472b8['props']||!_0x5472b8[_0x3cb1b8(0x206)][_0x3cb1b8(0x1a0)]||_0x5472b8[_0x3cb1b8(0x1d0)]===_0x3cb1b8(0x1f7)||_0x5472b8[_0x3cb1b8(0x1d0)]===_0x3cb1b8(0x1ba)||_0x5472b8['type']===_0x3cb1b8(0x16f)||_0x5472b8[_0x3cb1b8(0x206)][_0x3cb1b8(0x1c7)](function(_0x5e015f,_0x44284b){var _0x5090f3=_0x3cb1b8,_0x5a09ca=_0x5e015f[_0x5090f3(0x1f9)][_0x5090f3(0x1d6)](),_0x3a0d46=_0x44284b[_0x5090f3(0x1f9)][_0x5090f3(0x1d6)]();return _0x5a09ca<_0x3a0d46?-0x1:_0x5a09ca>_0x3a0d46?0x1:0x0;});}[_0x102d8c(0x21f)](_0x1f30be,_0x54243e){var _0x1ea49a=_0x102d8c;if(!(_0x54243e[_0x1ea49a(0x189)]||!_0x1f30be['props']||!_0x1f30be['props'][_0x1ea49a(0x1a0)])){for(var _0x8da2df=[],_0x2189bd=[],_0x48528c=0x0,_0x2a7504=_0x1f30be[_0x1ea49a(0x206)][_0x1ea49a(0x1a0)];_0x48528c<_0x2a7504;_0x48528c++){var _0x3ee6f7=_0x1f30be[_0x1ea49a(0x206)][_0x48528c];_0x3ee6f7[_0x1ea49a(0x1d0)]==='function'?_0x8da2df[_0x1ea49a(0x238)](_0x3ee6f7):_0x2189bd['push'](_0x3ee6f7);}if(!(!_0x2189bd[_0x1ea49a(0x1a0)]||_0x8da2df[_0x1ea49a(0x1a0)]<=0x1)){_0x1f30be['props']=_0x2189bd;var _0x1bbe38={'functionsNode':!0x0,'props':_0x8da2df};this['_setNodeId'](_0x1bbe38,_0x54243e),this[_0x1ea49a(0x15b)](_0x1bbe38,_0x54243e),this['_setNodeExpandableState'](_0x1bbe38),this['_setNodePermissions'](_0x1bbe38,_0x54243e),_0x1bbe38['id']+='\\x20f',_0x1f30be[_0x1ea49a(0x206)]['unshift'](_0x1bbe38);}}}[_0x102d8c(0x15d)](_0x390d7c,_0x316c10){}['_setNodeExpandableState'](_0x24ad8b){}[_0x102d8c(0x1a9)](_0xdea231){var _0x45b5b1=_0x102d8c;return Array[_0x45b5b1(0x192)](_0xdea231)||typeof _0xdea231==_0x45b5b1(0x1f3)&&this[_0x45b5b1(0x237)](_0xdea231)===_0x45b5b1(0x15a);}['_setNodePermissions'](_0x25bfaa,_0x598c2d){}[_0x102d8c(0x1ae)](_0x29bb65){var _0x238b22=_0x102d8c;delete _0x29bb65['_hasSymbolPropertyOnItsPath'],delete _0x29bb65[_0x238b22(0x1e9)],delete _0x29bb65[_0x238b22(0x1d9)];}[_0x102d8c(0x16d)](_0x4ae93b,_0x133ec5){}}let _0x592855=new _0x5b9569(),_0x44fa12={'props':_0x444c7f[_0x102d8c(0x1f4)][_0x102d8c(0x206)]||0x64,'elements':_0x444c7f[_0x102d8c(0x1f4)][_0x102d8c(0x18f)]||0x64,'strLength':_0x444c7f[_0x102d8c(0x1f4)][_0x102d8c(0x142)]||0x400*0x32,'totalStrLength':_0x444c7f[_0x102d8c(0x1f4)][_0x102d8c(0x1fb)]||0x400*0x32,'autoExpandLimit':_0x444c7f[_0x102d8c(0x1f4)][_0x102d8c(0x147)]||0x1388,'autoExpandMaxDepth':_0x444c7f[_0x102d8c(0x1f4)][_0x102d8c(0x165)]||0xa},_0x37209c={'props':_0x444c7f[_0x102d8c(0x23e)][_0x102d8c(0x206)]||0x5,'elements':_0x444c7f[_0x102d8c(0x23e)]['elements']||0x5,'strLength':_0x444c7f[_0x102d8c(0x23e)][_0x102d8c(0x142)]||0x100,'totalStrLength':_0x444c7f['reducedLimits'][_0x102d8c(0x1fb)]||0x100*0x3,'autoExpandLimit':_0x444c7f[_0x102d8c(0x23e)]['autoExpandLimit']||0x1e,'autoExpandMaxDepth':_0x444c7f['reducedLimits'][_0x102d8c(0x165)]||0x2};function _0x20f2e3(_0x134c55,_0x216945,_0x12b438,_0x480d21,_0x16a41c,_0x4bda5c){var _0x17c331=_0x102d8c;let _0x27adcf,_0x4e3f20;try{_0x4e3f20=_0x322761(),_0x27adcf=_0x20e653[_0x216945],!_0x27adcf||_0x4e3f20-_0x27adcf['ts']>_0x6a89f6[_0x17c331(0x22f)]['resetWhenQuietMs']&&_0x27adcf['count']&&_0x27adcf[_0x17c331(0x174)]/_0x27adcf[_0x17c331(0x212)]<_0x6a89f6[_0x17c331(0x22f)][_0x17c331(0x188)]?(_0x20e653[_0x216945]=_0x27adcf={'count':0x0,'time':0x0,'ts':_0x4e3f20},_0x20e653[_0x17c331(0x17f)]={}):_0x4e3f20-_0x20e653[_0x17c331(0x17f)]['ts']>_0x6a89f6[_0x17c331(0x166)][_0x17c331(0x1b5)]&&_0x20e653[_0x17c331(0x17f)][_0x17c331(0x212)]&&_0x20e653['hits'][_0x17c331(0x174)]/_0x20e653[_0x17c331(0x17f)][_0x17c331(0x212)]<_0x6a89f6[_0x17c331(0x166)][_0x17c331(0x188)]&&(_0x20e653[_0x17c331(0x17f)]={});let _0x3a25f0=[],_0x4a77fc=_0x27adcf['reduceLimits']||_0x20e653[_0x17c331(0x17f)][_0x17c331(0x198)]?_0x37209c:_0x44fa12,_0x4dceb4=_0x4fbc21=>{var _0x13b0b1=_0x17c331;let _0x29c817={};return _0x29c817[_0x13b0b1(0x206)]=_0x4fbc21[_0x13b0b1(0x206)],_0x29c817[_0x13b0b1(0x18f)]=_0x4fbc21[_0x13b0b1(0x18f)],_0x29c817[_0x13b0b1(0x142)]=_0x4fbc21[_0x13b0b1(0x142)],_0x29c817[_0x13b0b1(0x1fb)]=_0x4fbc21[_0x13b0b1(0x1fb)],_0x29c817[_0x13b0b1(0x147)]=_0x4fbc21[_0x13b0b1(0x147)],_0x29c817[_0x13b0b1(0x165)]=_0x4fbc21[_0x13b0b1(0x165)],_0x29c817[_0x13b0b1(0x1ed)]=!0x1,_0x29c817['noFunctions']=!_0x4149f4,_0x29c817[_0x13b0b1(0x1b4)]=0x1,_0x29c817[_0x13b0b1(0x144)]=0x0,_0x29c817[_0x13b0b1(0x16c)]=_0x13b0b1(0x178),_0x29c817[_0x13b0b1(0x1b2)]=_0x13b0b1(0x15c),_0x29c817['autoExpand']=!0x0,_0x29c817[_0x13b0b1(0x1db)]=[],_0x29c817[_0x13b0b1(0x1af)]=0x0,_0x29c817[_0x13b0b1(0x23f)]=_0x444c7f[_0x13b0b1(0x23f)],_0x29c817['allStrLength']=0x0,_0x29c817[_0x13b0b1(0x21b)]={'current':void 0x0,'parent':void 0x0,'index':0x0},_0x29c817;};for(var _0x164262=0x0;_0x164262<_0x16a41c['length'];_0x164262++)_0x3a25f0[_0x17c331(0x238)](_0x592855['serialize']({'timeNode':_0x134c55===_0x17c331(0x174)||void 0x0},_0x16a41c[_0x164262],_0x4dceb4(_0x4a77fc),{}));if(_0x134c55===_0x17c331(0x213)||_0x134c55===_0x17c331(0x170)){let _0x39faf7=Error['stackTraceLimit'];try{Error[_0x17c331(0x14e)]=0x1/0x0,_0x3a25f0[_0x17c331(0x238)](_0x592855['serialize']({'stackNode':!0x0},new Error()['stack'],_0x4dceb4(_0x4a77fc),{'strLength':0x1/0x0}));}finally{Error[_0x17c331(0x14e)]=_0x39faf7;}}return{'method':_0x17c331(0x209),'version':_0x30e9a8,'args':[{'ts':_0x12b438,'session':_0x480d21,'args':_0x3a25f0,'id':_0x216945,'context':_0x4bda5c}]};}catch(_0x4a7a9f){return{'method':'log','version':_0x30e9a8,'args':[{'ts':_0x12b438,'session':_0x480d21,'args':[{'type':'unknown','error':_0x4a7a9f&&_0x4a7a9f[_0x17c331(0x1cc)]}],'id':_0x216945,'context':_0x4bda5c}]};}finally{try{if(_0x27adcf&&_0x4e3f20){let _0xe0e90d=_0x322761();_0x27adcf['count']++,_0x27adcf[_0x17c331(0x174)]+=_0x3e79b8(_0x4e3f20,_0xe0e90d),_0x27adcf['ts']=_0xe0e90d,_0x20e653[_0x17c331(0x17f)][_0x17c331(0x212)]++,_0x20e653[_0x17c331(0x17f)]['time']+=_0x3e79b8(_0x4e3f20,_0xe0e90d),_0x20e653['hits']['ts']=_0xe0e90d,(_0x27adcf['count']>_0x6a89f6[_0x17c331(0x22f)][_0x17c331(0x17e)]||_0x27adcf[_0x17c331(0x174)]>_0x6a89f6[_0x17c331(0x22f)][_0x17c331(0x152)])&&(_0x27adcf[_0x17c331(0x198)]=!0x0),(_0x20e653[_0x17c331(0x17f)][_0x17c331(0x212)]>_0x6a89f6['global'][_0x17c331(0x17e)]||_0x20e653[_0x17c331(0x17f)]['time']>_0x6a89f6['global'][_0x17c331(0x152)])&&(_0x20e653['hits']['reduceLimits']=!0x0);}}catch{}}}return _0x20f2e3;}((_0x1d0d2d,_0x28c6ed,_0x382008,_0x5d94d8,_0x1138a6,_0x5ec264,_0x3217bc,_0x3cbe6c,_0x541e58,_0x5f4420,_0xbbe62b,_0x56f4ea)=>{var _0x33bb43=_0x12c32f;if(_0x1d0d2d['_console_ninja'])return _0x1d0d2d['_console_ninja'];let _0xafbbd0={'consoleLog':()=>{},'consoleTrace':()=>{},'consoleTime':()=>{},'consoleTimeEnd':()=>{},'autoLog':()=>{},'autoLogMany':()=>{},'autoTraceMany':()=>{},'coverage':()=>{},'autoTrace':()=>{},'autoTime':()=>{},'autoTimeEnd':()=>{}};if(!J(_0x1d0d2d,_0x3cbe6c,_0x1138a6))return _0x1d0d2d[_0x33bb43(0x1dd)]=_0xafbbd0,_0x1d0d2d[_0x33bb43(0x1dd)];let _0x52c9e4=B(_0x1d0d2d),_0x5ee89f=_0x52c9e4[_0x33bb43(0x1da)],_0x228a20=_0x52c9e4['timeStamp'],_0x935cd7=_0x52c9e4[_0x33bb43(0x149)],_0x1f01a7={'hits':{},'ts':{}},_0x5bbd95=Y(_0x1d0d2d,_0x541e58,_0x1f01a7,_0x5ec264,_0x56f4ea),_0x4e71ab=(_0x255f00,_0x10fb47,_0x4bdf54,_0x209de1,_0x443db2,_0x2b0dcf)=>{var _0x1eb29c=_0x33bb43;let _0x6d25b4=_0x1d0d2d[_0x1eb29c(0x1dd)];try{return _0x1d0d2d[_0x1eb29c(0x1dd)]=_0xafbbd0,_0x5bbd95(_0x255f00,_0x10fb47,_0x4bdf54,_0x209de1,_0x443db2,_0x2b0dcf);}finally{_0x1d0d2d[_0x1eb29c(0x1dd)]=_0x6d25b4;}},_0x1c3a55=_0x1a5a33=>{_0x1f01a7['ts'][_0x1a5a33]=_0x228a20();},_0x2772e2=(_0xb769,_0xdc43a0)=>{let _0x43f94e=_0x1f01a7['ts'][_0xdc43a0];if(delete _0x1f01a7['ts'][_0xdc43a0],_0x43f94e){let _0x13976f=_0x5ee89f(_0x43f94e,_0x228a20());_0x2ffa00(_0x4e71ab('time',_0xb769,_0x935cd7(),_0x509478,[_0x13976f],_0xdc43a0));}},_0x896a5=_0x10f890=>{var _0x21b59=_0x33bb43,_0x5455b3;return _0x1138a6===_0x21b59(0x1d4)&&_0x1d0d2d[_0x21b59(0x1d1)]&&((_0x5455b3=_0x10f890==null?void 0x0:_0x10f890[_0x21b59(0x1b7)])==null?void 0x0:_0x5455b3['length'])&&(_0x10f890['args'][0x0][_0x21b59(0x1d1)]=_0x1d0d2d[_0x21b59(0x1d1)]),_0x10f890;};_0x1d0d2d[_0x33bb43(0x1dd)]={'consoleLog':(_0xfd7b38,_0xd9b9bc)=>{var _0x837a4=_0x33bb43;_0x1d0d2d['console']['log'][_0x837a4(0x1f9)]!=='disabledLog'&&_0x2ffa00(_0x4e71ab('log',_0xfd7b38,_0x935cd7(),_0x509478,_0xd9b9bc));},'consoleTrace':(_0x4d5394,_0xc69bf8)=>{var _0x27de9f=_0x33bb43,_0x29255b,_0x19c29c;_0x1d0d2d[_0x27de9f(0x181)]['log'][_0x27de9f(0x1f9)]!==_0x27de9f(0x227)&&((_0x19c29c=(_0x29255b=_0x1d0d2d[_0x27de9f(0x1a3)])==null?void 0x0:_0x29255b['versions'])!=null&&_0x19c29c[_0x27de9f(0x21b)]&&(_0x1d0d2d[_0x27de9f(0x1de)]=!0x0),_0x2ffa00(_0x896a5(_0x4e71ab(_0x27de9f(0x213),_0x4d5394,_0x935cd7(),_0x509478,_0xc69bf8))));},'consoleError':(_0x4079c6,_0x24f736)=>{var _0x1bcae7=_0x33bb43;_0x1d0d2d[_0x1bcae7(0x1de)]=!0x0,_0x2ffa00(_0x896a5(_0x4e71ab(_0x1bcae7(0x170),_0x4079c6,_0x935cd7(),_0x509478,_0x24f736)));},'consoleTime':_0x48b856=>{_0x1c3a55(_0x48b856);},'consoleTimeEnd':(_0x3c6703,_0x2b2004)=>{_0x2772e2(_0x2b2004,_0x3c6703);},'autoLog':(_0x14af8c,_0x3be781)=>{var _0x1f7016=_0x33bb43;_0x2ffa00(_0x4e71ab(_0x1f7016(0x209),_0x3be781,_0x935cd7(),_0x509478,[_0x14af8c]));},'autoLogMany':(_0x5e2f0d,_0xb599c3)=>{var _0x310f9b=_0x33bb43;_0x2ffa00(_0x4e71ab(_0x310f9b(0x209),_0x5e2f0d,_0x935cd7(),_0x509478,_0xb599c3));},'autoTrace':(_0x49f1cf,_0xf3db80)=>{var _0x37ed0a=_0x33bb43;_0x2ffa00(_0x896a5(_0x4e71ab(_0x37ed0a(0x213),_0xf3db80,_0x935cd7(),_0x509478,[_0x49f1cf])));},'autoTraceMany':(_0x1fca41,_0x542f6c)=>{var _0x4133a2=_0x33bb43;_0x2ffa00(_0x896a5(_0x4e71ab(_0x4133a2(0x213),_0x1fca41,_0x935cd7(),_0x509478,_0x542f6c)));},'autoTime':(_0xcc4690,_0x50a70c,_0x9b82c4)=>{_0x1c3a55(_0x9b82c4);},'autoTimeEnd':(_0xbf6129,_0x73655e,_0x1b8401)=>{_0x2772e2(_0x73655e,_0x1b8401);},'coverage':_0x18fc0f=>{_0x2ffa00({'method':'coverage','version':_0x5ec264,'args':[{'id':_0x18fc0f}]});}};let _0x2ffa00=X(_0x1d0d2d,_0x28c6ed,_0x382008,_0x5d94d8,_0x1138a6,_0x5f4420,_0xbbe62b),_0x509478=_0x1d0d2d[_0x33bb43(0x1e5)];return _0x1d0d2d['_console_ninja'];})(globalThis,_0x12c32f(0x197),_0x12c32f(0x204),\"c:\\\\Users\\\\Prosanta Roy\\\\.vscode\\\\extensions\\\\wallabyjs.console-ninja-1.0.483\\\\node_modules\",_0x12c32f(0x21e),_0x12c32f(0x23a),_0x12c32f(0x145),[\"localhost\",\"127.0.0.1\",\"example.cypress.io\",\"Prosanto\",\"192.168.10.163\"],'',_0x12c32f(0x1c5),_0x12c32f(0x1fa),_0x12c32f(0x1e3));");
+  } catch (e) {
+    console.error(e);
+  }
+}
+; /* istanbul ignore next */
+function oo_oo( /**@type{any}**/i, /**@type{any}**/...v) {
+  try {
+    oo_cm().consoleLog(i, v);
+  } catch (e) {}
+  return v;
+}
+; /* istanbul ignore next */
+function oo_tr( /**@type{any}**/i, /**@type{any}**/...v) {
+  try {
+    oo_cm().consoleTrace(i, v);
+  } catch (e) {}
+  return v;
+}
+; /* istanbul ignore next */
+function oo_tx( /**@type{any}**/i, /**@type{any}**/...v) {
+  try {
+    oo_cm().consoleError(i, v);
+  } catch (e) {}
+  return v;
+}
+; /* istanbul ignore next */
+function oo_ts( /**@type{any}**/v) {
+  try {
+    oo_cm().consoleTime(v);
+  } catch (e) {}
+  return v;
+}
+; /* istanbul ignore next */
+function oo_te( /**@type{any}**/v, /**@type{any}**/i) {
+  try {
+    oo_cm().consoleTimeEnd(v, i);
+  } catch (e) {}
+  return v;
+}
+; /*eslint unicorn/no-abusive-eslint-disable:,eslint-comments/disable-enable-pair:,eslint-comments/no-unlimited-disable:,eslint-comments/no-aggregating-enable:,eslint-comments/no-duplicate-disable:,eslint-comments/no-unused-disable:,eslint-comments/no-unused-enable:,*/
 
 /***/ }),
 
@@ -46282,19 +47234,6 @@ const themeOptions = [{
 
 /***/ }),
 
-/***/ "../bpl-tools/Components/Device/style.css":
-/*!************************************************!*\
-  !*** ../bpl-tools/Components/Device/style.css ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "../bpl-tools/Components/SolidBackground/style.css":
 /*!*********************************************************!*\
   !*** ../bpl-tools/Components/SolidBackground/style.css ***!
@@ -46325,6 +47264,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ../bpl-tools/Components/BplBlockPreview/style.scss ***!
   \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/Button/style.scss":
+/*!*************************************************!*\
+  !*** ../bpl-tools/Components/Button/style.scss ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -46377,6 +47329,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************!*\
   !*** ../bpl-tools/Components/Deprecated/SpaceControl/SpaceControl.scss ***!
   \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/Device/style.scss":
+/*!*************************************************!*\
+  !*** ../bpl-tools/Components/Device/style.scss ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -46451,6 +47416,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "../bpl-tools/Components/Loading/style.scss":
+/*!**************************************************!*\
+  !*** ../bpl-tools/Components/Loading/style.scss ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "../bpl-tools/Components/MediaControl/MediaControl.scss":
 /*!**************************************************************!*\
   !*** ../bpl-tools/Components/MediaControl/MediaControl.scss ***!
@@ -46494,6 +47472,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************************!*\
   !*** ../bpl-tools/Components/SelectPureControl/SelectPureControl.scss ***!
   \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../bpl-tools/Components/SelectTokenField/style.scss":
+/*!***********************************************************!*\
+  !*** ../bpl-tools/Components/SelectTokenField/style.scss ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -49702,6 +50693,17 @@ module.exports = /*#__PURE__*/JSON.parse('[{"terms":["Digit Zero","nada","none",
 
 /***/ }),
 
+/***/ "../bpl-tools/Components/IconLibrary/icons/lucidicons.json":
+/*!*****************************************************************!*\
+  !*** ../bpl-tools/Components/IconLibrary/icons/lucidicons.json ***!
+  \*****************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('[{"terms":["lucide-swatch-book-icon"],"label":"swatch-book","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-swatch-book-icon lucide-swatch-book lucide-icon customizable\\"><path d=\\"M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z\\"></path><path d=\\"M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7\\"></path><path d=\\"M 7 17h.01\\"></path><path d=\\"m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8\\"></path></svg>"}},{"terms":["lucide-swatch-book-icon"],"label":"swatch-book","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-swatch-book-icon lucide-swatch-book lucide-icon customizable\\"><path d=\\"M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z\\"></path><path d=\\"M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7\\"></path><path d=\\"M 7 17h.01\\"></path><path d=\\"m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8\\"></path></svg>"}},{"terms":["lucide-sweater-icon"],"label":"sweater","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-sweater-icon lucide-sweater lucide-icon customizable\\"><path d=\\"M6 19H3c-.6 0-1-.4-1-1V6c0-1.1.8-2.3 1.9-2.6L8 2a4 4 0 0 0 8 0l4.1 1.4C21.2 3.7 22 4.9 22 6v12c0 .6-.4 1-1 1h-3\\"></path><path d=\\"M18 8v13c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V8\\"></path><path d=\\"m6 10 2 2 2-2 2 2 2-2 2 2 2-2\\"></path><path d=\\"m6 16 2 2 2-2 2 2 2-2 2 2 2-2\\"></path></svg>"}},{"terms":["lucide-swiss-franc-icon"],"label":"swiss-franc","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-swiss-franc-icon lucide-swiss-franc lucide-icon customizable\\"><path d=\\"M10 21V3h8\\"></path><path d=\\"M6 16h9\\"></path><path d=\\"M10 9.5h7\\"></path></svg>"}},{"terms":["lucide-swiss-franc-circle-icon"],"label":"swiss-franc-circle","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-swiss-franc-circle-icon lucide-swiss-franc-circle lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><path d=\\"M10 17V7h5\\"></path><path d=\\"M10 11h4\\"></path><path d=\\"M8 15h5\\"></path></svg>"}},{"terms":["lucide-swiss-franc-square-icon"],"label":"swiss-franc-square","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-swiss-franc-square-icon lucide-swiss-franc-square lucide-icon customizable\\"><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M10 17V7h5\\"></path><path d=\\"M10 11h4\\"></path><path d=\\"M8 15h5\\"></path></svg>"}},{"terms":["lucide-switch-camera-icon"],"label":"switch-camera","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-switch-camera-icon lucide-switch-camera lucide-icon customizable\\"><path d=\\"M11 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5\\"></path><path d=\\"M13 5h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"3\\"></circle><path d=\\"m18 22-3-3 3-3\\"></path><path d=\\"m6 2 3 3-3 3\\"></path></svg>"}},{"terms":["lucide-sword-icon"],"label":"sword","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-sword-icon lucide-sword lucide-icon customizable\\"><polyline points=\\"14.5 17.5 3 6 3 3 6 3 17.5 14.5\\"></polyline><line x1=\\"13\\" x2=\\"19\\" y1=\\"19\\" y2=\\"13\\"></line><line x1=\\"16\\" x2=\\"20\\" y1=\\"16\\" y2=\\"20\\"></line><line x1=\\"19\\" x2=\\"21\\" y1=\\"21\\" y2=\\"19\\"></line></svg>"}},{"terms":["lucide-swords-icon"],"label":"swords","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-swords-icon lucide-swords lucide-icon customizable\\"><polyline points=\\"14.5 17.5 3 6 3 3 6 3 17.5 14.5\\"></polyline><line x1=\\"13\\" x2=\\"19\\" y1=\\"19\\" y2=\\"13\\"></line><line x1=\\"16\\" x2=\\"20\\" y1=\\"16\\" y2=\\"20\\"></line><line x1=\\"19\\" x2=\\"21\\" y1=\\"21\\" y2=\\"19\\"></line><polyline points=\\"14.5 6.5 18 3 21 3 21 6 17.5 9.5\\"></polyline><line x1=\\"5\\" x2=\\"9\\" y1=\\"14\\" y2=\\"18\\"></line><line x1=\\"7\\" x2=\\"4\\" y1=\\"17\\" y2=\\"20\\"></line><line x1=\\"3\\" x2=\\"5\\" y1=\\"19\\" y2=\\"21\\"></line></svg>"}},{"terms":["lucide-syringe-icon"],"label":"syringe","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-syringe-icon lucide-syringe lucide-icon customizable\\"><path d=\\"m18 2 4 4\\"></path><path d=\\"m17 7 3-3\\"></path><path d=\\"M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5\\"></path><path d=\\"m9 11 4 4\\"></path><path d=\\"m5 19-3 3\\"></path><path d=\\"m14 4 6 6\\"></path></svg>"}},{"terms":["lucide-tab-icon"],"label":"tab","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-icon lucide-tab lucide-icon customizable\\"><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-arrow-down-icon"],"label":"tab-arrow-down","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-arrow-down-icon lucide-tab-arrow-down lucide-icon customizable\\"><path d=\\"M12 16V8\\"></path><path d=\\"m16 12-4 4-4-4\\"></path><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-arrow-up-right-icon"],"label":"tab-arrow-up-right","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-arrow-up-right-icon lucide-tab-arrow-up-right lucide-icon customizable\\"><path d=\\"m15 9-6 6\\"></path><path d=\\"M9 9h6v6\\"></path><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-check-icon"],"label":"tab-check","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-check-icon lucide-tab-check lucide-icon customizable\\"><path d=\\"m9 12 2 2 4-4\\"></path><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-dot-icon"],"label":"tab-dot","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-dot-icon lucide-tab-dot lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"1\\"></circle><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-plus-icon"],"label":"tab-plus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-plus-icon lucide-tab-plus lucide-icon customizable\\"><path d=\\"M15 12H9\\"></path><path d=\\"M12 9v6\\"></path><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-slash-icon"],"label":"tab-slash","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-slash-icon lucide-tab-slash lucide-icon customizable\\"><path d=\\"m14.5 9.5-5 5\\"></path><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-text-icon"],"label":"tab-text","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-text-icon lucide-tab-text lucide-icon customizable\\"><path d=\\"M8 8h6\\"></path><path d=\\"M8 12h8\\"></path><path d=\\"M8 16h6\\"></path><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-tab-x-icon"],"label":"tab-x","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tab-x-icon lucide-tab-x lucide-icon customizable\\"><path d=\\"m14.5 9.5-5 5\\"></path><path d=\\"m14.5 14.5-5-5\\"></path><path d=\\"M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14\\"></path><path d=\\"M22 20H2\\"></path></svg>"}},{"terms":["lucide-table-icon"],"label":"table","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table-icon lucide-table lucide-icon customizable\\"><path d=\\"M12 3v18\\"></path><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M3 9h18\\"></path><path d=\\"M3 15h18\\"></path></svg>"}},{"terms":["lucide-table2-icon"],"label":"table-2","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table2-icon lucide-table-2 lucide-icon customizable\\"><path d=\\"M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18\\"></path></svg>"}},{"terms":["lucide-table-cells-merge-icon"],"label":"table-cells-merge","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table-cells-merge-icon lucide-table-cells-merge lucide-icon customizable\\"><path d=\\"M12 21v-6\\"></path><path d=\\"M12 9V3\\"></path><path d=\\"M3 15h18\\"></path><path d=\\"M3 9h18\\"></path><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-table-cells-split-icon"],"label":"table-cells-split","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table-cells-split-icon lucide-table-cells-split lucide-icon customizable\\"><path d=\\"M12 15V9\\"></path><path d=\\"M3 15h18\\"></path><path d=\\"M3 9h18\\"></path><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-table-columns-split-icon"],"label":"table-columns-split","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table-columns-split-icon lucide-table-columns-split lucide-icon customizable\\"><path d=\\"M14 14v2\\"></path><path d=\\"M14 20v2\\"></path><path d=\\"M14 2v2\\"></path><path d=\\"M14 8v2\\"></path><path d=\\"M2 15h8\\"></path><path d=\\"M2 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2\\"></path><path d=\\"M2 9h8\\"></path><path d=\\"M22 15h-4\\"></path><path d=\\"M22 3h-2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h2\\"></path><path d=\\"M22 9h-4\\"></path><path d=\\"M5 3v18\\"></path></svg>"}},{"terms":["lucide-table-of-contents-icon"],"label":"table-of-contents","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table-of-contents-icon lucide-table-of-contents lucide-icon customizable\\"><path d=\\"M16 12H3\\"></path><path d=\\"M16 18H3\\"></path><path d=\\"M16 6H3\\"></path><path d=\\"M21 12h.01\\"></path><path d=\\"M21 18h.01\\"></path><path d=\\"M21 6h.01\\"></path></svg>"}},{"terms":["lucide-table-properties-icon"],"label":"table-properties","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table-properties-icon lucide-table-properties lucide-icon customizable\\"><path d=\\"M15 3v18\\"></path><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M21 9H3\\"></path><path d=\\"M21 15H3\\"></path></svg>"}},{"terms":["lucide-table-rows-split-icon"],"label":"table-rows-split","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-table-rows-split-icon lucide-table-rows-split lucide-icon customizable\\"><path d=\\"M14 10h2\\"></path><path d=\\"M15 22v-8\\"></path><path d=\\"M15 2v4\\"></path><path d=\\"M2 10h2\\"></path><path d=\\"M20 10h2\\"></path><path d=\\"M3 19h18\\"></path><path d=\\"M3 22v-6a2 2 135 0 1 2-2h14a2 2 45 0 1 2 2v6\\"></path><path d=\\"M3 2v2a2 2 45 0 0 2 2h14a2 2 135 0 0 2-2V2\\"></path><path d=\\"M8 10h2\\"></path><path d=\\"M9 22v-8\\"></path><path d=\\"M9 2v4\\"></path></svg>"}},{"terms":["lucide-tablet-icon"],"label":"tablet","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tablet-icon lucide-tablet lucide-icon customizable\\"><rect width=\\"16\\" height=\\"20\\" x=\\"4\\" y=\\"2\\" rx=\\"2\\" ry=\\"2\\"></rect><line x1=\\"12\\" x2=\\"12.01\\" y1=\\"18\\" y2=\\"18\\"></line></svg>"}},{"terms":["lucide-tablet-smartphone-icon"],"label":"tablet-smartphone","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tablet-smartphone-icon lucide-tablet-smartphone lucide-icon customizable\\"><rect width=\\"10\\" height=\\"14\\" x=\\"3\\" y=\\"8\\" rx=\\"2\\"></rect><path d=\\"M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4\\"></path><path d=\\"M8 18h.01\\"></path></svg>"}},{"terms":["lucide-tablets-icon"],"label":"tablets","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tablets-icon lucide-tablets lucide-icon customizable\\"><circle cx=\\"7\\" cy=\\"7\\" r=\\"5\\"></circle><circle cx=\\"17\\" cy=\\"17\\" r=\\"5\\"></circle><path d=\\"M12 17h10\\"></path><path d=\\"m3.46 10.54 7.08-7.08\\"></path></svg>"}},{"terms":["lucide-tag-icon"],"label":"tag","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tag-icon lucide-tag lucide-icon customizable\\"><path d=\\"M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z\\"></path><circle cx=\\"7.5\\" cy=\\"7.5\\" r=\\".5\\" fill=\\"currentColor\\"></circle></svg>"}},{"terms":["lucide-tags-icon"],"label":"tags","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tags-icon lucide-tags lucide-icon customizable\\"><path d=\\"m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19\\"></path><path d=\\"M9.586 5.586A2 2 0 0 0 8.172 5H3a1 1 0 0 0-1 1v5.172a2 2 0 0 0 .586 1.414L8.29 18.29a2.426 2.426 0 0 0 3.42 0l3.58-3.58a2.426 2.426 0 0 0 0-3.42z\\"></path><circle cx=\\"6.5\\" cy=\\"9.5\\" r=\\".5\\" fill=\\"currentColor\\"></circle></svg>"}},{"terms":["lucide-tally1-icon"],"label":"tally-1","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tally1-icon lucide-tally-1 lucide-icon customizable\\"><path d=\\"M4 4v16\\"></path></svg>"}},{"terms":["lucide-tally2-icon"],"label":"tally-2","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tally2-icon lucide-tally-2 lucide-icon customizable\\"><path d=\\"M4 4v16\\"></path><path d=\\"M9 4v16\\"></path></svg>"}},{"terms":["lucide-tally3-icon"],"label":"tally-3","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tally3-icon lucide-tally-3 lucide-icon customizable\\"><path d=\\"M4 4v16\\"></path><path d=\\"M9 4v16\\"></path><path d=\\"M14 4v16\\"></path></svg>"}},{"terms":["lucide-tally4-icon"],"label":"tally-4","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tally4-icon lucide-tally-4 lucide-icon customizable\\"><path d=\\"M4 4v16\\"></path><path d=\\"M9 4v16\\"></path><path d=\\"M14 4v16\\"></path><path d=\\"M19 4v16\\"></path></svg>"}},{"terms":["lucide-tally5-icon"],"label":"tally-5","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tally5-icon lucide-tally-5 lucide-icon customizable\\"><path d=\\"M4 4v16\\"></path><path d=\\"M9 4v16\\"></path><path d=\\"M14 4v16\\"></path><path d=\\"M19 4v16\\"></path><path d=\\"M22 6 2 18\\"></path></svg>"}},{"terms":["lucide-tangent-icon"],"label":"tangent","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tangent-icon lucide-tangent lucide-icon customizable\\"><circle cx=\\"17\\" cy=\\"4\\" r=\\"2\\"></circle><path d=\\"M15.59 5.41 5.41 15.59\\"></path><circle cx=\\"4\\" cy=\\"17\\" r=\\"2\\"></circle><path d=\\"M12 22s-4-9-1.5-11.5S22 12 22 12\\"></path></svg>"}},{"terms":["lucide-target-icon"],"label":"target","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-target-icon lucide-target lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><circle cx=\\"12\\" cy=\\"12\\" r=\\"6\\"></circle><circle cx=\\"12\\" cy=\\"12\\" r=\\"2\\"></circle></svg>"}},{"terms":["lucide-target-arrow-icon"],"label":"target-arrow","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-target-arrow-icon lucide-target-arrow lucide-icon customizable\\"><path d=\\"M19 2v3h3\\"></path><path d=\\"M13.4 10.6 22 2\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"2\\"></circle><path d=\\"M12.3 6H12a6 6 0 1 0 6 6v-.3\\"></path><path d=\\"M15 2.5A9.93 9.93 0 1 0 21.5 9\\"></path><path d=\\"M5.3 19.4 4 22\\"></path><path d=\\"M18.7 19.4 20 22\\"></path></svg>"}},{"terms":["lucide-telescope-icon"],"label":"telescope","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-telescope-icon lucide-telescope lucide-icon customizable\\"><path d=\\"m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44\\"></path><path d=\\"m13.56 11.747 4.332-.924\\"></path><path d=\\"m16 21-3.105-6.21\\"></path><path d=\\"M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z\\"></path><path d=\\"m6.158 8.633 1.114 4.456\\"></path><path d=\\"m8 21 3.105-6.21\\"></path><circle cx=\\"12\\" cy=\\"13\\" r=\\"2\\"></circle></svg>"}},{"terms":["lucide-tennis-ball-icon"],"label":"tennis-ball","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tennis-ball-icon lucide-tennis-ball lucide-icon customizable\\"><path d=\\"M2 12c5.5 0 10-4.5 10-10\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><path d=\\"M22 12c-5.5 0-10 4.5-10 10\\"></path></svg>"}},{"terms":["lucide-tennis-racket-icon"],"label":"tennis-racket","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tennis-racket-icon lucide-tennis-racket lucide-icon customizable\\"><path d=\\"M10.7 4.7c3-3 7.4-3.6 9.8-1.2s1.8 6.8-1.2 9.8a9.5 9.5 0 0 1-4.3 2.5c-2.1.5-4.1.1-5.5-1.3S7.7 11.1 8.2 9a9.5 9.5 0 0 1 2.5-4.3\\"></path><path d=\\"M8.2 9 6 18l9-2.2\\"></path><path d=\\"m2 22 4-4\\"></path><circle cx=\\"20\\" cy=\\"20\\" r=\\"2\\"></circle></svg>"}},{"terms":["lucide-tent-icon"],"label":"tent","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tent-icon lucide-tent lucide-icon customizable\\"><path d=\\"M3.5 21 14 3\\"></path><path d=\\"M20.5 21 10 3\\"></path><path d=\\"M15.5 21 12 15l-3.5 6\\"></path><path d=\\"M2 21h20\\"></path></svg>"}},{"terms":["lucide-tent-tree-icon"],"label":"tent-tree","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tent-tree-icon lucide-tent-tree lucide-icon customizable\\"><circle cx=\\"4\\" cy=\\"4\\" r=\\"2\\"></circle><path d=\\"m14 5 3-3 3 3\\"></path><path d=\\"m14 10 3-3 3 3\\"></path><path d=\\"M17 14V2\\"></path><path d=\\"M17 14H7l-5 8h20Z\\"></path><path d=\\"M8 14v8\\"></path><path d=\\"m9 14 5 8\\"></path></svg>"}},{"terms":["lucide-terminal-icon"],"label":"terminal","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-terminal-icon lucide-terminal lucide-icon customizable\\"><polyline points=\\"4 17 10 11 4 5\\"></polyline><line x1=\\"12\\" x2=\\"20\\" y1=\\"19\\" y2=\\"19\\"></line></svg>"}},{"terms":["lucide-test-tube-icon"],"label":"test-tube","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-test-tube-icon lucide-test-tube lucide-icon customizable\\"><path d=\\"M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5c-1.4 0-2.5-1.1-2.5-2.5V2\\"></path><path d=\\"M8.5 2h7\\"></path><path d=\\"M14.5 16h-5\\"></path></svg>"}},{"terms":["lucide-test-tube-diagonal-icon"],"label":"test-tube-diagonal","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-test-tube-diagonal-icon lucide-test-tube-diagonal lucide-icon customizable\\"><path d=\\"M21 7 6.82 21.18a2.83 2.83 0 0 1-3.99-.01a2.83 2.83 0 0 1 0-4L17 3\\"></path><path d=\\"m16 2 6 6\\"></path><path d=\\"M12 16H4\\"></path></svg>"}},{"terms":["lucide-test-tubes-icon"],"label":"test-tubes","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-test-tubes-icon lucide-test-tubes lucide-icon customizable\\"><path d=\\"M9 2v17.5A2.5 2.5 0 0 1 6.5 22A2.5 2.5 0 0 1 4 19.5V2\\"></path><path d=\\"M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5a2.5 2.5 0 0 1-2.5-2.5V2\\"></path><path d=\\"M3 2h7\\"></path><path d=\\"M14 2h7\\"></path><path d=\\"M9 16H4\\"></path><path d=\\"M20 16h-5\\"></path></svg>"}},{"terms":["lucide-text-icon"],"label":"text","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-text-icon lucide-text lucide-icon customizable\\"><path d=\\"M15 18H3\\"></path><path d=\\"M17 6H3\\"></path><path d=\\"M21 12H3\\"></path></svg>"}},{"terms":["lucide-text-cursor-icon"],"label":"text-cursor","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-text-cursor-icon lucide-text-cursor lucide-icon customizable\\"><path d=\\"M17 22h-1a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h1\\"></path><path d=\\"M7 22h1a4 4 0 0 0 4-4v-1\\"></path><path d=\\"M7 2h1a4 4 0 0 1 4 4v1\\"></path></svg>"}},{"terms":["lucide-text-cursor-input-icon"],"label":"text-cursor-input","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-text-cursor-input-icon lucide-text-cursor-input lucide-icon customizable\\"><path d=\\"M12 20h-1a2 2 0 0 1-2-2 2 2 0 0 1-2 2H6\\"></path><path d=\\"M13 8h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-7\\"></path><path d=\\"M5 16H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1\\"></path><path d=\\"M6 4h1a2 2 0 0 1 2 2 2 2 0 0 1 2-2h1\\"></path><path d=\\"M9 6v12\\"></path></svg>"}},{"terms":["lucide-text-quote-icon"],"label":"text-quote","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-text-quote-icon lucide-text-quote lucide-icon customizable\\"><path d=\\"M17 6H3\\"></path><path d=\\"M21 12H8\\"></path><path d=\\"M21 18H8\\"></path><path d=\\"M3 12v6\\"></path></svg>"}},{"terms":["lucide-text-search-icon"],"label":"text-search","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-text-search-icon lucide-text-search lucide-icon customizable\\"><path d=\\"M21 6H3\\"></path><path d=\\"M10 12H3\\"></path><path d=\\"M10 18H3\\"></path><circle cx=\\"17\\" cy=\\"15\\" r=\\"3\\"></circle><path d=\\"m21 19-1.9-1.9\\"></path></svg>"}},{"terms":["lucide-text-select-icon"],"label":"text-select","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-text-select-icon lucide-text-select lucide-icon customizable\\"><path d=\\"M14 21h1\\"></path><path d=\\"M14 3h1\\"></path><path d=\\"M19 3a2 2 0 0 1 2 2\\"></path><path d=\\"M21 14v1\\"></path><path d=\\"M21 19a2 2 0 0 1-2 2\\"></path><path d=\\"M21 9v1\\"></path><path d=\\"M3 14v1\\"></path><path d=\\"M3 9v1\\"></path><path d=\\"M5 21a2 2 0 0 1-2-2\\"></path><path d=\\"M5 3a2 2 0 0 0-2 2\\"></path><path d=\\"M7 12h10\\"></path><path d=\\"M7 16h6\\"></path><path d=\\"M7 8h8\\"></path><path d=\\"M9 21h1\\"></path><path d=\\"M9 3h1\\"></path></svg>"}},{"terms":["lucide-text-square-icon"],"label":"text-square","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-text-square-icon lucide-text-square lucide-icon customizable\\"><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M7 12h10\\"></path><path d=\\"M7 16h6\\"></path><path d=\\"M7 8h8\\"></path></svg>"}},{"terms":["lucide-theater-icon"],"label":"theater","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-theater-icon lucide-theater lucide-icon customizable\\"><path d=\\"M2 10s3-3 3-8\\"></path><path d=\\"M22 10s-3-3-3-8\\"></path><path d=\\"M10 2c0 4.4-3.6 8-8 8\\"></path><path d=\\"M14 2c0 4.4 3.6 8 8 8\\"></path><path d=\\"M2 10s2 2 2 5\\"></path><path d=\\"M22 10s-2 2-2 5\\"></path><path d=\\"M8 15h8\\"></path><path d=\\"M2 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1\\"></path><path d=\\"M14 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1\\"></path></svg>"}},{"terms":["lucide-thermometer-icon"],"label":"thermometer","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-thermometer-icon lucide-thermometer lucide-icon customizable\\"><path d=\\"M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z\\"></path></svg>"}},{"terms":["lucide-thermometer-snowflake-icon"],"label":"thermometer-snowflake","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-thermometer-snowflake-icon lucide-thermometer-snowflake lucide-icon customizable\\"><path d=\\"m10 20-1.25-2.5L6 18\\"></path><path d=\\"M10 4 8.75 6.5 6 6\\"></path><path d=\\"M10.585 15H10\\"></path><path d=\\"M2 12h6.5L10 9\\"></path><path d=\\"M20 14.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z\\"></path><path d=\\"m4 10 1.5 2L4 14\\"></path><path d=\\"m7 21 3-6-1.5-3\\"></path><path d=\\"m7 3 3 6h2\\"></path></svg>"}},{"terms":["lucide-thermometer-sun-icon"],"label":"thermometer-sun","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-thermometer-sun-icon lucide-thermometer-sun lucide-icon customizable\\"><path d=\\"M12 9a4 4 0 0 0-2 7.5\\"></path><path d=\\"M12 3v2\\"></path><path d=\\"m6.6 18.4-1.4 1.4\\"></path><path d=\\"M20 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z\\"></path><path d=\\"M4 13H2\\"></path><path d=\\"M6.34 7.34 4.93 5.93\\"></path></svg>"}},{"terms":["lucide-thumbs-down-icon"],"label":"thumbs-down","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-thumbs-down-icon lucide-thumbs-down lucide-icon customizable\\"><path d=\\"M17 14V2\\"></path><path d=\\"M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z\\"></path></svg>"}},{"terms":["lucide-thumbs-up-icon"],"label":"thumbs-up","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-thumbs-up-icon lucide-thumbs-up lucide-icon customizable\\"><path d=\\"M7 10v12\\"></path><path d=\\"M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z\\"></path></svg>"}},{"terms":["lucide-ticket-icon"],"label":"ticket","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ticket-icon lucide-ticket lucide-icon customizable\\"><path d=\\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\\"></path><path d=\\"M13 5v2\\"></path><path d=\\"M13 17v2\\"></path><path d=\\"M13 11v2\\"></path></svg>"}},{"terms":["lucide-ticket-check-icon"],"label":"ticket-check","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ticket-check-icon lucide-ticket-check lucide-icon customizable\\"><path d=\\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\\"></path><path d=\\"m9 12 2 2 4-4\\"></path></svg>"}},{"terms":["lucide-ticket-minus-icon"],"label":"ticket-minus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ticket-minus-icon lucide-ticket-minus lucide-icon customizable\\"><path d=\\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\\"></path><path d=\\"M9 12h6\\"></path></svg>"}},{"terms":["lucide-ticket-percent-icon"],"label":"ticket-percent","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ticket-percent-icon lucide-ticket-percent lucide-icon customizable\\"><path d=\\"M2 9a3 3 0 1 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 1 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\\"></path><path d=\\"M9 9h.01\\"></path><path d=\\"m15 9-6 6\\"></path><path d=\\"M15 15h.01\\"></path></svg>"}},{"terms":["lucide-ticket-plus-icon"],"label":"ticket-plus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ticket-plus-icon lucide-ticket-plus lucide-icon customizable\\"><path d=\\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\\"></path><path d=\\"M9 12h6\\"></path><path d=\\"M12 9v6\\"></path></svg>"}},{"terms":["lucide-ticket-slash-icon"],"label":"ticket-slash","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ticket-slash-icon lucide-ticket-slash lucide-icon customizable\\"><path d=\\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\\"></path><path d=\\"m9.5 14.5 5-5\\"></path></svg>"}},{"terms":["lucide-ticket-x-icon"],"label":"ticket-x","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ticket-x-icon lucide-ticket-x lucide-icon customizable\\"><path d=\\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\\"></path><path d=\\"m9.5 14.5 5-5\\"></path><path d=\\"m9.5 9.5 5 5\\"></path></svg>"}},{"terms":["lucide-tickets-icon"],"label":"tickets","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tickets-icon lucide-tickets lucide-icon customizable\\"><path d=\\"m4.5 8 10.58-5.06a1 1 0 0 1 1.342.488L18.5 8\\"></path><path d=\\"M6 10V8\\"></path><path d=\\"M6 14v1\\"></path><path d=\\"M6 19v2\\"></path><rect x=\\"2\\" y=\\"8\\" width=\\"20\\" height=\\"13\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-tickets-plane-icon"],"label":"tickets-plane","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tickets-plane-icon lucide-tickets-plane lucide-icon customizable\\"><path d=\\"M10.5 17h1.227a2 2 0 0 0 1.345-.52L18 12\\"></path><path d=\\"m12 13.5 3.75.5\\"></path><path d=\\"m4.5 8 10.58-5.06a1 1 0 0 1 1.342.488L18.5 8\\"></path><path d=\\"M6 10V8\\"></path><path d=\\"M6 14v1\\"></path><path d=\\"M6 19v2\\"></path><rect x=\\"2\\" y=\\"8\\" width=\\"20\\" height=\\"13\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-tie-icon"],"label":"tie","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tie-icon lucide-tie lucide-icon customizable\\"><path d=\\"M2.9 3c.1-.6.5-1 1.1-1h4c.6 0 1 .4 1.1 1l.9 15-4 4-4-4Z\\"></path><path d=\\"M8.85 2.4 16 11.8\\"></path><path d=\\"m9.7 13.15 6.5 8.5\\"></path><path d=\\"M22 5v16c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1V5l3-3Z\\"></path></svg>"}},{"terms":["lucide-tie-bow-icon"],"label":"tie-bow","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tie-bow-icon lucide-tie-bow lucide-icon customizable\\"><rect width=\\"4\\" height=\\"4\\" x=\\"10\\" y=\\"10\\"></rect><path d=\\"M8 12h2\\"></path><path d=\\"M10 10C8.8 8.5 6.6 7 4 7c-1.1 0-2 2.2-2 5s.9 5 2 5c2.6 0 4.8-1.5 6-3\\"></path><path d=\\"M14 12h2\\"></path><path d=\\"M14 14c1.2 1.5 3.4 3 6 3 1.1 0 2-2.2 2-5s-.9-5-2-5c-2.6 0-4.8 1.5-6 3\\"></path></svg>"}},{"terms":["lucide-tie-bow-ribbon-icon"],"label":"tie-bow-ribbon","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tie-bow-ribbon-icon lucide-tie-bow-ribbon lucide-icon customizable\\"><rect width=\\"4\\" height=\\"4\\" x=\\"10\\" y=\\"7\\"></rect><path d=\\"M8 9h2\\"></path><path d=\\"M10 7C8.8 5.5 6.6 4 4 4 2.9 4 2 6.2 2 9s.9 5 2 5c2.6 0 4.8-1.5 6-3\\"></path><path d=\\"M14 9h2\\"></path><path d=\\"M14 11c1.2 1.5 3.4 3 6 3 1.1 0 2-2.2 2-5s-.9-5-2-5c-2.6 0-4.8 1.5-6 3\\"></path><path d=\\"M5.5 13.83 4 20l3-1 2 2 2.5-10\\"></path><path d=\\"M18.5 13.83 20 20l-3-1-2 2-2.5-10\\"></path></svg>"}},{"terms":["lucide-timer-icon"],"label":"timer","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-timer-icon lucide-timer lucide-icon customizable\\"><line x1=\\"10\\" x2=\\"14\\" y1=\\"2\\" y2=\\"2\\"></line><line x1=\\"12\\" x2=\\"15\\" y1=\\"14\\" y2=\\"11\\"></line><circle cx=\\"12\\" cy=\\"14\\" r=\\"8\\"></circle></svg>"}},{"terms":["lucide-timer-off-icon"],"label":"timer-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-timer-off-icon lucide-timer-off lucide-icon customizable\\"><path d=\\"M10 2h4\\"></path><path d=\\"M4.6 11a8 8 0 0 0 1.7 8.7 8 8 0 0 0 8.7 1.7\\"></path><path d=\\"M7.4 7.4a8 8 0 0 1 10.3 1 8 8 0 0 1 .9 10.2\\"></path><path d=\\"m2 2 20 20\\"></path><path d=\\"M12 12v-2\\"></path></svg>"}},{"terms":["lucide-timer-reset-icon"],"label":"timer-reset","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-timer-reset-icon lucide-timer-reset lucide-icon customizable\\"><path d=\\"M10 2h4\\"></path><path d=\\"M12 14v-4\\"></path><path d=\\"M4 13a8 8 0 0 1 8-7 8 8 0 1 1-5.3 14L4 17.6\\"></path><path d=\\"M9 17H4v5\\"></path></svg>"}},{"terms":["lucide-tire-icon"],"label":"tire","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tire-icon lucide-tire lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><circle cx=\\"12\\" cy=\\"12\\" r=\\"2\\"></circle><circle cx=\\"12\\" cy=\\"12\\" r=\\"6\\"></circle><path d=\\"M12 14v4\\"></path><path d=\\"m10.1 12.62-3.8 1.23\\"></path><path d=\\"M10.82 10.38 8.47 7.15\\"></path><path d=\\"m13.9 12.62 3.8 1.23\\"></path><path d=\\"m13.18 10.38 2.35-3.23\\"></path></svg>"}},{"terms":["lucide-toast-icon"],"label":"toast","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toast-icon lucide-toast lucide-icon customizable\\"><path d=\\"M5.5 3A3.5 3.5 0 0 0 3 8.9V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.9A3.5 3.5 0 0 0 18.5 3Z\\"></path><path d=\\"M7.5 10c0-1.8 1.2-3 3.2-3 2.5 0 2.4 1.5 3.8 2.5s2.5 1 2.5 3c0 2.2-1.2 3.2-3.5 3.2-1.2 0-1.2 1.2-3 1.2S7 16 7 14.2c0-1.5.8-1.5.8-2.5 0-.7-.3-1.2-.3-1.7\\"></path></svg>"}},{"terms":["lucide-toaster-icon"],"label":"toaster","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toaster-icon lucide-toaster lucide-icon customizable\\"><path d=\\"M16 10V5.7A2 2 0 0 0 15 2H9a2 2 0 0 0-1 3.7V10\\"></path><path d=\\"M6 10h12\\"></path><path d=\\"M4 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2\\"></path><circle cx=\\"8\\" cy=\\"16\\" r=\\"2\\"></circle><path d=\\"M14 16h4\\"></path><path d=\\"M16 14v8\\"></path></svg>"}},{"terms":["lucide-toggle-left-icon"],"label":"toggle-left","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toggle-left-icon lucide-toggle-left lucide-icon customizable\\"><circle cx=\\"9\\" cy=\\"12\\" r=\\"3\\"></circle><rect width=\\"20\\" height=\\"14\\" x=\\"2\\" y=\\"5\\" rx=\\"7\\"></rect></svg>"}},{"terms":["lucide-toggle-right-icon"],"label":"toggle-right","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toggle-right-icon lucide-toggle-right lucide-icon customizable\\"><circle cx=\\"15\\" cy=\\"12\\" r=\\"3\\"></circle><rect width=\\"20\\" height=\\"14\\" x=\\"2\\" y=\\"5\\" rx=\\"7\\"></rect></svg>"}},{"terms":["lucide-toilet-icon"],"label":"toilet","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toilet-icon lucide-toilet lucide-icon customizable\\"><path d=\\"M7 12h13a1 1 0 0 1 1 1 5 5 0 0 1-5 5h-.598a.5.5 0 0 0-.424.765l1.544 2.47a.5.5 0 0 1-.424.765H5.402a.5.5 0 0 1-.424-.765L7 18\\"></path><path d=\\"M8 18a5 5 0 0 1-5-5V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8\\"></path></svg>"}},{"terms":["lucide-toilet-roll-icon"],"label":"toilet-roll","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toilet-roll-icon lucide-toilet-roll lucide-icon customizable\\"><ellipse cx=\\"10\\" cy=\\"8\\" rx=\\"3\\" ry=\\"2\\"></ellipse><ellipse cx=\\"10\\" cy=\\"8\\" rx=\\"7\\" ry=\\"6\\"></ellipse><path d=\\"M3 8v8c0 3.3 3.1 6 7 6s7-2.7 7-6V8c0 2.2 2.2 4 5 4v8c-2.8 0-5-1.8-5-4\\"></path><path d=\\"M10 14v2\\"></path><path d=\\"M10 20v2\\"></path></svg>"}},{"terms":["lucide-toolbox-icon"],"label":"toolbox","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toolbox-icon lucide-toolbox lucide-icon customizable\\"><path d=\\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\\"></path><path d=\\"M8 21a2 2 0 0 0 2-2v-8a4 4 0 0 0-8 0v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8a4 4 0 0 0-4-4H6\\"></path><path d=\\"M2 13h20\\"></path><path d=\\"M14 15v-4\\"></path><path d=\\"M18 15v-4\\"></path></svg>"}},{"terms":["lucide-toolbox2-icon"],"label":"toolbox-2","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toolbox2-icon lucide-toolbox-2 lucide-icon customizable\\"><path d=\\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\\"></path><path d=\\"M4 21a2 2 0 0 1-2-2v-7c0-.6.3-1.3.7-1.7l2.6-2.6C5.7 7.3 6.4 7 7 7h10c.6 0 1.3.3 1.7.7l2.6 2.6c.4.4.7 1.2.7 1.7v7a2 2 0 0 1-2 2Z\\"></path><path d=\\"M2 14h20\\"></path><path d=\\"M9 16v-4\\"></path><path d=\\"M15 16v-4\\"></path></svg>"}},{"terms":["lucide-top-crop-icon"],"label":"top-crop","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-top-crop-icon lucide-top-crop lucide-icon customizable\\"><path d=\\"M2 17a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5c-1.7 0-3-1.3-3-3V5h-4v1a3 3 0 1 1-6 0V5H5v4c0 1.7-1.3 3-3 3Z\\"></path></svg>"}},{"terms":["lucide-tornado-icon"],"label":"tornado","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tornado-icon lucide-tornado lucide-icon customizable\\"><path d=\\"M21 4H3\\"></path><path d=\\"M18 8H6\\"></path><path d=\\"M19 12H9\\"></path><path d=\\"M16 16h-6\\"></path><path d=\\"M11 20H9\\"></path></svg>"}},{"terms":["lucide-torus-icon"],"label":"torus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-torus-icon lucide-torus lucide-icon customizable\\"><ellipse cx=\\"12\\" cy=\\"11\\" rx=\\"3\\" ry=\\"2\\"></ellipse><ellipse cx=\\"12\\" cy=\\"12.5\\" rx=\\"10\\" ry=\\"8.5\\"></ellipse></svg>"}},{"terms":["lucide-touchpad-icon"],"label":"touchpad","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-touchpad-icon lucide-touchpad lucide-icon customizable\\"><rect width=\\"20\\" height=\\"16\\" x=\\"2\\" y=\\"4\\" rx=\\"2\\"></rect><path d=\\"M2 14h20\\"></path><path d=\\"M12 20v-6\\"></path></svg>"}},{"terms":["lucide-touchpad-off-icon"],"label":"touchpad-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-touchpad-off-icon lucide-touchpad-off lucide-icon customizable\\"><path d=\\"M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16\\"></path><path d=\\"M2 14h12\\"></path><path d=\\"M22 14h-2\\"></path><path d=\\"M12 20v-6\\"></path><path d=\\"m2 2 20 20\\"></path><path d=\\"M22 16V6a2 2 0 0 0-2-2H10\\"></path></svg>"}},{"terms":["lucide-towel-folded-icon"],"label":"towel-folded","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-towel-folded-icon lucide-towel-folded lucide-icon customizable\\"><path d=\\"M7 13h10a4 4 0 0 1 0 8H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10\\"></path><path d=\\"M17 17H7a4 4 0 0 1-4-4\\"></path></svg>"}},{"terms":["lucide-towel-rack-icon"],"label":"towel-rack","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-towel-rack-icon lucide-towel-rack lucide-icon customizable\\"><path d=\\"M8 6H2\\"></path><path d=\\"M6 2h12a2 2 0 0 1 2 2v18H8V4a2 2 0 0 0-4 0v15h4\\"></path><path d=\\"M22 6h-2\\"></path><path d=\\"M8 18h12\\"></path></svg>"}},{"terms":["lucide-tower-control-icon"],"label":"tower-control","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tower-control-icon lucide-tower-control lucide-icon customizable\\"><path d=\\"M18.2 12.27 20 6H4l1.8 6.27a1 1 0 0 0 .95.73h10.5a1 1 0 0 0 .96-.73Z\\"></path><path d=\\"M8 13v9\\"></path><path d=\\"M16 22v-9\\"></path><path d=\\"m9 6 1 7\\"></path><path d=\\"m15 6-1 7\\"></path><path d=\\"M12 6V2\\"></path><path d=\\"M13 2h-2\\"></path></svg>"}},{"terms":["lucide-toy-brick-icon"],"label":"toy-brick","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-toy-brick-icon lucide-toy-brick lucide-icon customizable\\"><rect width=\\"18\\" height=\\"12\\" x=\\"3\\" y=\\"8\\" rx=\\"1\\"></rect><path d=\\"M10 8V5c0-.6-.4-1-1-1H6a1 1 0 0 0-1 1v3\\"></path><path d=\\"M19 8V5c0-.6-.4-1-1-1h-3a1 1 0 0 0-1 1v3\\"></path></svg>"}},{"terms":["lucide-tractor-icon"],"label":"tractor","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tractor-icon lucide-tractor lucide-icon customizable\\"><path d=\\"m10 11 11 .9a1 1 0 0 1 .8 1.1l-.665 4.158a1 1 0 0 1-.988.842H20\\"></path><path d=\\"M16 18h-5\\"></path><path d=\\"M18 5a1 1 0 0 0-1 1v5.573\\"></path><path d=\\"M3 4h8.129a1 1 0 0 1 .99.863L13 11.246\\"></path><path d=\\"M4 11V4\\"></path><path d=\\"M7 15h.01\\"></path><path d=\\"M8 10.1V4\\"></path><circle cx=\\"18\\" cy=\\"18\\" r=\\"2\\"></circle><circle cx=\\"7\\" cy=\\"15\\" r=\\"5\\"></circle></svg>"}},{"terms":["lucide-traffic-cone-icon"],"label":"traffic-cone","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-traffic-cone-icon lucide-traffic-cone lucide-icon customizable\\"><path d=\\"M16.05 10.966a5 2.5 0 0 1-8.1 0\\"></path><path d=\\"m16.923 14.049 4.48 2.04a1 1 0 0 1 .001 1.831l-8.574 3.9a2 2 0 0 1-1.66 0l-8.574-3.91a1 1 0 0 1 0-1.83l4.484-2.04\\"></path><path d=\\"M16.949 14.14a5 2.5 0 1 1-9.9 0L10.063 3.5a2 2 0 0 1 3.874 0z\\"></path><path d=\\"M9.194 6.57a5 2.5 0 0 0 5.61 0\\"></path></svg>"}},{"terms":["lucide-train-front-icon"],"label":"train-front","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-train-front-icon lucide-train-front lucide-icon customizable\\"><path d=\\"M8 3.1V7a4 4 0 0 0 8 0V3.1\\"></path><path d=\\"m9 15-1-1\\"></path><path d=\\"m15 15 1-1\\"></path><path d=\\"M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z\\"></path><path d=\\"m8 19-2 3\\"></path><path d=\\"m16 19 2 3\\"></path></svg>"}},{"terms":["lucide-train-front-tunnel-icon"],"label":"train-front-tunnel","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-train-front-tunnel-icon lucide-train-front-tunnel lucide-icon customizable\\"><path d=\\"M2 22V12a10 10 0 1 1 20 0v10\\"></path><path d=\\"M15 6.8v1.4a3 2.8 0 1 1-6 0V6.8\\"></path><path d=\\"M10 15h.01\\"></path><path d=\\"M14 15h.01\\"></path><path d=\\"M10 19a4 4 0 0 1-4-4v-3a6 6 0 1 1 12 0v3a4 4 0 0 1-4 4Z\\"></path><path d=\\"m9 19-2 3\\"></path><path d=\\"m15 19 2 3\\"></path></svg>"}},{"terms":["lucide-train-track-icon"],"label":"train-track","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-train-track-icon lucide-train-track lucide-icon customizable\\"><path d=\\"M2 17 17 2\\"></path><path d=\\"m2 14 8 8\\"></path><path d=\\"m5 11 8 8\\"></path><path d=\\"m8 8 8 8\\"></path><path d=\\"m11 5 8 8\\"></path><path d=\\"m14 2 8 8\\"></path><path d=\\"M7 22 22 7\\"></path></svg>"}},{"terms":["lucide-tram-front-icon"],"label":"tram-front","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tram-front-icon lucide-tram-front lucide-icon customizable\\"><rect width=\\"16\\" height=\\"16\\" x=\\"4\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M4 11h16\\"></path><path d=\\"M12 3v8\\"></path><path d=\\"m8 19-2 3\\"></path><path d=\\"m18 22-2-3\\"></path><path d=\\"M8 15h.01\\"></path><path d=\\"M16 15h.01\\"></path></svg>"}},{"terms":["lucide-transgender-icon"],"label":"transgender","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-transgender-icon lucide-transgender lucide-icon customizable\\"><path d=\\"M12 16v6\\"></path><path d=\\"M14 20h-4\\"></path><path d=\\"M18 2h4v4\\"></path><path d=\\"m2 2 7.17 7.17\\"></path><path d=\\"M2 5.355V2h3.357\\"></path><path d=\\"m22 2-7.17 7.17\\"></path><path d=\\"M8 5 5 8\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"4\\"></circle></svg>"}},{"terms":["lucide-trash-icon"],"label":"trash","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trash-icon lucide-trash lucide-icon customizable\\"><path d=\\"M3 6h18\\"></path><path d=\\"M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6\\"></path><path d=\\"M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2\\"></path></svg>"}},{"terms":["lucide-trash2-icon"],"label":"trash-2","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trash2-icon lucide-trash-2 lucide-icon customizable\\"><path d=\\"M3 6h18\\"></path><path d=\\"M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6\\"></path><path d=\\"M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2\\"></path><line x1=\\"10\\" x2=\\"10\\" y1=\\"11\\" y2=\\"17\\"></line><line x1=\\"14\\" x2=\\"14\\" y1=\\"11\\" y2=\\"17\\"></line></svg>"}},{"terms":["lucide-tree-deciduous-icon"],"label":"tree-deciduous","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tree-deciduous-icon lucide-tree-deciduous lucide-icon customizable\\"><path d=\\"M8 19a4 4 0 0 1-2.24-7.32A3.5 3.5 0 0 1 9 6.03V6a3 3 0 1 1 6 0v.04a3.5 3.5 0 0 1 3.24 5.65A4 4 0 0 1 16 19Z\\"></path><path d=\\"M12 19v3\\"></path></svg>"}},{"terms":["lucide-tree-palm-icon"],"label":"tree-palm","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tree-palm-icon lucide-tree-palm lucide-icon customizable\\"><path d=\\"M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4\\"></path><path d=\\"M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3\\"></path><path d=\\"M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35\\"></path><path d=\\"M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14\\"></path></svg>"}},{"terms":["lucide-tree-pine-icon"],"label":"tree-pine","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tree-pine-icon lucide-tree-pine lucide-icon customizable\\"><path d=\\"m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z\\"></path><path d=\\"M12 22v-3\\"></path></svg>"}},{"terms":["lucide-trees-icon"],"label":"trees","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trees-icon lucide-trees lucide-icon customizable\\"><path d=\\"M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z\\"></path><path d=\\"M7 16v6\\"></path><path d=\\"M13 19v3\\"></path><path d=\\"M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5\\"></path></svg>"}},{"terms":["lucide-trees-forest-icon"],"label":"trees-forest","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trees-forest-icon lucide-trees-forest lucide-icon customizable\\"><path d=\\"m9 5 3-3 3 3\\"></path><path d=\\"m9 10 3-3 3 3\\"></path><path d=\\"M12 12V2\\"></path><path d=\\"m2 15 3-3 3 3\\"></path><path d=\\"m2 20 3-3 3 3\\"></path><path d=\\"M5 22V12\\"></path><path d=\\"m16 15 3-3 3 3\\"></path><path d=\\"m16 20 3-3 3 3\\"></path><path d=\\"M19 22V12\\"></path></svg>"}},{"terms":["lucide-trello-icon"],"label":"trello","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trello-icon lucide-trello lucide-icon customizable\\"><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\" ry=\\"2\\"></rect><rect width=\\"3\\" height=\\"9\\" x=\\"7\\" y=\\"7\\"></rect><rect width=\\"3\\" height=\\"5\\" x=\\"14\\" y=\\"7\\"></rect></svg>"}},{"terms":["lucide-trending-down-icon"],"label":"trending-down","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trending-down-icon lucide-trending-down lucide-icon customizable\\"><polyline points=\\"22 17 13.5 8.5 8.5 13.5 2 7\\"></polyline><polyline points=\\"16 17 22 17 22 11\\"></polyline></svg>"}},{"terms":["lucide-trending-up-icon"],"label":"trending-up","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trending-up-icon lucide-trending-up lucide-icon customizable\\"><polyline points=\\"22 7 13.5 15.5 8.5 10.5 2 17\\"></polyline><polyline points=\\"16 7 22 7 22 13\\"></polyline></svg>"}},{"terms":["lucide-trending-up-down-icon"],"label":"trending-up-down","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trending-up-down-icon lucide-trending-up-down lucide-icon customizable\\"><path d=\\"M14.828 14.828 21 21\\"></path><path d=\\"M21 16v5h-5\\"></path><path d=\\"m21 3-9 9-4-4-6 6\\"></path><path d=\\"M21 8V3h-5\\"></path></svg>"}},{"terms":["lucide-triangle-icon"],"label":"triangle","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-triangle-icon lucide-triangle lucide-icon customizable\\"><path d=\\"M13.73 4a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z\\"></path></svg>"}},{"terms":["lucide-triangle-alert-icon"],"label":"triangle-alert","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-triangle-alert-icon lucide-triangle-alert lucide-icon customizable\\"><path d=\\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\\"></path><path d=\\"M12 9v4\\"></path><path d=\\"M12 17h.01\\"></path></svg>"}},{"terms":["lucide-triangle-dashed-icon"],"label":"triangle-dashed","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-triangle-dashed-icon lucide-triangle-dashed lucide-icon customizable\\"><path d=\\"M10.17 4.193a2 2 0 0 1 3.666.013\\"></path><path d=\\"M14 21h2\\"></path><path d=\\"m15.874 7.743 1 1.732\\"></path><path d=\\"m18.849 12.952 1 1.732\\"></path><path d=\\"M21.824 18.18a2 2 0 0 1-1.835 2.824\\"></path><path d=\\"M4.024 21a2 2 0 0 1-1.839-2.839\\"></path><path d=\\"m5.136 12.952-1 1.732\\"></path><path d=\\"M8 21h2\\"></path><path d=\\"m8.102 7.743-1 1.732\\"></path></svg>"}},{"terms":["lucide-triangle-right-icon"],"label":"triangle-right","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-triangle-right-icon lucide-triangle-right lucide-icon customizable\\"><path d=\\"M22 18a2 2 0 0 1-2 2H3c-1.1 0-1.3-.6-.4-1.3L20.4 4.3c.9-.7 1.6-.4 1.6.7Z\\"></path></svg>"}},{"terms":["lucide-triangle-stripes-icon"],"label":"triangle-stripes","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-triangle-stripes-icon lucide-triangle-stripes lucide-icon customizable\\"><path d=\\"M13.75 4a2 2 0 0 0-3.5 0L2.2 18A2 2.1 0 0 0 4 21h16a2 2 0 0 0 1.75-3Z\\"></path><path d=\\"M7.5 9h9\\"></path><path d=\\"M5.5 13h13\\"></path><path d=\\"M3 17h18\\"></path></svg>"}},{"terms":["lucide-trophy-icon"],"label":"trophy","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trophy-icon lucide-trophy lucide-icon customizable\\"><path d=\\"M6 9H4.5a2.5 2.5 0 0 1 0-5H6\\"></path><path d=\\"M18 9h1.5a2.5 2.5 0 0 0 0-5H18\\"></path><path d=\\"M4 22h16\\"></path><path d=\\"M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22\\"></path><path d=\\"M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22\\"></path><path d=\\"M18 2H6v7a6 6 0 0 0 12 0V2Z\\"></path></svg>"}},{"terms":["lucide-trousers-icon"],"label":"trousers","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-trousers-icon lucide-trousers lucide-icon customizable\\"><path d=\\"M4 6h16\\"></path><path d=\\"M6 22a2 2 0 0 1-2-2V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v17a2 2 0 0 1-2 2h-3l-3-10-3 10Z\\"></path><path d=\\"m6 11-2 1\\"></path><path d=\\"M9 8.5V6\\"></path><path d=\\"M15 6v2.5\\"></path><path d=\\"m20 12-2-1\\"></path><path d=\\"M4 18h6\\"></path><path d=\\"M14 18h6\\"></path></svg>"}},{"terms":["lucide-truck-icon"],"label":"truck","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-truck-icon lucide-truck lucide-icon customizable\\"><path d=\\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\\"></path><path d=\\"M15 18H9\\"></path><path d=\\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\\"></path><circle cx=\\"17\\" cy=\\"18\\" r=\\"2\\"></circle><circle cx=\\"7\\" cy=\\"18\\" r=\\"2\\"></circle></svg>"}},{"terms":["lucide-truck-electric-icon"],"label":"truck-electric","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-truck-electric-icon lucide-truck-electric lucide-icon customizable\\"><path d=\\"M14 19V7a2 2 0 0 0-2-2H9\\"></path><path d=\\"M15 19H9\\"></path><path d=\\"M19 19h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62L18.3 9.38a1 1 0 0 0-.78-.38H14\\"></path><path d=\\"M2 13v5a1 1 0 0 0 1 1h2\\"></path><path d=\\"M4 3 2.15 5.15a.495.495 0 0 0 .35.86h2.15a.47.47 0 0 1 .35.86L3 9.02\\"></path><circle cx=\\"17\\" cy=\\"19\\" r=\\"2\\"></circle><circle cx=\\"7\\" cy=\\"19\\" r=\\"2\\"></circle></svg>"}},{"terms":["lucide-turtle-icon"],"label":"turtle","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-turtle-icon lucide-turtle lucide-icon customizable\\"><path d=\\"m12 10 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a8 8 0 1 0-16 0v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3l2-4h4Z\\"></path><path d=\\"M4.82 7.9 8 10\\"></path><path d=\\"M15.18 7.9 12 10\\"></path><path d=\\"M16.93 10H20a2 2 0 0 1 0 4H2\\"></path></svg>"}},{"terms":["lucide-tuxedo-icon"],"label":"tuxedo","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tuxedo-icon lucide-tuxedo lucide-icon customizable\\"><path d=\\"M10 3v2l4-2v2Z\\"></path><path d=\\"M18 3h1a2 2 0 0 1 1.7 3A5270.5 5270.5 0 0 0 12 21S6.8 12 3.3 6A2 2 0 0 1 5 3h1\\"></path><path d=\\"M12 9h.01\\"></path><path d=\\"M12 13h.01\\"></path><path d=\\"M21 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5\\"></path></svg>"}},{"terms":["lucide-tv-icon"],"label":"tv","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tv-icon lucide-tv lucide-icon customizable\\"><rect width=\\"20\\" height=\\"15\\" x=\\"2\\" y=\\"7\\" rx=\\"2\\" ry=\\"2\\"></rect><polyline points=\\"17 2 12 7 7 2\\"></polyline></svg>"}},{"terms":["lucide-tv-minimal-icon"],"label":"tv-minimal","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tv-minimal-icon lucide-tv-minimal lucide-icon customizable\\"><path d=\\"M7 21h10\\"></path><rect width=\\"20\\" height=\\"14\\" x=\\"2\\" y=\\"3\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-tv-minimal-play-icon"],"label":"tv-minimal-play","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-tv-minimal-play-icon lucide-tv-minimal-play lucide-icon customizable\\"><path d=\\"M10 7.75a.75.75 0 0 1 1.142-.638l3.664 2.249a.75.75 0 0 1 0 1.278l-3.664 2.25a.75.75 0 0 1-1.142-.64z\\"></path><path d=\\"M7 21h10\\"></path><rect width=\\"20\\" height=\\"14\\" x=\\"2\\" y=\\"3\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-twitch-icon"],"label":"twitch","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-twitch-icon lucide-twitch lucide-icon customizable\\"><path d=\\"M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7\\"></path></svg>"}},{"terms":["lucide-twitter-icon"],"label":"twitter","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-twitter-icon lucide-twitter lucide-icon customizable\\"><path d=\\"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z\\"></path></svg>"}},{"terms":["lucide-type-icon"],"label":"type","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-type-icon lucide-type lucide-icon customizable\\"><polyline points=\\"4 7 4 4 20 4 20 7\\"></polyline><line x1=\\"9\\" x2=\\"15\\" y1=\\"20\\" y2=\\"20\\"></line><line x1=\\"12\\" x2=\\"12\\" y1=\\"4\\" y2=\\"20\\"></line></svg>"}},{"terms":["lucide-type-outline-icon"],"label":"type-outline","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-type-outline-icon lucide-type-outline lucide-icon customizable\\"><path d=\\"M14 16.5a.5.5 0 0 0 .5.5h.5a2 2 0 0 1 0 4H9a2 2 0 0 1 0-4h.5a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V8a2 2 0 0 1-4 0V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 1-4 0v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5Z\\"></path></svg>"}},{"terms":["lucide-type-square-icon"],"label":"type-square","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-type-square-icon lucide-type-square lucide-icon customizable\\"><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M7 9V7h10v2\\"></path><path d=\\"M12 7v10\\"></path><path d=\\"M10 17h4\\"></path></svg>"}},{"terms":["lucide-ufo-icon"],"label":"ufo","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ufo-icon lucide-ufo lucide-icon customizable\\"><path d=\\"M18 8c0 1-3 2-6 2S6 9 6 8a6 6 0 0 1 12 0\\"></path><path d=\\"M7 13h.01\\"></path><path d=\\"M12 14h.01\\"></path><path d=\\"M17 13h.01\\"></path><path d=\\"M6 8.1c-2.4 1-4 2.6-4 4.4 0 3 4.5 5.5 10 5.5s10-2.5 10-5.5c0-1.8-1.6-3.4-4-4.4\\"></path><path d=\\"m7 22 2-4\\"></path><path d=\\"m17 22-2-4\\"></path></svg>"}},{"terms":["lucide-umbrella-icon"],"label":"umbrella","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-umbrella-icon lucide-umbrella lucide-icon customizable\\"><path d=\\"M22 12a10.06 10.06 1 0 0-20 0Z\\"></path><path d=\\"M12 12v8a2 2 0 0 0 4 0\\"></path><path d=\\"M12 2v1\\"></path></svg>"}},{"terms":["lucide-umbrella-off-icon"],"label":"umbrella-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-umbrella-off-icon lucide-umbrella-off lucide-icon customizable\\"><path d=\\"M12 2v1\\"></path><path d=\\"M15.5 21a1.85 1.85 0 0 1-3.5-1v-8H2a10 10 0 0 1 3.428-6.575\\"></path><path d=\\"M17.5 12H22A10 10 0 0 0 9.004 3.455\\"></path><path d=\\"m2 2 20 20\\"></path></svg>"}},{"terms":["lucide-underline-icon"],"label":"underline","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-underline-icon lucide-underline lucide-icon customizable\\"><path d=\\"M6 4v6a6 6 0 0 0 12 0V4\\"></path><line x1=\\"4\\" x2=\\"20\\" y1=\\"20\\" y2=\\"20\\"></line></svg>"}},{"terms":["lucide-underline-square-icon"],"label":"underline-square","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-underline-square-icon lucide-underline-square lucide-icon customizable\\"><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M15 7v3a3 3 0 1 1-6 0V7\\"></path><path d=\\"M7 17h10\\"></path></svg>"}},{"terms":["lucide-undo-icon"],"label":"undo","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-undo-icon lucide-undo lucide-icon customizable\\"><path d=\\"M3 7v6h6\\"></path><path d=\\"M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13\\"></path></svg>"}},{"terms":["lucide-undo2-icon"],"label":"undo-2","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-undo2-icon lucide-undo-2 lucide-icon customizable\\"><path d=\\"M9 14 4 9l5-5\\"></path><path d=\\"M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11\\"></path></svg>"}},{"terms":["lucide-undo-dot-icon"],"label":"undo-dot","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-undo-dot-icon lucide-undo-dot lucide-icon customizable\\"><path d=\\"M21 17a9 9 0 0 0-15-6.7L3 13\\"></path><path d=\\"M3 7v6h6\\"></path><circle cx=\\"12\\" cy=\\"17\\" r=\\"1\\"></circle></svg>"}},{"terms":["lucide-unfold-horizontal-icon"],"label":"unfold-horizontal","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-unfold-horizontal-icon lucide-unfold-horizontal lucide-icon customizable\\"><path d=\\"M16 12h6\\"></path><path d=\\"M8 12H2\\"></path><path d=\\"M12 2v2\\"></path><path d=\\"M12 8v2\\"></path><path d=\\"M12 14v2\\"></path><path d=\\"M12 20v2\\"></path><path d=\\"m19 15 3-3-3-3\\"></path><path d=\\"m5 9-3 3 3 3\\"></path></svg>"}},{"terms":["lucide-unfold-vertical-icon"],"label":"unfold-vertical","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-unfold-vertical-icon lucide-unfold-vertical lucide-icon customizable\\"><path d=\\"M12 22v-6\\"></path><path d=\\"M12 8V2\\"></path><path d=\\"M4 12H2\\"></path><path d=\\"M10 12H8\\"></path><path d=\\"M16 12h-2\\"></path><path d=\\"M22 12h-2\\"></path><path d=\\"m15 19-3 3-3-3\\"></path><path d=\\"m15 5-3-3-3 3\\"></path></svg>"}},{"terms":["lucide-ungroup-icon"],"label":"ungroup","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-ungroup-icon lucide-ungroup lucide-icon customizable\\"><rect width=\\"8\\" height=\\"6\\" x=\\"5\\" y=\\"4\\" rx=\\"1\\"></rect><rect width=\\"8\\" height=\\"6\\" x=\\"11\\" y=\\"14\\" rx=\\"1\\"></rect></svg>"}},{"terms":["lucide-unicorn-head-icon"],"label":"unicorn-head","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-unicorn-head-icon lucide-unicorn-head lucide-icon customizable\\"><path d=\\"m15.6 4.8 2.7 2.3\\"></path><path d=\\"M15.5 10S19 7 22 2c-6 2-10 5-10 5\\"></path><path d=\\"M11.5 12H11\\"></path><path d=\\"M5 15a4 4 0 0 0 4 4h7.8l.3.3a3 3 0 0 0 4-4.46L12 7c0-3-1-5-1-5S8 3 8 7c-4 1-6 3-6 3\\"></path><path d=\\"M2 4.5C4 3 6 3 6 3l2 4\\"></path><path d=\\"M6.14 17.8S4 19 2 22\\"></path></svg>"}},{"terms":["lucide-university-icon"],"label":"university","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-university-icon lucide-university lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"10\\" r=\\"1\\"></circle><path d=\\"M22 20V8h-4l-6-4-6 4H2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2\\"></path><path d=\\"M6 17v.01\\"></path><path d=\\"M6 13v.01\\"></path><path d=\\"M18 17v.01\\"></path><path d=\\"M18 13v.01\\"></path><path d=\\"M14 22v-5a2 2 0 0 0-2-2a2 2 0 0 0-2 2v5\\"></path></svg>"}},{"terms":["lucide-unlink-icon"],"label":"unlink","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-unlink-icon lucide-unlink lucide-icon customizable\\"><path d=\\"m18.84 12.25 1.72-1.71h-.02a5.004 5.004 0 0 0-.12-7.07 5.006 5.006 0 0 0-6.95 0l-1.72 1.71\\"></path><path d=\\"m5.17 11.75-1.71 1.71a5.004 5.004 0 0 0 .12 7.07 5.006 5.006 0 0 0 6.95 0l1.71-1.71\\"></path><line x1=\\"8\\" x2=\\"8\\" y1=\\"2\\" y2=\\"5\\"></line><line x1=\\"2\\" x2=\\"5\\" y1=\\"8\\" y2=\\"8\\"></line><line x1=\\"16\\" x2=\\"16\\" y1=\\"19\\" y2=\\"22\\"></line><line x1=\\"19\\" x2=\\"22\\" y1=\\"16\\" y2=\\"16\\"></line></svg>"}},{"terms":["lucide-unlink2-icon"],"label":"unlink-2","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-unlink2-icon lucide-unlink-2 lucide-icon customizable\\"><path d=\\"M15 7h2a5 5 0 0 1 0 10h-2m-6 0H7A5 5 0 0 1 7 7h2\\"></path></svg>"}},{"terms":["lucide-unplug-icon"],"label":"unplug","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-unplug-icon lucide-unplug lucide-icon customizable\\"><path d=\\"m19 5 3-3\\"></path><path d=\\"m2 22 3-3\\"></path><path d=\\"M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z\\"></path><path d=\\"M7.5 13.5 10 11\\"></path><path d=\\"M10.5 16.5 13 14\\"></path><path d=\\"m12 6 6 6 2.3-2.3a2.4 2.4 0 0 0 0-3.4l-2.6-2.6a2.4 2.4 0 0 0-3.4 0Z\\"></path></svg>"}},{"terms":["lucide-upload-icon"],"label":"upload","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-upload-icon lucide-upload lucide-icon customizable\\"><path d=\\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\\"></path><polyline points=\\"17 8 12 3 7 8\\"></polyline><line x1=\\"12\\" x2=\\"12\\" y1=\\"3\\" y2=\\"15\\"></line></svg>"}},{"terms":["lucide-usb-icon"],"label":"usb","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-usb-icon lucide-usb lucide-icon customizable\\"><circle cx=\\"10\\" cy=\\"7\\" r=\\"1\\"></circle><circle cx=\\"4\\" cy=\\"20\\" r=\\"1\\"></circle><path d=\\"M4.7 19.3 19 5\\"></path><path d=\\"m21 3-3 1 2 2Z\\"></path><path d=\\"M9.26 7.68 5 12l2 5\\"></path><path d=\\"m10 14 5 2 3.5-3.5\\"></path><path d=\\"m18 12 1-1 1 1-1 1Z\\"></path></svg>"}},{"terms":["lucide-user-icon"],"label":"user","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-icon lucide-user lucide-icon customizable\\"><path d=\\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\\"></path><circle cx=\\"12\\" cy=\\"7\\" r=\\"4\\"></circle></svg>"}},{"terms":["lucide-user-check-icon"],"label":"user-check","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-check-icon lucide-user-check lucide-icon customizable\\"><path d=\\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\\"></path><circle cx=\\"9\\" cy=\\"7\\" r=\\"4\\"></circle><polyline points=\\"16 11 18 13 22 9\\"></polyline></svg>"}},{"terms":["lucide-user-cog-icon"],"label":"user-cog","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-cog-icon lucide-user-cog lucide-icon customizable\\"><path d=\\"M10 15H6a4 4 0 0 0-4 4v2\\"></path><path d=\\"m14.305 16.53.923-.382\\"></path><path d=\\"m15.228 13.852-.923-.383\\"></path><path d=\\"m16.852 12.228-.383-.923\\"></path><path d=\\"m16.852 17.772-.383.924\\"></path><path d=\\"m19.148 12.228.383-.923\\"></path><path d=\\"m19.53 18.696-.382-.924\\"></path><path d=\\"m20.772 13.852.924-.383\\"></path><path d=\\"m20.772 16.148.924.383\\"></path><circle cx=\\"18\\" cy=\\"15\\" r=\\"3\\"></circle><circle cx=\\"9\\" cy=\\"7\\" r=\\"4\\"></circle></svg>"}},{"terms":["lucide-user-lock-icon"],"label":"user-lock","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-lock-icon lucide-user-lock lucide-icon customizable\\"><circle cx=\\"10\\" cy=\\"7\\" r=\\"4\\"></circle><path d=\\"M10.3 15H7a4 4 0 0 0-4 4v2\\"></path><path d=\\"M15 15.5V14a2 2 0 0 1 4 0v1.5\\"></path><rect width=\\"8\\" height=\\"5\\" x=\\"13\\" y=\\"16\\" rx=\\".899\\"></rect></svg>"}},{"terms":["lucide-user-minus-icon"],"label":"user-minus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-minus-icon lucide-user-minus lucide-icon customizable\\"><path d=\\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\\"></path><circle cx=\\"9\\" cy=\\"7\\" r=\\"4\\"></circle><line x1=\\"22\\" x2=\\"16\\" y1=\\"11\\" y2=\\"11\\"></line></svg>"}},{"terms":["lucide-user-pen-icon"],"label":"user-pen","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-pen-icon lucide-user-pen lucide-icon customizable\\"><path d=\\"M11.5 15H7a4 4 0 0 0-4 4v2\\"></path><path d=\\"M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\\"></path><circle cx=\\"10\\" cy=\\"7\\" r=\\"4\\"></circle></svg>"}},{"terms":["lucide-user-plus-icon"],"label":"user-plus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-plus-icon lucide-user-plus lucide-icon customizable\\"><path d=\\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\\"></path><circle cx=\\"9\\" cy=\\"7\\" r=\\"4\\"></circle><line x1=\\"19\\" x2=\\"19\\" y1=\\"8\\" y2=\\"14\\"></line><line x1=\\"22\\" x2=\\"16\\" y1=\\"11\\" y2=\\"11\\"></line></svg>"}},{"terms":["lucide-user-round-icon"],"label":"user-round","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-icon lucide-user-round lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"8\\" r=\\"5\\"></circle><path d=\\"M20 21a8 8 0 0 0-16 0\\"></path></svg>"}},{"terms":["lucide-user-round-check-icon"],"label":"user-round-check","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-check-icon lucide-user-round-check lucide-icon customizable\\"><path d=\\"M2 21a8 8 0 0 1 13.292-6\\"></path><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle><path d=\\"m16 19 2 2 4-4\\"></path></svg>"}},{"terms":["lucide-user-round-cog-icon"],"label":"user-round-cog","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-cog-icon lucide-user-round-cog lucide-icon customizable\\"><path d=\\"m14.305 19.53.923-.382\\"></path><path d=\\"m15.228 16.852-.923-.383\\"></path><path d=\\"m16.852 15.228-.383-.923\\"></path><path d=\\"m16.852 20.772-.383.924\\"></path><path d=\\"m19.148 15.228.383-.923\\"></path><path d=\\"m19.53 21.696-.382-.924\\"></path><path d=\\"M2 21a8 8 0 0 1 10.434-7.62\\"></path><path d=\\"m20.772 16.852.924-.383\\"></path><path d=\\"m20.772 19.148.924.383\\"></path><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle><circle cx=\\"18\\" cy=\\"18\\" r=\\"3\\"></circle></svg>"}},{"terms":["lucide-user-round-minus-icon"],"label":"user-round-minus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-minus-icon lucide-user-round-minus lucide-icon customizable\\"><path d=\\"M2 21a8 8 0 0 1 13.292-6\\"></path><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle><path d=\\"M22 19h-6\\"></path></svg>"}},{"terms":["lucide-user-round-pen-icon"],"label":"user-round-pen","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-pen-icon lucide-user-round-pen lucide-icon customizable\\"><path d=\\"M2 21a8 8 0 0 1 10.821-7.487\\"></path><path d=\\"M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\\"></path><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle></svg>"}},{"terms":["lucide-user-round-plus-icon"],"label":"user-round-plus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-plus-icon lucide-user-round-plus lucide-icon customizable\\"><path d=\\"M2 21a8 8 0 0 1 13.292-6\\"></path><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle><path d=\\"M19 16v6\\"></path><path d=\\"M22 19h-6\\"></path></svg>"}},{"terms":["lucide-user-round-search-icon"],"label":"user-round-search","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-search-icon lucide-user-round-search lucide-icon customizable\\"><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle><path d=\\"M2 21a8 8 0 0 1 10.434-7.62\\"></path><circle cx=\\"18\\" cy=\\"18\\" r=\\"3\\"></circle><path d=\\"m22 22-1.9-1.9\\"></path></svg>"}},{"terms":["lucide-user-round-x-icon"],"label":"user-round-x","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-round-x-icon lucide-user-round-x lucide-icon customizable\\"><path d=\\"M2 21a8 8 0 0 1 11.873-7\\"></path><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle><path d=\\"m17 17 5 5\\"></path><path d=\\"m22 17-5 5\\"></path></svg>"}},{"terms":["lucide-user-search-icon"],"label":"user-search","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-search-icon lucide-user-search lucide-icon customizable\\"><circle cx=\\"10\\" cy=\\"7\\" r=\\"4\\"></circle><path d=\\"M10.3 15H7a4 4 0 0 0-4 4v2\\"></path><circle cx=\\"17\\" cy=\\"17\\" r=\\"3\\"></circle><path d=\\"m21 21-1.9-1.9\\"></path></svg>"}},{"terms":["lucide-user-x-icon"],"label":"user-x","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-user-x-icon lucide-user-x lucide-icon customizable\\"><path d=\\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\\"></path><circle cx=\\"9\\" cy=\\"7\\" r=\\"4\\"></circle><line x1=\\"17\\" x2=\\"22\\" y1=\\"8\\" y2=\\"13\\"></line><line x1=\\"22\\" x2=\\"17\\" y1=\\"8\\" y2=\\"13\\"></line></svg>"}},{"terms":["lucide-users-icon"],"label":"users","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-users-icon lucide-users lucide-icon customizable\\"><path d=\\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\\"></path><circle cx=\\"9\\" cy=\\"7\\" r=\\"4\\"></circle><path d=\\"M22 21v-2a4 4 0 0 0-3-3.87\\"></path><path d=\\"M16 3.13a4 4 0 0 1 0 7.75\\"></path></svg>"}},{"terms":["lucide-users-round-icon"],"label":"users-round","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-users-round-icon lucide-users-round lucide-icon customizable\\"><path d=\\"M18 21a8 8 0 0 0-16 0\\"></path><circle cx=\\"10\\" cy=\\"8\\" r=\\"5\\"></circle><path d=\\"M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3\\"></path></svg>"}},{"terms":["lucide-utensils-icon"],"label":"utensils","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-utensils-icon lucide-utensils lucide-icon customizable\\"><path d=\\"M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2\\"></path><path d=\\"M7 2v20\\"></path><path d=\\"M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7\\"></path></svg>"}},{"terms":["lucide-utensils-crossed-icon"],"label":"utensils-crossed","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-utensils-crossed-icon lucide-utensils-crossed lucide-icon customizable\\"><path d=\\"m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8\\"></path><path d=\\"M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7\\"></path><path d=\\"m2.1 21.8 6.4-6.3\\"></path><path d=\\"m19 5-7 7\\"></path></svg>"}},{"terms":["lucide-utility-pole-icon"],"label":"utility-pole","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-utility-pole-icon lucide-utility-pole lucide-icon customizable\\"><path d=\\"M12 2v20\\"></path><path d=\\"M2 5h20\\"></path><path d=\\"M3 3v2\\"></path><path d=\\"M7 3v2\\"></path><path d=\\"M17 3v2\\"></path><path d=\\"M21 3v2\\"></path><path d=\\"m19 5-7 7-7-7\\"></path></svg>"}},{"terms":["lucide-variable-icon"],"label":"variable","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-variable-icon lucide-variable lucide-icon customizable\\"><path d=\\"M8 21s-4-3-4-9 4-9 4-9\\"></path><path d=\\"M16 3s4 3 4 9-4 9-4 9\\"></path><line x1=\\"15\\" x2=\\"9\\" y1=\\"9\\" y2=\\"15\\"></line><line x1=\\"9\\" x2=\\"15\\" y1=\\"9\\" y2=\\"15\\"></line></svg>"}},{"terms":["lucide-vault-icon"],"label":"vault","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-vault-icon lucide-vault lucide-icon customizable\\"><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><circle cx=\\"7.5\\" cy=\\"7.5\\" r=\\".5\\" fill=\\"currentColor\\"></circle><path d=\\"m7.9 7.9 2.7 2.7\\"></path><circle cx=\\"16.5\\" cy=\\"7.5\\" r=\\".5\\" fill=\\"currentColor\\"></circle><path d=\\"m13.4 10.6 2.7-2.7\\"></path><circle cx=\\"7.5\\" cy=\\"16.5\\" r=\\".5\\" fill=\\"currentColor\\"></circle><path d=\\"m7.9 16.1 2.7-2.7\\"></path><circle cx=\\"16.5\\" cy=\\"16.5\\" r=\\".5\\" fill=\\"currentColor\\"></circle><path d=\\"m13.4 13.4 2.7 2.7\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"2\\"></circle></svg>"}},{"terms":["lucide-vegan-icon"],"label":"vegan","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-vegan-icon lucide-vegan lucide-icon customizable\\"><path d=\\"M16 8q6 0 6-6-6 0-6 6\\"></path><path d=\\"M17.41 3.59a10 10 0 1 0 3 3\\"></path><path d=\\"M2 2a26.6 26.6 0 0 1 10 20c.9-6.82 1.5-9.5 4-14\\"></path></svg>"}},{"terms":["lucide-venetian-mask-icon"],"label":"venetian-mask","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-venetian-mask-icon lucide-venetian-mask lucide-icon customizable\\"><path d=\\"M18 11c-1.5 0-2.5.5-3 2\\"></path><path d=\\"M4 6a2 2 0 0 0-2 2v4a5 5 0 0 0 5 5 8 8 0 0 1 5 2 8 8 0 0 1 5-2 5 5 0 0 0 5-5V8a2 2 0 0 0-2-2h-3a8 8 0 0 0-5 2 8 8 0 0 0-5-2z\\"></path><path d=\\"M6 11c1.5 0 2.5.5 3 2\\"></path></svg>"}},{"terms":["lucide-venn-icon"],"label":"venn","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-venn-icon lucide-venn lucide-icon customizable\\"><circle cx=\\"8\\" cy=\\"12\\" r=\\"6\\"></circle><circle cx=\\"16\\" cy=\\"12\\" r=\\"6\\"></circle></svg>"}},{"terms":["lucide-venus-icon"],"label":"venus","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-venus-icon lucide-venus lucide-icon customizable\\"><path d=\\"M12 15v7\\"></path><path d=\\"M9 19h6\\"></path><circle cx=\\"12\\" cy=\\"9\\" r=\\"6\\"></circle></svg>"}},{"terms":["lucide-venus-and-mars-icon"],"label":"venus-and-mars","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-venus-and-mars-icon lucide-venus-and-mars lucide-icon customizable\\"><path d=\\"M10 20h4\\"></path><path d=\\"M12 16v6\\"></path><path d=\\"M17 2h4v4\\"></path><path d=\\"m21 2-5.46 5.46\\"></path><circle cx=\\"12\\" cy=\\"11\\" r=\\"5\\"></circle></svg>"}},{"terms":["lucide-vest-icon"],"label":"vest","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-vest-icon lucide-vest lucide-icon customizable\\"><path d=\\"M10 4a2 2 0 0 0 4 0V3h4v3c0 1.7 1.3 3 3 3v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9c1.7 0 3-1.3 3-3V3h4Z\\"></path></svg>"}},{"terms":["lucide-vibrate-icon"],"label":"vibrate","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-vibrate-icon lucide-vibrate lucide-icon customizable\\"><path d=\\"m2 8 2 2-2 2 2 2-2 2\\"></path><path d=\\"m22 8-2 2 2 2-2 2 2 2\\"></path><rect width=\\"8\\" height=\\"14\\" x=\\"8\\" y=\\"5\\" rx=\\"1\\"></rect></svg>"}},{"terms":["lucide-vibrate-off-icon"],"label":"vibrate-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-vibrate-off-icon lucide-vibrate-off lucide-icon customizable\\"><path d=\\"m2 8 2 2-2 2 2 2-2 2\\"></path><path d=\\"m22 8-2 2 2 2-2 2 2 2\\"></path><path d=\\"M8 8v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2\\"></path><path d=\\"M16 10.34V6c0-.55-.45-1-1-1h-4.34\\"></path><line x1=\\"2\\" x2=\\"22\\" y1=\\"2\\" y2=\\"22\\"></line></svg>"}},{"terms":["lucide-video-icon"],"label":"video","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-video-icon lucide-video lucide-icon customizable\\"><path d=\\"m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5\\"></path><rect x=\\"2\\" y=\\"6\\" width=\\"14\\" height=\\"12\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-video-off-icon"],"label":"video-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-video-off-icon lucide-video-off lucide-icon customizable\\"><path d=\\"M10.66 6H14a2 2 0 0 1 2 2v2.5l5.248-3.062A.5.5 0 0 1 22 7.87v8.196\\"></path><path d=\\"M16 16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2\\"></path><path d=\\"m2 2 20 20\\"></path></svg>"}},{"terms":["lucide-videotape-icon"],"label":"videotape","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-videotape-icon lucide-videotape lucide-icon customizable\\"><rect width=\\"20\\" height=\\"16\\" x=\\"2\\" y=\\"4\\" rx=\\"2\\"></rect><path d=\\"M2 8h20\\"></path><circle cx=\\"8\\" cy=\\"14\\" r=\\"2\\"></circle><path d=\\"M8 12h8\\"></path><circle cx=\\"16\\" cy=\\"14\\" r=\\"2\\"></circle></svg>"}},{"terms":["lucide-view-icon"],"label":"view","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-view-icon lucide-view lucide-icon customizable\\"><path d=\\"M21 17v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2\\"></path><path d=\\"M21 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"1\\"></circle><path d=\\"M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0\\"></path></svg>"}},{"terms":["lucide-voicemail-icon"],"label":"voicemail","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-voicemail-icon lucide-voicemail lucide-icon customizable\\"><circle cx=\\"6\\" cy=\\"12\\" r=\\"4\\"></circle><circle cx=\\"18\\" cy=\\"12\\" r=\\"4\\"></circle><line x1=\\"6\\" x2=\\"18\\" y1=\\"16\\" y2=\\"16\\"></line></svg>"}},{"terms":["lucide-volleyball-icon"],"label":"volleyball","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-volleyball-icon lucide-volleyball lucide-icon customizable\\"><path d=\\"M11.1 7.1a16.55 16.55 0 0 1 10.9 4\\"></path><path d=\\"M12 12a12.6 12.6 0 0 1-8.7 5\\"></path><path d=\\"M16.8 13.6a16.55 16.55 0 0 1-9 7.5\\"></path><path d=\\"M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10\\"></path><path d=\\"M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle></svg>"}},{"terms":["lucide-volleyball-icon"],"label":"volleyball","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-volleyball-icon lucide-volleyball lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><path d=\\"M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5\\"></path><path d=\\"M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10\\"></path><path d=\\"M22 11.1c-.8-.6-1.7-1.3-2.6-1.8-3-1.7-6.1-2.5-8.3-2.2\\"></path><path d=\\"M7.8 21.1c1-.4 1.9-.8 2.9-1.4 3-1.7 5.2-4 6.1-6.1\\"></path><path d=\\"M12 12a12.6 12.6 0 0 1-8.7 5\\"></path></svg>"}},{"terms":["lucide-volume-icon"],"label":"volume","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-volume-icon lucide-volume lucide-icon customizable\\"><path d=\\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\\"></path></svg>"}},{"terms":["lucide-volume1-icon"],"label":"volume-1","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-volume1-icon lucide-volume-1 lucide-icon customizable\\"><path d=\\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\\"></path><path d=\\"M16 9a5 5 0 0 1 0 6\\"></path></svg>"}},{"terms":["lucide-volume2-icon"],"label":"volume-2","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-volume2-icon lucide-volume-2 lucide-icon customizable\\"><path d=\\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\\"></path><path d=\\"M16 9a5 5 0 0 1 0 6\\"></path><path d=\\"M19.364 18.364a9 9 0 0 0 0-12.728\\"></path></svg>"}},{"terms":["lucide-volume-off-icon"],"label":"volume-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-volume-off-icon lucide-volume-off lucide-icon customizable\\"><path d=\\"M16 9a5 5 0 0 1 .95 2.293\\"></path><path d=\\"M19.364 5.636a9 9 0 0 1 1.889 9.96\\"></path><path d=\\"m2 2 20 20\\"></path><path d=\\"m7 7-.587.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298V11\\"></path><path d=\\"M9.828 4.172A.686.686 0 0 1 11 4.657v.686\\"></path></svg>"}},{"terms":["lucide-volume-x-icon"],"label":"volume-x","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-volume-x-icon lucide-volume-x lucide-icon customizable\\"><path d=\\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\\"></path><line x1=\\"22\\" x2=\\"16\\" y1=\\"9\\" y2=\\"15\\"></line><line x1=\\"16\\" x2=\\"22\\" y1=\\"9\\" y2=\\"15\\"></line></svg>"}},{"terms":["lucide-vote-icon"],"label":"vote","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-vote-icon lucide-vote lucide-icon customizable\\"><path d=\\"m9 12 2 2 4-4\\"></path><path d=\\"M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z\\"></path><path d=\\"M22 19H2\\"></path></svg>"}},{"terms":["lucide-waffle-icon"],"label":"waffle","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-waffle-icon lucide-waffle lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><path d=\\"m7 14 7-7\\"></path><path d=\\"m10 17 7-7\\"></path><path d=\\"m7 10 7 7\\"></path><path d=\\"m10 7 7 7\\"></path></svg>"}},{"terms":["lucide-wallet-icon"],"label":"wallet","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wallet-icon lucide-wallet lucide-icon customizable\\"><path d=\\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\\"></path><path d=\\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\\"></path></svg>"}},{"terms":["lucide-wallet-cards-icon"],"label":"wallet-cards","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wallet-cards-icon lucide-wallet-cards lucide-icon customizable\\"><rect width=\\"18\\" height=\\"18\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2\\"></path><path d=\\"M3 11h3c.8 0 1.6.3 2.1.9l1.1.9c1.6 1.6 4.1 1.6 5.7 0l1.1-.9c.5-.5 1.3-.9 2.1-.9H21\\"></path></svg>"}},{"terms":["lucide-wallet-minimal-icon"],"label":"wallet-minimal","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wallet-minimal-icon lucide-wallet-minimal lucide-icon customizable\\"><path d=\\"M17 14h.01\\"></path><path d=\\"M7 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14\\"></path></svg>"}},{"terms":["lucide-wallpaper-icon"],"label":"wallpaper","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wallpaper-icon lucide-wallpaper lucide-icon customizable\\"><circle cx=\\"8\\" cy=\\"9\\" r=\\"2\\"></circle><path d=\\"m9 17 6.1-6.1a2 2 0 0 1 2.81.01L22 15V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2\\"></path><path d=\\"M8 21h8\\"></path><path d=\\"M12 17v4\\"></path></svg>"}},{"terms":["lucide-wand-icon"],"label":"wand","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wand-icon lucide-wand lucide-icon customizable\\"><path d=\\"M15 4V2\\"></path><path d=\\"M15 16v-2\\"></path><path d=\\"M8 9h2\\"></path><path d=\\"M20 9h2\\"></path><path d=\\"M17.8 11.8 19 13\\"></path><path d=\\"M15 9h.01\\"></path><path d=\\"M17.8 6.2 19 5\\"></path><path d=\\"m3 21 9-9\\"></path><path d=\\"M12.2 6.2 11 5\\"></path></svg>"}},{"terms":["lucide-wand-sparkles-icon"],"label":"wand-sparkles","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wand-sparkles-icon lucide-wand-sparkles lucide-icon customizable\\"><path d=\\"m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72\\"></path><path d=\\"m14 7 3 3\\"></path><path d=\\"M5 6v4\\"></path><path d=\\"M19 14v4\\"></path><path d=\\"M10 2v2\\"></path><path d=\\"M7 8H3\\"></path><path d=\\"M21 16h-4\\"></path><path d=\\"M11 3H9\\"></path></svg>"}},{"terms":["lucide-wardrobe-icon"],"label":"wardrobe","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wardrobe-icon lucide-wardrobe lucide-icon customizable\\"><rect width=\\"18\\" height=\\"20\\" x=\\"3\\" y=\\"2\\" rx=\\"2\\"></rect><path d=\\"M8 10h.01\\"></path><path d=\\"M12 2v15\\"></path><path d=\\"M16 10h.01\\"></path><path d=\\"M3 17h18\\"></path></svg>"}},{"terms":["lucide-warehouse-icon"],"label":"warehouse","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-warehouse-icon lucide-warehouse lucide-icon customizable\\"><path d=\\"M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z\\"></path><path d=\\"M6 18h12\\"></path><path d=\\"M6 14h12\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"10\\"></rect></svg>"}},{"terms":["lucide-washing-machine-icon"],"label":"washing-machine","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-washing-machine-icon lucide-washing-machine lucide-icon customizable\\"><path d=\\"M3 6h3\\"></path><path d=\\"M17 6h.01\\"></path><rect width=\\"18\\" height=\\"20\\" x=\\"3\\" y=\\"2\\" rx=\\"2\\"></rect><circle cx=\\"12\\" cy=\\"13\\" r=\\"5\\"></circle><path d=\\"M12 18a2.5 2.5 0 0 0 0-5 2.5 2.5 0 0 1 0-5\\"></path></svg>"}},{"terms":["lucide-watch-icon"],"label":"watch","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-icon lucide-watch lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"6\\"></circle><polyline points=\\"12 10 12 12 13 13\\"></polyline><path d=\\"m16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05\\"></path><path d=\\"m7.88 16.36.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05\\"></path></svg>"}},{"terms":["lucide-watch-activity-icon"],"label":"watch-activity","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-activity-icon lucide-watch-activity lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"M6 12h3l2 2 2.2-4 1.8 2h3\\"></path></svg>"}},{"terms":["lucide-watch-alarm-icon"],"label":"watch-alarm","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-alarm-icon lucide-watch-alarm lucide-icon customizable\\"><path d=\\"M2.5 9a9.93 9.93 0 0 0 0 6\\"></path><path d=\\"M21.5 15a9.93 9.93 0 0 0 0-6\\"></path><circle cx=\\"12\\" cy=\\"12\\" r=\\"6\\"></circle><path d=\\"M12 10v2l1 1\\"></path><path d=\\"m16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05\\"></path><path d=\\"m7.88 16.36.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05\\"></path></svg>"}},{"terms":["lucide-watch-bars-icon"],"label":"watch-bars","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-bars-icon lucide-watch-bars lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"M10 12v2\\"></path><path d=\\"M14 10v4\\"></path></svg>"}},{"terms":["lucide-watch-charging-icon"],"label":"watch-charging","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-charging-icon lucide-watch-charging lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"m12 10-1 2h2l-1 2\\"></path></svg>"}},{"terms":["lucide-watch-check-icon"],"label":"watch-check","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-check-icon lucide-watch-check lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"m14 11-2.5 2.5L10 12\\"></path></svg>"}},{"terms":["lucide-watch-loader-icon"],"label":"watch-loader","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-loader-icon lucide-watch-loader lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"M14 12a2 2 0 1 1-2-2\\"></path></svg>"}},{"terms":["lucide-watch-music-icon"],"label":"watch-music","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-music-icon lucide-watch-music lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><circle cx=\\"11.5\\" cy=\\"13.5\\" r=\\".5\\"></circle><path d=\\"m14 11-2-1v3.5\\"></path></svg>"}},{"terms":["lucide-watch-square-icon"],"label":"watch-square","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-square-icon lucide-watch-square lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"M12 10v2l1 1\\"></path></svg>"}},{"terms":["lucide-watch-square-alarm-icon"],"label":"watch-square-alarm","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-square-alarm-icon lucide-watch-square-alarm lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"M12 10v2l1 1\\"></path><path d=\\"M2 16c0 2.1 1.1 4 2.7 5\\"></path><path d=\\"M22 8c0-2.1-1.1-4-2.7-5\\"></path></svg>"}},{"terms":["lucide-watch-text-icon"],"label":"watch-text","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watch-text-icon lucide-watch-text lucide-icon customizable\\"><path d=\\"m15.8 6-.5-2.4c-.2-1-1-1.6-2-1.6h-2.7a2 2 0 0 0-2 1.6L8.2 6\\"></path><rect width=\\"12\\" height=\\"12\\" x=\\"6\\" y=\\"6\\" rx=\\"2\\"></rect><path d=\\"m8.2 18 .5 2.4c.2 1 1 1.6 2 1.6h2.7a2 2 0 0 0 2-1.6l.5-2.4\\"></path><path d=\\"M10 10h2\\"></path><path d=\\"M14 14h-4\\"></path></svg>"}},{"terms":["lucide-watermelon-icon"],"label":"watermelon","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-watermelon-icon lucide-watermelon lucide-icon customizable\\"><path d=\\"M21.7 17.7a1.08 1.08 0 0 1-.08 1.57A12 12 0 0 1 4.73 2.38a1.1 1.1 0 0 1 1.61-.04Z\\"></path><path d=\\"M19.7 15.7A8 8 0 0 1 8.35 4.34\\"></path><path d=\\"M10 11h.01\\"></path><path d=\\"M13 14h.01\\"></path></svg>"}},{"terms":["lucide-wave-circle-icon"],"label":"wave-circle","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wave-circle-icon lucide-wave-circle lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><path d=\\"M16.5 20.93a5 5 0 1 1-.6-9 7 7 0 0 0-13.9.6\\"></path></svg>"}},{"terms":["lucide-waves-icon"],"label":"waves","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-waves-icon lucide-waves lucide-icon customizable\\"><path d=\\"M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path><path d=\\"M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path><path d=\\"M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path></svg>"}},{"terms":["lucide-waves-birds-icon"],"label":"waves-birds","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-waves-birds-icon lucide-waves-birds lucide-icon customizable\\"><path d=\\"M2 3c3-1 5 2 5 2s2-2.1 5-1.2\\"></path><path d=\\"M10 8c3-1 5 2 5 2s2-3 5-2\\"></path><path d=\\"M2 15c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path><path d=\\"M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path></svg>"}},{"terms":["lucide-waves-ladder-icon"],"label":"waves-ladder","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-waves-ladder-icon lucide-waves-ladder lucide-icon customizable\\"><path d=\\"M19 5a2 2 0 0 0-2 2v11\\"></path><path d=\\"M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path><path d=\\"M7 13h10\\"></path><path d=\\"M7 9h10\\"></path><path d=\\"M9 5a2 2 0 0 0-2 2v11\\"></path></svg>"}},{"terms":["lucide-waves-shark-fin-icon"],"label":"waves-shark-fin","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-waves-shark-fin-icon lucide-waves-shark-fin lucide-icon customizable\\"><path d=\\"M17.3 14.8C15.3 11 15.8 6.2 19 3 11.6 3 5.6 8.7 5.1 16\\"></path><path d=\\"M2 15c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path><path d=\\"M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1\\"></path></svg>"}},{"terms":["lucide-waypoints-icon"],"label":"waypoints","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-waypoints-icon lucide-waypoints lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"4.5\\" r=\\"2.5\\"></circle><path d=\\"m10.2 6.3-3.9 3.9\\"></path><circle cx=\\"4.5\\" cy=\\"12\\" r=\\"2.5\\"></circle><path d=\\"M7 12h10\\"></path><circle cx=\\"19.5\\" cy=\\"12\\" r=\\"2.5\\"></circle><path d=\\"m13.8 17.7 3.9-3.9\\"></path><circle cx=\\"12\\" cy=\\"19.5\\" r=\\"2.5\\"></circle></svg>"}},{"terms":["lucide-webcam-icon"],"label":"webcam","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-webcam-icon lucide-webcam lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"10\\" r=\\"8\\"></circle><circle cx=\\"12\\" cy=\\"10\\" r=\\"3\\"></circle><path d=\\"M7 22h10\\"></path><path d=\\"M12 22v-4\\"></path></svg>"}},{"terms":["lucide-webhook-icon"],"label":"webhook","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-webhook-icon lucide-webhook lucide-icon customizable\\"><path d=\\"M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2\\"></path><path d=\\"m6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06\\"></path><path d=\\"m12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8\\"></path></svg>"}},{"terms":["lucide-webhook-off-icon"],"label":"webhook-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-webhook-off-icon lucide-webhook-off lucide-icon customizable\\"><path d=\\"M17 17h-5c-1.09-.02-1.94.92-2.5 1.9A3 3 0 1 1 2.57 15\\"></path><path d=\\"M9 3.4a4 4 0 0 1 6.52.66\\"></path><path d=\\"m6 17 3.1-5.8a2.5 2.5 0 0 0 .057-2.05\\"></path><path d=\\"M20.3 20.3a4 4 0 0 1-2.3.7\\"></path><path d=\\"M18.6 13a4 4 0 0 1 3.357 3.414\\"></path><path d=\\"m12 6 .6 1\\"></path><path d=\\"m2 2 20 20\\"></path></svg>"}},{"terms":["lucide-weight-icon"],"label":"weight","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-weight-icon lucide-weight lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"5\\" r=\\"3\\"></circle><path d=\\"M6.5 8a2 2 0 0 0-1.905 1.46L2.1 18.5A2 2 0 0 0 4 21h16a2 2 0 0 0 1.925-2.54L19.4 9.5A2 2 0 0 0 17.48 8Z\\"></path></svg>"}},{"terms":["lucide-whale-icon"],"label":"whale","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-whale-icon lucide-whale lucide-icon customizable\\"><path d=\\"M18 9.1V5a2 2 0 0 0-4 0\\"></path><path d=\\"M18 5a2 2 0 0 1 4 0\\"></path><path d=\\"M6 9.7 3.9 8.4C2.7 7.7 2 6.4 2 5V3c2 0 4 2 4 2s2-2 4-2v2c0 1.4-.7 2.7-1.9 3.4l-3.8 2.4A5 5 0 0 0 7 20h12c1.7 0 3-1.3 3-3v-3c0-2.8-2.2-5-5-5-2.7 0-5.1 1.4-6.4 3.6L9.7 14A2 2 0 0 1 6 13Z\\"></path><path d=\\"M15 15h.01\\"></path></svg>"}},{"terms":["lucide-whale-narwhal-icon"],"label":"whale-narwhal","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-whale-narwhal-icon lucide-whale-narwhal lucide-icon customizable\\"><path d=\\"M20 9.98s1-3 1-7c-3 2-5 6-5 6.08\\"></path><path d=\\"M6 9.7 3.9 8.4C2.7 7.7 2 6.4 2 5V3c2 0 4 2 4 2s2-2 4-2v2c0 1.4-.7 2.7-1.9 3.4l-3.8 2.4A5 5 0 0 0 7 20h12c1.7 0 3-1.3 3-3v-3c0-2.8-2.2-5-5-5-2.7 0-5.1 1.4-6.4 3.6L9.7 14A2 2 0 0 1 6 13Z\\"></path><path d=\\"M15 15h.01\\"></path></svg>"}},{"terms":["lucide-wheat-icon"],"label":"wheat","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wheat-icon lucide-wheat lucide-icon customizable\\"><path d=\\"M2 22 16 8\\"></path><path d=\\"M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\\"></path><path d=\\"M7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\\"></path><path d=\\"M11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\\"></path><path d=\\"M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z\\"></path><path d=\\"M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\\"></path><path d=\\"M15.47 13.47 17 15l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\\"></path><path d=\\"M19.47 9.47 21 11l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L13 11l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\\"></path></svg>"}},{"terms":["lucide-wheat-off-icon"],"label":"wheat-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wheat-off-icon lucide-wheat-off lucide-icon customizable\\"><path d=\\"m2 22 10-10\\"></path><path d=\\"m16 8-1.17 1.17\\"></path><path d=\\"M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94Z\\"></path><path d=\\"m8 8-.53.53a3.5 3.5 0 0 0 0 4.94L9 15l1.53-1.53c.55-.55.88-1.25.98-1.97\\"></path><path d=\\"M10.91 5.26c.15-.26.34-.51.56-.73L13 3l1.53 1.53a3.5 3.5 0 0 1 .28 4.62\\"></path><path d=\\"M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4Z\\"></path><path d=\\"M11.47 17.47 13 19l-1.53 1.53a3.5 3.5 0 0 1-4.94 0L5 19l1.53-1.53a3.5 3.5 0 0 1 4.94 0Z\\"></path><path d=\\"m16 16-.53.53a3.5 3.5 0 0 1-4.94 0L9 15l1.53-1.53a3.49 3.49 0 0 1 1.97-.98\\"></path><path d=\\"M18.74 13.09c.26-.15.51-.34.73-.56L21 11l-1.53-1.53a3.5 3.5 0 0 0-4.62-.28\\"></path><line x1=\\"2\\" x2=\\"22\\" y1=\\"2\\" y2=\\"22\\"></line></svg>"}},{"terms":["lucide-wheel-icon"],"label":"wheel","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wheel-icon lucide-wheel lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><circle cx=\\"12\\" cy=\\"12\\" r=\\"2.5\\"></circle><path d=\\"M12 2v7.5\\"></path><path d=\\"m19 5-5.23 5.23\\"></path><path d=\\"M22 12h-7.5\\"></path><path d=\\"m19 19-5.23-5.23\\"></path><path d=\\"M12 14.5V22\\"></path><path d=\\"M10.23 13.77 5 19\\"></path><path d=\\"M9.5 12H2\\"></path><path d=\\"M10.23 10.23 5 5\\"></path></svg>"}},{"terms":["lucide-whisk-icon"],"label":"whisk","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-whisk-icon lucide-whisk lucide-icon customizable\\"><path d=\\"M22 2 3.45 20.55\\"></path><path d=\\"M3.5 13.5a5 5 0 1 0 7.1 7.1C12.6 18.6 15 9 15 9s-9.6 2.5-11.5 4.5\\"></path></svg>"}},{"terms":["lucide-whisk-fork-knife-icon"],"label":"whisk-fork-knife","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-whisk-fork-knife-icon lucide-whisk-fork-knife lucide-icon customizable\\"><path d=\\"M6 2C3.8 2 2 3.8 2 6s4 8 4 8 4-5.8 4-8-1.8-4-4-4z\\"></path><path d=\\"M6 22V2\\"></path><path d=\\"M18 22v-4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v4\\"></path><path d=\\"M14 22V2\\"></path><path d=\\"M22 13h-2a2 2 0 0 1-2-2V6a4 4 0 0 1 4-4v20\\"></path></svg>"}},{"terms":["lucide-whisks-icon"],"label":"whisks","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-whisks-icon lucide-whisks lucide-icon customizable\\"><path d=\\"M6 2v20\\"></path><path d=\\"M6 10s-4 5.8-4 8 1.8 4 4 4 4-1.8 4-4-4-8-4-8\\"></path><path d=\\"M18 2v20\\"></path><path d=\\"M18 10s-4 5.8-4 8 1.8 4 4 4 4-1.8 4-4-4-8-4-8\\"></path></svg>"}},{"terms":["lucide-whole-word-icon"],"label":"whole-word","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-whole-word-icon lucide-whole-word lucide-icon customizable\\"><circle cx=\\"7\\" cy=\\"12\\" r=\\"3\\"></circle><path d=\\"M10 9v6\\"></path><circle cx=\\"17\\" cy=\\"12\\" r=\\"3\\"></circle><path d=\\"M14 7v8\\"></path><path d=\\"M22 17v1c0 .5-.5 1-1 1H3c-.5 0-1-.5-1-1v-1\\"></path></svg>"}},{"terms":["lucide-wifi-icon"],"label":"wifi","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wifi-icon lucide-wifi lucide-icon customizable\\"><path d=\\"M12 20h.01\\"></path><path d=\\"M2 8.82a15 15 0 0 1 20 0\\"></path><path d=\\"M5 12.859a10 10 0 0 1 14 0\\"></path><path d=\\"M8.5 16.429a5 5 0 0 1 7 0\\"></path></svg>"}},{"terms":["lucide-wifi-high-icon"],"label":"wifi-high","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wifi-high-icon lucide-wifi-high lucide-icon customizable\\"><path d=\\"M12 20h.01\\"></path><path d=\\"M5 12.859a10 10 0 0 1 14 0\\"></path><path d=\\"M8.5 16.429a5 5 0 0 1 7 0\\"></path></svg>"}},{"terms":["lucide-wifi-low-icon"],"label":"wifi-low","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wifi-low-icon lucide-wifi-low lucide-icon customizable\\"><path d=\\"M12 20h.01\\"></path><path d=\\"M8.5 16.429a5 5 0 0 1 7 0\\"></path></svg>"}},{"terms":["lucide-wifi-off-icon"],"label":"wifi-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wifi-off-icon lucide-wifi-off lucide-icon customizable\\"><path d=\\"M12 20h.01\\"></path><path d=\\"M8.5 16.429a5 5 0 0 1 7 0\\"></path><path d=\\"M5 12.859a10 10 0 0 1 5.17-2.69\\"></path><path d=\\"M19 12.859a10 10 0 0 0-2.007-1.523\\"></path><path d=\\"M2 8.82a15 15 0 0 1 4.177-2.643\\"></path><path d=\\"M22 8.82a15 15 0 0 0-11.288-3.764\\"></path><path d=\\"m2 2 20 20\\"></path></svg>"}},{"terms":["lucide-wifi-pen-icon"],"label":"wifi-pen","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wifi-pen-icon lucide-wifi-pen lucide-icon customizable\\"><path d=\\"M2 8.82a15 15 0 0 1 20 0\\"></path><path d=\\"M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\\"></path><path d=\\"M5 12.859a10 10 0 0 1 10.5-2.222\\"></path><path d=\\"M8.5 16.429a5 5 0 0 1 3-1.406\\"></path></svg>"}},{"terms":["lucide-wifi-zero-icon"],"label":"wifi-zero","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wifi-zero-icon lucide-wifi-zero lucide-icon customizable\\"><path d=\\"M12 20h.01\\"></path></svg>"}},{"terms":["lucide-wind-icon"],"label":"wind","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wind-icon lucide-wind lucide-icon customizable\\"><path d=\\"M12.8 19.6A2 2 0 1 0 14 16H2\\"></path><path d=\\"M17.5 8a2.5 2.5 0 1 1 2 4H2\\"></path><path d=\\"M9.8 4.4A2 2 0 1 1 11 8H2\\"></path></svg>"}},{"terms":["lucide-wind-arrow-down-icon"],"label":"wind-arrow-down","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wind-arrow-down-icon lucide-wind-arrow-down lucide-icon customizable\\"><path d=\\"M10 2v8\\"></path><path d=\\"M12.8 21.6A2 2 0 1 0 14 18H2\\"></path><path d=\\"M17.5 10a2.5 2.5 0 1 1 2 4H2\\"></path><path d=\\"m6 6 4 4 4-4\\"></path></svg>"}},{"terms":["lucide-windmill-icon"],"label":"windmill","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-windmill-icon lucide-windmill lucide-icon customizable\\"><path d=\\"m10 14 8 4 2-4L4 6l2-4 8 4\\"></path><path d=\\"m8 8-4 8 4 2\\"></path><path d=\\"m16 12 4-8-4-2L6 22\\"></path><path d=\\"m19 22-2.4-4.6\\"></path><path d=\\"M12.5 20v2\\"></path><path d=\\"M4 22h17\\"></path></svg>"}},{"terms":["lucide-wine-icon"],"label":"wine","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wine-icon lucide-wine lucide-icon customizable\\"><path d=\\"M8 22h8\\"></path><path d=\\"M7 10h10\\"></path><path d=\\"M12 15v7\\"></path><path d=\\"M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z\\"></path></svg>"}},{"terms":["lucide-wine-glass-bottle-icon"],"label":"wine-glass-bottle","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wine-glass-bottle-icon lucide-wine-glass-bottle lucide-icon customizable\\"><path d=\\"M3 13h8\\"></path><path d=\\"M5 7s-2 3-2 6a4 4 0 0 0 8 0c0-3-2-6-2-6Z\\"></path><path d=\\"M7 17v5\\"></path><path d=\\"M4 22h6\\"></path><path d=\\"M18 4c0 3-3 3-3 6v11c0 .6.4 1 1 1h4c.6 0 1-.4 1-1V10c0-3-3-3-3-6\\"></path><path d=\\"M18 4V2\\"></path></svg>"}},{"terms":["lucide-wine-off-icon"],"label":"wine-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wine-off-icon lucide-wine-off lucide-icon customizable\\"><path d=\\"M8 22h8\\"></path><path d=\\"M7 10h3m7 0h-1.343\\"></path><path d=\\"M12 15v7\\"></path><path d=\\"M7.307 7.307A12.33 12.33 0 0 0 7 10a5 5 0 0 0 7.391 4.391M8.638 2.981C8.75 2.668 8.872 2.34 9 2h6c1.5 4 2 6 2 8 0 .407-.05.809-.145 1.198\\"></path><line x1=\\"2\\" x2=\\"22\\" y1=\\"2\\" y2=\\"22\\"></line></svg>"}},{"terms":["lucide-workflow-icon"],"label":"workflow","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-workflow-icon lucide-workflow lucide-icon customizable\\"><rect width=\\"8\\" height=\\"8\\" x=\\"3\\" y=\\"3\\" rx=\\"2\\"></rect><path d=\\"M7 11v4a2 2 0 0 0 2 2h4\\"></path><rect width=\\"8\\" height=\\"8\\" x=\\"13\\" y=\\"13\\" rx=\\"2\\"></rect></svg>"}},{"terms":["lucide-worm-icon"],"label":"worm","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-worm-icon lucide-worm lucide-icon customizable\\"><path d=\\"m19 12-1.5 3\\"></path><path d=\\"M19.63 18.81 22 20\\"></path><path d=\\"M6.47 8.23a1.68 1.68 0 0 1 2.44 1.93l-.64 2.08a6.76 6.76 0 0 0 10.16 7.67l.42-.27a1 1 0 1 0-2.73-4.21l-.42.27a1.76 1.76 0 0 1-2.63-1.99l.64-2.08A6.66 6.66 0 0 0 3.94 3.9l-.7.4a1 1 0 1 0 2.55 4.34z\\"></path></svg>"}},{"terms":["lucide-wrap-text-icon"],"label":"wrap-text","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wrap-text-icon lucide-wrap-text lucide-icon customizable\\"><line x1=\\"3\\" x2=\\"21\\" y1=\\"6\\" y2=\\"6\\"></line><path d=\\"M3 12h15a3 3 0 1 1 0 6h-4\\"></path><polyline points=\\"16 16 14 18 16 20\\"></polyline><line x1=\\"3\\" x2=\\"10\\" y1=\\"18\\" y2=\\"18\\"></line></svg>"}},{"terms":["lucide-wrench-icon"],"label":"wrench","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-wrench-icon lucide-wrench lucide-icon customizable\\"><path d=\\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\\"></path></svg>"}},{"terms":["lucide-x-icon"],"label":"x","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-x-icon lucide-x lucide-icon customizable\\"><path d=\\"M18 6 6 18\\"></path><path d=\\"m6 6 12 12\\"></path></svg>"}},{"terms":["lucide-yarn-ball-icon"],"label":"yarn-ball","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-yarn-ball-icon lucide-yarn-ball lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><path d=\\"M10 6h10\\"></path><path d=\\"M14 10h7.8\\"></path><path d=\\"m7.2 3.2 13.6 13.6\\"></path><path d=\\"m4 6 15.3 15.3c.4.4 1.2.7 1.7.7h1\\"></path><path d=\\"m2.2 10.2 11.6 11.6\\"></path></svg>"}},{"terms":["lucide-yin-yang-icon"],"label":"yin-yang","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-yin-yang-icon lucide-yin-yang lucide-icon customizable\\"><circle cx=\\"12\\" cy=\\"12\\" r=\\"10\\"></circle><circle cx=\\"12\\" cy=\\"7\\" r=\\".5\\"></circle><path d=\\"M12 22a5 5 0 1 0 0-10 5 5 0 1 1 0-10\\"></path><circle cx=\\"12\\" cy=\\"17\\" r=\\".5\\"></circle></svg>"}},{"terms":["lucide-youtube-icon"],"label":"youtube","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-youtube-icon lucide-youtube lucide-icon customizable\\"><path d=\\"M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17\\"></path><path d=\\"m10 15 5-3-5-3z\\"></path></svg>"}},{"terms":["lucide-zap-icon"],"label":"zap","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-zap-icon lucide-zap lucide-icon customizable\\"><path d=\\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\\"></path></svg>"}},{"terms":["lucide-zap-off-icon"],"label":"zap-off","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-zap-off-icon lucide-zap-off lucide-icon customizable\\"><path d=\\"M10.513 4.856 13.12 2.17a.5.5 0 0 1 .86.46l-1.377 4.317\\"></path><path d=\\"M15.656 10H20a1 1 0 0 1 .78 1.63l-1.72 1.773\\"></path><path d=\\"M16.273 16.273 10.88 21.83a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14H4a1 1 0 0 1-.78-1.63l4.507-4.643\\"></path><path d=\\"m2 2 20 20\\"></path></svg>"}},{"terms":["lucide-zoom-in-icon"],"label":"zoom-in","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-zoom-in-icon lucide-zoom-in lucide-icon customizable\\"><circle cx=\\"11\\" cy=\\"11\\" r=\\"8\\"></circle><line x1=\\"21\\" x2=\\"16.65\\" y1=\\"21\\" y2=\\"16.65\\"></line><line x1=\\"11\\" x2=\\"11\\" y1=\\"8\\" y2=\\"14\\"></line><line x1=\\"8\\" x2=\\"14\\" y1=\\"11\\" y2=\\"11\\"></line></svg>"}},{"terms":["lucide-zoom-out-icon"],"label":"zoom-out","svg":{"regular":"<svg data-v-14c8c335=\\"\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" class=\\"lucide lucide-zoom-out-icon lucide-zoom-out lucide-icon customizable\\"><circle cx=\\"11\\" cy=\\"11\\" r=\\"8\\"></circle><line x1=\\"21\\" x2=\\"16.65\\" y1=\\"21\\" y2=\\"16.65\\"></line><line x1=\\"8\\" x2=\\"14\\" y1=\\"11\\" y2=\\"11\\"></line></svg>"}}]');
+
+/***/ }),
+
 /***/ "./src/block.json":
 /*!************************!*\
   !*** ./src/block.json ***!
@@ -49709,7 +50711,7 @@ module.exports = /*#__PURE__*/JSON.parse('[{"terms":["Digit Zero","nada","none",
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"b-blocks/pratics-purpuse","version":"1.0.0","title":"parties purpose","category":"widgets","description":"Short description of the Pratics Purpuse","keywords":["Pratics Purpuse"],"textdomain":"pratics-purpuse","attributes":{"alignment":{"type":"string","default":"center"},"purposeType":{"type":"string","default":"default"},"theme":{"type":"string","default":"themeOne"},"dataFaq":{"type":"array","default":[{"id":1,"question":"what is your name ?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"},{"id":2,"question":"Why do we use it?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"},{"id":3,"question":"Where can I get some?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"},{"id":4,"question":"Where does it come from?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"}]}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./view.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"b-blocks/pratics-purpuse","version":"1.0.0","title":"parties purpose","category":"widgets","description":"Short description of the Pratics Purpuse","keywords":["Pratics Purpuse"],"textdomain":"pratics-purpuse","attributes":{"alignment":{"type":"string","default":"center"},"purposeType":{"type":"string","default":"default"},"theme":{"type":"string","default":"themeOne"},"activeIndex":{"type":"number","default":0},"dataFaq":{"type":"array","default":[{"id":1,"question":"what is your name ?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"},{"id":2,"question":"Why do we use it?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"},{"id":3,"question":"Where can I get some?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"},{"id":4,"question":"Where does it come from?","answer":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,"}]}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./view.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ })
 
