@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ThemeThree = ({ attributes }) => {
+const ThemeThree = ({ attributes, setAttributes }) => {
     const { dataFaq = [] } = attributes || {};
 
     const [openIndex, setOpenIndex] = useState(0);
@@ -13,7 +13,9 @@ const ThemeThree = ({ attributes }) => {
         <div className="faq_card_warper themeThree">
 
             {dataFaq.map((faq, index) => (
-                <div key={faq.id || index} className={`faq_item ${openIndex === index ? "open" : ""}`}>
+                <div key={faq.id || index} className={`faq_item ${openIndex === index ? "open" : ""}`}
+                    onClick={() => setAttributes({ activeIndex: index })}
+                >
 
                     {/* Question */}
                     <h3

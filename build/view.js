@@ -1003,7 +1003,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const ThemeThree = ({
-  attributes
+  attributes,
+  setAttributes
 }) => {
   const {
     dataFaq = []
@@ -1016,7 +1017,10 @@ const ThemeThree = ({
     className: "faq_card_warper themeThree"
   }, dataFaq.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: faq.id || index,
-    className: `faq_item ${openIndex === index ? "open" : ""}`
+    className: `faq_item ${openIndex === index ? "open" : ""}`,
+    onClick: () => setAttributes({
+      activeIndex: index
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: `faq_question ${openIndex === index ? "active" : ""}`,
     onClick: () => toggleFaq(index)
@@ -1052,7 +1056,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const ThemeTwo = ({
-  attributes
+  attributes,
+  setAttributes
 }) => {
   const {
     dataFaq = []
@@ -1065,7 +1070,10 @@ const ThemeTwo = ({
     className: "faq_card_warper themeTwo"
   }, dataFaq.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: faq.id || index,
-    className: `faq_item ${openIndex === index ? "open" : ""}`
+    className: `faq_item ${openIndex === index ? "open" : ""}`,
+    onClick: () => setAttributes({
+      activeIndex: index
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "faq_deco"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
@@ -1109,7 +1117,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const ThemeOne = ({
-  attributes
+  attributes,
+  setAttributes
 }) => {
   const {
     dataFaq = []
@@ -1122,7 +1131,10 @@ const ThemeOne = ({
     className: "faq_card_warper themeOne"
   }, dataFaq.map((faq, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: faq.id || index,
-    className: `faq_item ${openIndex === index ? "open" : ""}`
+    className: `faq_item ${openIndex === index ? "open" : ""}`,
+    onClick: () => setAttributes({
+      activeIndex: index
+    })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "faq_deco"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
